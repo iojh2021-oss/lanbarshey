@@ -325,7 +325,7 @@ start.addEventListener('click',()=>running?halt():run());stop.addEventListener('
 <path d="M450 356 C378 313 278 283 220 307 C257 360 355 411 450 453 C545 411 643 360 680 307 C622 283 522 313 450 356Z" fill="#6c5030" stroke="#d8b86e" stroke-width="5"/>
 <g stroke="#c8a65b" stroke-width="5" fill="none" opacity=".9"><path d="M450 363L450 466"/><path d="M450 363L290 418"/><path d="M450 363L610 418"/><path d="M450 363L248 342"/><path d="M450 363L652 342"/></g>
 <path d="M450 430 C407 400 351 365 378 340 C402 317 435 342 450 361 C465 342 498 317 522 340 C549 365 493 400 450 430Z" fill="#3d2b1b" stroke="url(#hbGold)" stroke-width="9"/>
-<g class="hb-reflection" transform="translate(450 207) scale(.72 -.72)" opacity=".24"><g class="hb-dancer-figure"><circle cx="0" cy="-62" r="12" fill="url(#hbSkin)"/><path d="M-2 -49 Q-7 -27 0 -8" fill="none" stroke="#eee1c4" stroke-width="8" stroke-linecap="round"/><path d="M-2 -42 Q-35 -65 -47 -88 M2 -42 Q28 -73 48 -86" fill="none" stroke="#eee1c4" stroke-width="6" stroke-linecap="round"/><path d="M-4 -10 Q-30 2 -46 34 Q0 48 46 34 Q30 2 4 -10Z" fill="url(#hbDress)" stroke="#f7e8c4" stroke-width="3"/><path d="M-7 34L-22 82 M7 34L27 78" stroke="#ead9b6" stroke-width="6" stroke-linecap="round"/></g></g>
+<g class="hb-reflection" transform="translate(450 207) scale(.72 .72)" opacity=".24"><g class="hb-dancer-figure"><circle cx="0" cy="-62" r="12" fill="url(#hbSkin)"/><path d="M-2 -49 Q-7 -27 0 -8" fill="none" stroke="#eee1c4" stroke-width="8" stroke-linecap="round"/><path d="M-2 -42 Q-35 -65 -47 -88 M2 -42 Q28 -73 48 -86" fill="none" stroke="#eee1c4" stroke-width="6" stroke-linecap="round"/><path d="M-4 -10 Q-30 2 -46 34 Q0 48 46 34 Q30 2 4 -10Z" fill="url(#hbDress)" stroke="#f7e8c4" stroke-width="3"/><path d="M-7 34L-22 82 M7 34L27 78" stroke="#ead9b6" stroke-width="6" stroke-linecap="round"/></g></g>
 <g class="hb-dancer" id="hbDancer" transform="translate(450 367)"><ellipse cx="0" cy="4" rx="22" ry="7" fill="#0d0906" opacity=".45"/><g class="hb-dancer-figure"><circle cx="0" cy="-64" r="12" fill="url(#hbSkin)" stroke="#75502d" stroke-width="2"/><path d="M-9 -71 Q-7 -88 8 -78 Q17 -72 10 -59" fill="#4a2c1d"/><path d="M-2 -51 Q-8 -29 0 -10" fill="none" stroke="url(#hbDress)" stroke-width="10" stroke-linecap="round"/><path d="M-3 -45 Q-33 -66 -49 -91 M3 -45 Q27 -75 48 -91" fill="none" stroke="#e9d8b3" stroke-width="7" stroke-linecap="round"/><circle cx="-49" cy="-91" r="4" fill="#f4e4c4"/><circle cx="48" cy="-91" r="4" fill="#f4e4c4"/><path d="M-5 -12 Q-34 2 -52 39 Q0 52 52 39 Q34 2 5 -12Z" fill="url(#hbDress)" stroke="#fff0cf" stroke-width="3"/><path d="M-10 39L-25 88 M10 39L31 83" stroke="#e9d8b3" stroke-width="6" stroke-linecap="round"/><path d="M-25 88l-8 3m39-8 9 3" stroke="#b68c54" stroke-width="5" stroke-linecap="round"/></g></g>
 <path d="M285 433 Q450 510 615 433 L615 478 Q450 550 285 478Z" fill="#25180f" stroke="url(#hbGold)" stroke-width="5"/>
 <g class="mb-gears"><g class="mb-gear"><circle r="23" cx="365" cy="463" fill="#b58b48" stroke="#f1d58d" stroke-width="5" stroke-dasharray="5 4"/><circle r="8" cx="365" cy="463" fill="#382315"/></g><g class="mb-gear"><circle r="18" cx="410" cy="474" fill="#94703c" stroke="#e8c777" stroke-width="5" stroke-dasharray="5 4"/><circle r="6" cx="410" cy="474" fill="#382315"/></g><g class="mb-gear"><circle r="25" cx="490" cy="466" fill="#b58b48" stroke="#f1d58d" stroke-width="5" stroke-dasharray="5 4"/><circle r="8" cx="490" cy="466" fill="#382315"/></g><g class="mb-gear"><circle r="17" cx="535" cy="477" fill="#94703c" stroke="#e8c777" stroke-width="5" stroke-dasharray="5 4"/><circle r="6" cx="535" cy="477" fill="#382315"/></g></g>
@@ -351,7 +351,7 @@ function tick(){if(!playing)return;if(index>=events.length){stop();status.textCo
 function play(){if(!events.length){status.textContent='اول در ماشین تایپ چند نت وارد کن؛ این جعبه از همان نت‌ها استفاده می‌کند.';return}stop();index=0;playing=true;stage.classList.add('running');$('mbPlay').textContent='Ⅱ در حال اجرای نت‌ها';status.textContent='فنر محرک → چرخ‌دنده کاهنده → سیلندر پین‌دار → شانه نت‌ساز → محور صفحه گردان';tick()}
 document.addEventListener('stitchedscorechange',e=>{stop();setEvents(e.detail?.events||[])});window.__playMusicBox=play;setEvents(window.__lanbarsheyStitchedScore||[]);
 $('mbPlay').addEventListener('click',play);$('mbStop').addEventListener('click',()=>{stop();status.textContent='مکانیزم متوقف شد.'});$('mbReset').addEventListener('click',()=>{stop();index=0;[...stitches.children].forEach(s=>{s.style.background='';s.style.color='' });status.textContent='صفحه گردان و بالرین به حالت آغازین برگشتند.'});
-setEvents([]);
+setEvents(window.__lanbarsheyStitchedScore||[]);
 })();
 </script>
 <style>
@@ -484,4 +484,11 @@ preview(0);
 .transfer-column i{width:5px;height:4px;border-radius:50%;background:#40301d;opacity:.12;justify-self:center}
 .transfer-column i.hole{opacity:1;background:#100b07;box-shadow:inset 0 1px 2px #000}
 @media(max-width:650px){#mechanical-music-box .heart-box-svg{min-height:300px}.mechanical-transfer{padding:9px}}
+</style><style>
+#mechanical-music-box .hb-dancer,#mechanical-music-box .hb-reflection{transform-box:fill-box;transform-origin:center}
+#mechanical-music-box .mb-gear{transform-box:fill-box;transform-origin:center}
+#mechanical-music-box .mb-stage.running .hb-dancer{animation:heartBallerina 1.15s ease-in-out infinite alternate}
+#mechanical-music-box .mb-stage.running .hb-reflection{animation:heartReflection 1.15s ease-in-out infinite alternate}
+@keyframes heartBallerina{from{rotate:-14deg}to{rotate:14deg}}
+@keyframes heartReflection{from{rotate:14deg}to{rotate:-14deg}}
 </style></body></html>
