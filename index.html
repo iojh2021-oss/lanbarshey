@@ -156,7 +156,84 @@
 <div class="sew-how"><strong>چرخهٔ یک بخیه:</strong> سوزن نخ بالا را از پارچه عبور می‌دهد ← هنگام بالا آمدن، حلقه نخ شکل می‌گیرد ← ماکو/قلاب حلقه را دور نخ ماسوره می‌برد ← اهرم نخ‌کش بخیه را سفت می‌کند ← دندانه‌های پیش‌بر پارچه را یک گام جلو می‌برند. این مدل تصویری یک چرخ خیاطی پدالی کلاسیک با مکانیزم قلاب/ماکوی نمایشی را نشان می‌دهد؛ جزئیات واقعی بین مدل‌های شاتل و قلاب گردان متفاوت است.</div>
 </div>
 </section>
-<div class="punched-module" id="punched-music-tape"><h3 class="punched-head">♫ نوار موسیقی سوراخ‌دار</h3><p class="punched-intro">خوانشگر نوار کاغذی پانچ‌شده · هر ستون یک لحظه، هر سوراخ یک نت</p><div class="tape-machine"><div class="tape-reel left" id="tapeReelL"></div><div class="tape-reel right" id="tapeReelR"></div><div class="tape-path"><div class="tape-reader"></div><div class="tape-grid" id="tapeGrid"></div></div><div class="tape-legend"><span>● سوراخ = نت فعال</span><span>○ بدون سوراخ = سکوت</span><span>خط قرمز = محل خواندن</span></div></div><div class="tape-controls"><button class="primary" id="tapePlay">▶ پخش نوار</button><button id="tapeStop">■ توقف</button><button id="tapeRewind">↶ از ابتدا</button><label>سرعت <input id="tapeTempo" type="range" min="60" max="180" value="110"><b id="tapeTempoVal">110</b></label></div><div class="tape-readout" id="tapeReadout">نوار آماده است؛ پخش را بزن تا سوراخ‌ها خوانده شوند.</div><div class="tape-explain"><strong>روش کار:</strong> نوار از قرقره تغذیه عبور می‌کند و از مقابل خوانشگر می‌گذرد. در هر ستون، سوراخ موجود در یکی از ردیف‌ها یک نت را انتخاب می‌کند؛ ستون‌های بعدی به‌ترتیب زمان اجرا می‌شوند. در نمونه واقعی می‌توان سوراخ‌ها را با پین و اهرم مکانیکی یا حسگر خواند؛ این نسخه آن‌ها را با خوانشگر مجازی تشخیص می‌دهد و نت را پخش می‌کند.</div></div><script>(()=>{const $=id=>document.getElementById(id),grid=$('tapeGrid');if(!grid)return;const p=[[1,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,1,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0]];const names=['دو','ر','می','فا','سل','لا','سی','دو بالا'],midi=[60,62,64,65,67,69,71,72];let i=0,t=null,ctx=null;p.forEach((col,n)=>{let c=document.createElement('div');c.className='tape-column';c.dataset.i=n;col.forEach(v=>{let d=document.createElement('i');d.className='tape-hole'+(v?' on':'');c.appendChild(d)});grid.appendChild(c)});function tone(n){try{ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();let o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=440*Math.pow(2,(n-69)/12);g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.1,ctx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.23);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.25)}catch(e){}}function show(n){[...grid.children].forEach((c,j)=>c.classList.toggle('current',j===n));let row=p[n].findIndex(Boolean);if(row>=0){tone(midi[row]);$('tapeReadout').textContent='ستون '+(n+1)+' از '+p.length+' · نت '+names[row]+' خوانده شد'}else $('tapeReadout').textContent='ستون '+(n+1)+' · سکوت';grid.style.transform='translateX('+(-Math.max(0,n-2)*38)+'px)'}function stop(){if(t){clearInterval(t);t=null}$('tapeReelL').classList.remove('spin');$('tapeReelR').classList.remove('spin');$('tapePlay').textContent='▶ پخش نوار'}function play(){stop();if(i>=p.length)i=0;$('tapeReelL').classList.add('spin');$('tapeReelR').classList.add('spin');$('tapePlay').textContent='Ⅱ در حال پخش';let tick=()=>{show(i++);if(i>=p.length){stop();$('tapeReadout').textContent='پایان نوار؛ برای اجرای دوباره پخش را بزن';i=0}};tick();t=setInterval(tick,60000/+ $('tapeTempo').value)}$('tapePlay').onclick=()=>t?stop():play();$('tapeStop').onclick=stop;$('tapeRewind').onclick=()=>{stop();i=0;grid.style.transform='translateX(0)';show(0);i=0};$('tapeTempo').oninput=e=>{$('tapeTempoVal').textContent=e.target.value;if(t)play()};show(0)})();</script>
+
+<style>
+/* Complete interactive punched-roll reader */
+.punched-module{margin-top:16px;border:1px solid #80603b;border-radius:12px;padding:14px;background:linear-gradient(145deg,#302116,#17110d)}
+.punched-head{text-align:center;color:#f0d49a;font:22px Georgia;margin:4px}.punched-intro{text-align:center;color:#cbb895;font:12px Tahoma}
+.tape-machine{position:relative;min-height:240px;border:1px solid #87633a;border-radius:10px;background:radial-gradient(ellipse,#513a26,#17110d 75%);padding:20px 12px;overflow:hidden}
+.tape-reel{position:absolute;top:24px;width:70px;height:70px;border-radius:50%;border:8px solid #b88a4c;background:repeating-conic-gradient(#38271a 0 12deg,#d3ad68 13deg 19deg,#4b3020 20deg 30deg);box-shadow:0 3px 9px #000;z-index:2}
+.tape-reel:after{content:"";position:absolute;inset:17px;border-radius:50%;background:radial-gradient(circle,#e6ca8b,#624426 65%,#20150f 70%)}
+.tape-reel.left{left:14px}.tape-reel.right{right:14px}.tape-reel.spin{animation:sewSpin .85s linear infinite}
+.tape-path{position:relative;margin:42px 72px 0;height:120px;background:linear-gradient(#e6d5ad,#c6ad7f);border:7px solid #624327;border-radius:5px;overflow:hidden;box-shadow:0 5px 12px #000}
+.tape-grid{position:absolute;inset:0;display:flex;direction:ltr;transition:transform .15s}
+.tape-column{flex:0 0 42px;height:100%;border-left:1px solid #a58c63;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;cursor:pointer;position:relative}
+.tape-column.current{background:#e6bd6b77;box-shadow:inset 0 0 0 2px #95672f}
+.tape-hole{width:13px;height:13px;border-radius:50%;background:#59452e;border:1px solid #8a7048;box-shadow:inset 0 2px 3px #1b120b;display:block}
+.tape-hole.on{background:#fff4d4;border:2px solid #74532c;box-shadow:0 0 0 2px #b99150,inset 0 1px 2px #fff}
+.tape-reader{position:absolute;left:50%;top:8px;bottom:8px;width:4px;background:#bd3828;box-shadow:0 0 10px #ff8a5e;z-index:3;pointer-events:none}
+.tape-reader:before{content:"خوانشگر";position:absolute;top:-18px;left:-26px;width:55px;text-align:center;color:#f1d59a;font:9px Tahoma}
+.tape-legend,.tape-controls{display:flex;gap:9px;justify-content:center;align-items:center;flex-wrap:wrap;color:#d4bf98;font:11px Tahoma;margin-top:11px}
+.tape-controls button,.tape-editor button{border:1px solid #b28a4e;border-radius:7px;padding:8px 12px;background:linear-gradient(#69472d,#2b1c13);color:#ffedca;cursor:pointer;font:11px Tahoma}
+.tape-controls .primary,.tape-editor .primary{background:linear-gradient(#f2d38e,#aa7736);color:#27180d;font-weight:bold}
+.tape-controls input{width:100px;accent-color:#d6aa5d}
+.tape-readout{text-align:center;color:#f0d49a;font:12px Tahoma;min-height:22px;padding-top:10px}
+.tape-editor{border-top:1px solid #614729;margin-top:12px;padding-top:12px;color:#d9c49e;font:11px/1.8 Tahoma}
+.tape-editor-head{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.tape-edit-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin-top:9px;direction:ltr}
+.tape-cell{border:1px solid #87643e;border-radius:5px;background:#2a1d14;color:#f0d49a;padding:6px 2px;text-align:center;cursor:pointer;font:10px Tahoma;min-height:37px}
+.tape-cell.active{background:#b58a4a;color:#20150d;border-color:#f1d49a}
+.tape-row-labels{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;text-align:center;color:#c8ae80;font:10px Tahoma;margin-top:6px;direction:ltr}
+.tape-help{color:#bca986;font-size:10px;margin-top:8px}
+@media(max-width:600px){.tape-path{margin-left:48px;margin-right:48px}.tape-reel{width:54px;height:54px;border-width:6px}.tape-reel:after{inset:13px}.tape-column{flex-basis:34px}.tape-hole{width:10px;height:10px}.tape-edit-grid{gap:3px}.tape-cell{font-size:9px;padding:5px 0}}
+</style>
+<div class="punched-module" id="punched-music-tape">
+<h3 class="punched-head">♫ دستگاه نوار موسیقی سوراخ‌دار</h3>
+<p class="punched-intro">نوار پانچ‌شده، قرقره تغذیه، مسیر هدایت، خوانشگر هشت‌کاناله و اجرای نت‌ها</p>
+<div class="tape-machine">
+<div class="tape-reel left" id="tapeReelL"></div><div class="tape-reel right" id="tapeReelR"></div>
+<div class="tape-path"><div class="tape-reader"></div><div class="tape-grid" id="tapeGrid"></div></div>
+<div class="tape-legend"><span>● سوراخ پانچ‌شده</span><span>○ بخش بدون سوراخ</span><span>خط قرمز: هد خوانشگر</span></div>
+</div>
+<div class="tape-controls">
+<button class="primary" id="tapePlay">▶ پخش نوار</button><button id="tapeStop">■ توقف</button><button id="tapeRewind">↶ ابتدا</button>
+<button id="tapeDemo">♫ ملودی نمونه</button>
+<label>سرعت <input id="tapeTempo" type="range" min="50" max="180" value="110"><b id="tapeTempoVal">110</b></label>
+</div>
+<div class="tape-readout" id="tapeReadout">نوار آماده است؛ برای شنیدن ملودی پخش را بزن یا سوراخ‌ها را ویرایش کن.</div>
+<div class="tape-editor">
+<div class="tape-editor-head"><strong>کارگاه پانچ نوار — برای ایجاد یا حذف سوراخ روی خانه‌ها بزن</strong><span id="tapeCount">۱۶ گام</span></div>
+<div class="tape-row-labels"><span>دو</span><span>ر</span><span>می</span><span>فا</span><span>سل</span><span>لا</span><span>سی</span><span>دو↑</span></div>
+<div class="tape-edit-grid" id="tapeEditGrid"></div>
+<div class="tape-controls" style="margin-top:10px">
+<button id="tapeAdd">＋ افزودن گام</button><button id="tapeRemove">− حذف گام آخر</button><button id="tapeClear">پاک‌کردن نوار</button><button id="tapeChord">آکورد نمونه</button>
+</div>
+<div class="tape-help">هر ستون یک لحظه از موسیقی است؛ می‌توانی در یک ستون چند سوراخ بسازی تا چند نت هم‌زمان اجرا شوند. تغییرات بلافاصله روی نوار نمایشی اعمال می‌شوند.</div>
+</div>
+<div class="tape-explain"><strong>مسیر مکانیکی:</strong> قرقرهٔ بازکننده نوار را آزاد می‌کند ← غلتک‌های راهنما نوار را صاف و هم‌راستا نگه می‌دارند ← سوراخ‌ها از مقابل ردیف پین‌های خوانشگر عبور می‌کنند ← پین‌های فعال، در ساز واقعی اهرم‌ها یا دریچه‌های هوای متناظر را تحریک می‌کنند ← نت‌ها به‌ترتیب زمان اجرا می‌شوند ← قرقرهٔ جمع‌کننده نوار مصرف‌شده را می‌پیچد. در این نسخه وب، تشخیص سوراخ‌ها و تولید صدا نرم‌افزاری است و چرخش قرقره‌ها و هد خوانشگر به‌صورت انیمیشن نمایش داده می‌شود.</div>
+</div>
+<script>
+(()=>{const $=id=>document.getElementById(id),grid=$('tapeGrid'),edit=$('tapeEditGrid');if(!grid||!edit||grid.dataset.ready)return;grid.dataset.ready='1';
+const labels=['دو','ر','می','فا','سل','لا','سی','دو↑'],midi=[60,62,64,65,67,69,71,72];
+let pattern=[[1,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,1,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0]];
+let pos=0,timer=null,ctx=null,stepMs=545;
+function audio(){try{ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();return ctx}catch(e){return null}}
+function tone(row){const c=audio();if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=440*Math.pow(2,(midi[row]-69)/12);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.085,c.currentTime+.018);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.27);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.29)}
+function render(){grid.innerHTML='';edit.innerHTML='';pattern.forEach((col,i)=>{const c=document.createElement('div');c.className='tape-column';c.dataset.i=i;col.forEach(v=>{const d=document.createElement('i');d.className='tape-hole'+(v?' on':'');c.appendChild(d)});grid.appendChild(c);
+const ec=document.createElement('div');ec.style.display='contents';col.forEach((v,row)=>{const b=document.createElement('button');b.type='button';b.className='tape-cell'+(v?' active':'');b.textContent=v?'●':'·';b.title='گام '+(i+1)+'، نت '+labels[row]+'؛ برای تغییر بزن';b.setAttribute('aria-label',b.title);b.onclick=()=>{pattern[i][row]=pattern[i][row]?0:1;render()};ec.appendChild(b)});edit.appendChild(ec)});$('tapeCount').textContent=pattern.length+' گام';}
+function stop(){if(timer){clearInterval(timer);timer=null}['tapeReelL','tapeReelR'].forEach(id=>$(id).classList.remove('spin'));$('tapePlay').textContent='▶ پخش نوار';const sewing=$('sewScene');if(sewing)sewing.classList.remove('sew-run')}
+function show(n){pos=n;[...grid.children].forEach((c,j)=>c.classList.toggle('current',j===n));const active=pattern[n].map((v,i)=>v?i:-1).filter(i=>i>=0);active.forEach(tone);$('tapeReadout').textContent='گام '+(n+1)+' از '+pattern.length+' · '+(active.length?active.map(i=>labels[i]).join(' + '):'سکوت');const col=grid.children[n];if(col){const x=col.offsetLeft;grid.style.transform='translateX('+Math.max(-Math.max(0,grid.scrollWidth-grid.parentElement.clientWidth),-x+grid.parentElement.clientWidth/2-21)+'px)'}}
+function tick(){show(pos);pos++;if(pos>=pattern.length){stop();pos=0;$('tapeReadout').textContent='پایان نوار · برای اجرای دوباره پخش را بزن'}}
+function play(){stop();if(pos>=pattern.length)pos=0;const bpm=+$('tapeTempo').value;stepMs=60000/bpm;['tapeReelL','tapeReelR'].forEach(id=>$(id).classList.add('spin'));$('tapePlay').textContent='Ⅱ در حال پخش';const sewing=$('sewScene');if(sewing){sewing.style.setProperty('--sew-speed',(160/bpm)+'s');sewing.classList.add('sew-run')}tick();if(pos!==0||timer===null)timer=setInterval(tick,stepMs)}
+$('tapePlay').onclick=()=>timer?stop():play();$('tapeStop').onclick=stop;$('tapeRewind').onclick=()=>{stop();pos=0;grid.style.transform='translateX(0)';show(0);pos=0};
+$('tapeTempo').oninput=e=>{$('tapeTempoVal').textContent=e.target.value;if(timer){const was=pos;play();pos=was}};
+$('tapeAdd').onclick=()=>{if(pattern.length<48){pattern.push(Array(8).fill(0));render()}};
+$('tapeRemove').onclick=()=>{if(pattern.length>1){pattern.pop();pos=Math.min(pos,pattern.length-1);render();show(pos)}};
+$('tapeClear').onclick=()=>{stop();pattern=Array.from({length:16},()=>Array(8).fill(0));pos=0;render();show(0)};
+$('tapeDemo').onclick=()=>{stop();pattern=[[1,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,1,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0]];pos=0;render();play()};
+$('tapeChord').onclick=()=>{stop();pattern=[[1,0,1,0,1,0,0,0],[0,0,0,1,0,0,1,0],[1,0,0,0,1,0,0,1],[0,1,0,0,0,1,0,0],[1,0,1,0,1,0,0,0],[0,0,0,1,0,0,1,0],[1,0,0,0,1,0,0,1],[0,1,0,0,0,1,0,0]];pos=0;render();play()};
+render();show(0);
+})();
+</script>
 <script>
 (()=>{const scene=document.getElementById('sewScene'),start=document.getElementById('sewStart'),stop=document.getElementById('sewStop'),step=document.getElementById('sewStep'),speed=document.getElementById('sewSpeed'),status=document.getElementById('sewStatus');if(!scene||!start)return;let running=false,ctx=null,osc=null,gain=null,cycle=0;function sound(){try{ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=[392,440,523,659][cycle%4];g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.07,ctx.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.18);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.2)}catch(e){}}function setSpeed(){let s=+speed.value;scene.style.setProperty('--sew-speed',(160/s).toFixed(2)+'s');document.getElementById('sewSpeedVal').textContent=s}function one(){cycle++;sound();status.textContent='چرخه '+cycle+' · فلایویل → میل اصلی → سوزن → ماکو → پیش‌بر پارچه';}function run(){running=true;scene.classList.add('sew-run');start.textContent='Ⅱ در حال دوخت';one()}function halt(){running=false;scene.classList.remove('sew-run');start.textContent='▶ شروع دوخت و موسیقی';status.textContent='حرکت متوقف شد؛ مکانیزم در حالت آماده است.'}start.addEventListener('click',()=>{if(running){halt();return}run()});stop.addEventListener('click',halt);step.addEventListener('click',()=>{if(running)halt();scene.classList.remove('sew-run');void scene.offsetWidth;scene.classList.add('sew-run');setTimeout(()=>scene.classList.remove('sew-run'),650);one()});speed.addEventListener('input',setSpeed);setSpeed();})();
 </script>
