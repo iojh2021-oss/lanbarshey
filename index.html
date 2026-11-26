@@ -321,4 +321,111 @@ document.addEventListener('scorechange',e=>{stop();setEvents(e.detail?.events||[
 $('mbPlay').addEventListener('click',play);$('mbStop').addEventListener('click',()=>{stop();status.textContent='مکانیزم متوقف شد.'});$('mbReset').addEventListener('click',()=>{stop();index=0;[...stitches.children].forEach(s=>{s.style.background='';s.style.color='' });status.textContent='صفحه گردان و بالرین به حالت آغازین برگشتند.'});
 setEvents([]);
 })();
+</script>
+<style>
+/* Vintage motion-picture camera + cinema, appended without changing earlier machines */
+#vintage-film-camera,#classic-cinema{max-width:1120px;margin:28px auto;padding:18px;border:1px solid #9b7948;border-radius:18px;background:linear-gradient(145deg,#352419,#17110d);color:#ead8b5;box-shadow:0 12px 34px #0007;font-family:Tahoma,serif}
+#vintage-film-camera .vf-title,#classic-cinema .vf-title{text-align:center;color:#f0d49a;font:26px Georgia;margin:4px 0 7px}
+#vintage-film-camera .vf-sub,#classic-cinema .vf-sub{text-align:center;color:#cbb895;font:12px/2 Tahoma;max-width:820px;margin:0 auto 16px}
+#vintage-film-camera .vf-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+#vintage-film-camera .vf-flow span{border:1px solid #82613b;background:#21170f;border-radius:8px;text-align:center;padding:9px 4px;color:#e6c98f;font:11px/1.8 Tahoma}
+#vintage-film-camera .vf-machine{position:relative;min-height:420px;border:1px solid #a27d49;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 52% 48%,#70502f,#291c13 60%,#120d09)}
+#vintage-film-camera .vf-body{position:absolute;left:24%;top:112px;width:53%;height:235px;border:5px ridge #8c673d;border-radius:12px;background:linear-gradient(100deg,#24160f,#59371f 28%,#1d140f 70%,#090807);box-shadow:inset 0 0 25px #000,0 8px 16px #0009}
+#vintage-film-camera .vf-badge{position:absolute;left:8%;top:34%;width:26%;height:42px;border:2px solid #d0a856;border-radius:4px;background:linear-gradient(#8e6a31,#352313);color:#f3d99e;text-align:center;padding-top:10px;font:italic 13px Georgia;letter-spacing:2px}
+#vintage-film-camera .vf-lens{position:absolute;right:-24%;top:29%;width:28%;height:80px;border:8px ridge #b6a17a;border-radius:8px 24px 24px 8px;background:linear-gradient(90deg,#17120e,#5c5546,#12100d);box-shadow:0 0 18px #d7c08a55}
+#vintage-film-camera .vf-lens:after{content:"";position:absolute;right:7px;top:8px;width:52px;height:48px;border-radius:50%;border:4px solid #c7b68d;background:radial-gradient(circle at 40% 40%,#c8d3c8,#273c3d 38%,#080d10 72%)}
+#vintage-film-camera .vf-reel{position:absolute;width:128px;height:128px;border:8px ridge #c8c5b7;border-radius:50%;background:radial-gradient(circle,#9b927e 0 12%,#33302a 13% 22%,transparent 23%),repeating-conic-gradient(#b9b5a8 0 9deg,#4a4741 10deg 20deg);box-shadow:0 4px 12px #0009;z-index:3}
+#vintage-film-camera .vf-reel:before{content:"";position:absolute;inset:15px;border-radius:50%;border:5px solid #d1c9b7;background:radial-gradient(circle,#4d4332 0 17%,#c3b99f 18% 22%,transparent 23%)}
+#vintage-film-camera .vf-reel:after{content:"";position:absolute;inset:27px;border-radius:50%;background:repeating-conic-gradient(transparent 0 48deg,#d7d0be 49deg 58deg,transparent 59deg 60deg)}
+#vintage-film-camera .vf-reel.top{left:31%;top:12px}
+#vintage-film-camera .vf-reel.bottom{right:10%;bottom:12px;width:112px;height:112px}
+#vintage-film-camera .vf-machine.running .vf-reel{animation:vfSpin 2.8s linear infinite}
+#vintage-film-camera .vf-machine.running .vf-reel.bottom{animation-direction:reverse}
+@keyframes vfSpin{to{transform:rotate(360deg)}}
+#vintage-film-camera .vf-gate{position:absolute;left:39%;top:38%;width:25%;height:80px;border:6px double #c9b27d;background:linear-gradient(90deg,#090909,#4b4235,#090909);box-shadow:0 0 20px #edcf8b55;z-index:4}
+#vintage-film-camera .vf-gate:after{content:"FRAME GATE";position:absolute;inset:0;display:grid;place-items:center;color:#e8d6ad;font:10px Georgia;letter-spacing:2px}
+#vintage-film-camera .vf-shutter{position:absolute;left:47%;top:39%;width:62px;height:62px;border:5px solid #c8ae73;border-radius:50%;background:conic-gradient(#c8ae73 0 125deg,#2b2015 126deg 235deg,#c8ae73 236deg 360deg);z-index:5}
+#vintage-film-camera .vf-machine.running .vf-shutter{animation:vfSpin .35s linear infinite}
+#vintage-film-camera .vf-path{position:absolute;left:34%;top:45%;width:40%;height:5px;background:repeating-linear-gradient(90deg,#d8bd7e 0 8px,#302114 8px 13px);transform:rotate(12deg);z-index:2;box-shadow:0 0 6px #000}
+#vintage-film-camera .vf-crank{position:absolute;left:7%;bottom:25px;width:74px;height:74px;border:8px ridge #b9a77e;border-radius:50%;background:repeating-conic-gradient(#b9a77e 0 10deg,#282019 11deg 45deg);z-index:5}
+#vintage-film-camera .vf-crank:after{content:"";position:absolute;left:30px;top:-18px;width:8px;height:38px;background:#cbb17a;transform:rotate(35deg);transform-origin:bottom}
+#vintage-film-camera .vf-canvas-wrap{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);width:190px;height:110px;border:5px ridge #b99a5c;background:#0c0906;z-index:6;box-shadow:0 0 14px #000}
+#vintage-film-camera canvas{display:block;width:100%;height:100%;object-fit:cover}
+#vintage-film-camera .vf-controls,#classic-cinema .vf-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:13px 0}
+#vintage-film-camera button,#classic-cinema button{border:1px solid #c39b5a;border-radius:8px;padding:9px 13px;background:linear-gradient(#79512e,#342116);color:#f5e2b8;font:12px Tahoma;cursor:pointer}
+#vintage-film-camera button.primary,#classic-cinema button.primary{background:linear-gradient(#f2d38e,#a97737);color:#26180e;font-weight:bold}
+#vintage-film-camera .vf-status,#classic-cinema .vf-status{text-align:center;color:#f0d39a;font:12px/2 Tahoma;min-height:24px}
+#vintage-film-camera .vf-filmstrip{display:flex;gap:5px;overflow-x:auto;padding:9px;background:#090807;border:1px solid #6c4e2e;border-radius:8px;min-height:78px}
+#vintage-film-camera .vf-frame{flex:0 0 74px;height:52px;border:3px solid #d4c08c;background:#2b1e13;position:relative}
+#vintage-film-camera .vf-frame:before,#vintage-film-camera .vf-frame:after{content:"";position:absolute;left:0;right:0;height:5px;background:repeating-linear-gradient(90deg,#e9d9ae 0 5px,transparent 5px 11px)}
+#vintage-film-camera .vf-frame:before{top:-7px}#vintage-film-camera .vf-frame:after{bottom:-7px}
+#vintage-film-camera .vf-frame img{width:100%;height:100%;object-fit:cover;filter:sepia(.45)}
+#vintage-film-camera .vf-parts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
+#vintage-film-camera .vf-parts span{padding:8px 4px;text-align:center;border:1px solid #684b2d;border-radius:7px;color:#d9c39b;font:10px/1.7 Tahoma}
+#classic-cinema .vf-theatre{position:relative;padding:24px 18px 30px;border:8px ridge #8e6235;border-radius:16px;background:radial-gradient(ellipse at center,#57391f,#17100b 72%);box-shadow:inset 0 0 30px #000}
+#classic-cinema .vf-curtain{position:absolute;top:0;bottom:0;width:13%;background:repeating-linear-gradient(90deg,#5b1715,#8d2920 12px,#3c100f 22px);z-index:3;box-shadow:0 0 15px #000}
+#classic-cinema .vf-curtain.left{left:0;border-radius:8px 0 0 8px}#classic-cinema .vf-curtain.right{right:0;border-radius:0 8px 8px 0}
+#classic-cinema .vf-screen{position:relative;margin:10px auto;width:74%;aspect-ratio:16/9;border:10px ridge #d0ad6a;background:#090806;box-shadow:0 0 25px #f1d59a55;overflow:hidden}
+#classic-cinema canvas{width:100%;height:100%;display:block;filter:sepia(.42) contrast(1.12)}
+#classic-cinema .vf-screen:after{content:"";pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,#fff0 0 3px,#fff1 4px 5px);mix-blend-mode:screen}
+#classic-cinema .vf-beam{position:absolute;right:0;top:44%;width:26%;height:30%;background:linear-gradient(90deg,#f4e5bd44,transparent);clip-path:polygon(0 35%,100% 0,100% 100%,0 65%);filter:blur(5px)}
+#classic-cinema .vf-projector{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0;color:#d6bd8b;font:11px Tahoma}
+#classic-cinema .vf-projector .reel-small{width:43px;height:43px;border:5px ridge #c8b78f;border-radius:50%;background:repeating-conic-gradient(#b9b5a8 0 12deg,#302a23 13deg 30deg)}
+#classic-cinema .vf-projector.running .reel-small{animation:vfSpin 1.4s linear infinite}
+#classic-cinema .vf-meta{text-align:center;color:#cdb991;font:11px/2 Tahoma;margin-top:10px}
+#classic-cinema .vf-empty{display:grid;place-items:center;height:100%;color:#bda77f;font:italic 18px Georgia;text-align:center;padding:12px}
+@media(max-width:650px){#vintage-film-camera,#classic-cinema{padding:10px;margin:18px 6px}#vintage-film-camera .vf-machine{min-height:380px}#vintage-film-camera .vf-reel{width:92px;height:92px}#vintage-film-camera .vf-reel.bottom{width:84px;height:84px}#vintage-film-camera .vf-body{left:20%;width:60%}#vintage-film-camera .vf-gate{left:35%;width:31%}#vintage-film-camera .vf-parts{grid-template-columns:repeat(2,1fr)}#classic-cinema .vf-screen{width:80%;border-width:6px}#classic-cinema .vf-theatre{padding:15px 6px}}
+</style>
+<section id="vintage-film-camera">
+<h2 class="vf-title">✦ دوربین سینمایی کلاسیک · ثبت رقص بالرین ✦</h2>
+<p class="vf-sub">بخش چهارم زنجیره مکانیکی: دوربین از رقص بالرین و تصویر آینه‌ای او یک نوار تصویری فریم‌به‌فریم می‌سازد. فیلم در هر نوردهی ثابت می‌ماند؛ چنگک فقط هنگام بسته بودن شاتر آن را یک فریم جلو می‌برد.</p>
+<div class="vf-flow"><span>۱ · بالرین روی صفحه گردان<br>حرکت و انعکاس در آینه</span><span>۲ · دوربین فیلم‌برداری<br>لنز، شاتر و چنگک فریم</span><span>۳ · حلقه فیلم ثبت‌شده<br>آماده نمایش در سینما</span></div>
+<div class="vf-machine" id="vfCameraMachine">
+<div class="vf-reel top"></div><div class="vf-reel bottom"></div>
+<div class="vf-body"><div class="vf-badge">CINÉ · 1920</div><div class="vf-lens"></div></div>
+<div class="vf-path"></div><div class="vf-gate"></div><div class="vf-shutter"></div><div class="vf-crank"></div>
+<div class="vf-canvas-wrap"><canvas id="vfView" width="380" height="220"></canvas></div>
+</div>
+<div class="vf-controls"><button class="primary" id="vfRecord">● ضبط رقص بالرین روی فیلم</button><button id="vfStop">■ توقف دوربین</button><button id="vfClear">↶ پاک‌کردن حلقه فیلم</button></div>
+<div class="vf-status" id="vfStatus">دوربین آماده است؛ ضبط، یک حلقه کوتاه از رقص و انعکاس آینه‌ای می‌سازد.</div>
+<div class="vf-filmstrip" id="vfFilmstrip"><span style="color:#bda77f;font:11px Tahoma">حلقه فیلم هنوز خالی است.</span></div>
+<div class="vf-parts"><span>◉ قرقره تغذیه فیلم خام</span><span>⚙ چرخ‌دنده و چنگک حرکت فریم</span><span>◐ شاتر گردان هماهنگ</span><span>✧ لنز، قاب نوردهی و قرقره جمع‌کننده</span></div>
+<p class="vf-sub">این نسخه ضبط تصویری را درون مرورگر شبیه‌سازی می‌کند: فریم‌های گرافیکی از بالرین و انعکاس آینه‌ای ساخته می‌شوند و به نوار فیلم مجازی تبدیل می‌شوند؛ دوربین فیزیکی یا وب‌کم فعال نمی‌شود.</p>
+</section>
+<section id="classic-cinema">
+<h2 class="vf-title">✦ سالن سینمای قدیمی · نمایش فیلم بالرین ✦</h2>
+<p class="vf-sub">بخش پنجم: حلقه ثبت‌شده از دوربین به پروژکتور منتقل می‌شود. قرقره‌ها می‌چرخند، شاتر نور را چشمک‌زن قطع‌و‌وصل می‌کند و فریم‌ها روی پرده کلاسیک ظاهر می‌شوند.</p>
+<div class="vf-theatre">
+<div class="vf-curtain left"></div><div class="vf-curtain right"></div>
+<div class="vf-screen" id="vfCinemaScreen"><div class="vf-empty" id="vfCinemaEmpty">برای نمایش، ابتدا در بخش دوربین از رقص بالرین فیلم بگیر.</div><canvas id="vfProjection" width="960" height="540" hidden></canvas></div>
+<div class="vf-beam"></div>
+<div class="vf-projector" id="vfProjector"><span class="reel-small"></span><span>پروژکتور 16mm · عدسی نمایش</span><span class="reel-small"></span></div>
+</div>
+<div class="vf-controls"><button class="primary" id="vfPlayFilm">▶ پخش فیلم روی پرده</button><button id="vfPauseFilm">Ⅱ مکث</button><button id="vfRewindFilm">↶ برگشت به ابتدا</button></div>
+<div class="vf-status" id="vfCinemaStatus">منتظر حلقه فیلم دوربین هستم.</div>
+<div class="vf-meta">THE GRAND BALLERINA · A MECHANICAL DREAM · 1920</div>
+</section>
+<script>
+(()=>{const $=id=>document.getElementById(id);const camera=$('vfCameraMachine'),view=$('vfView'),vctx=view.getContext('2d'),projection=$('vfProjection'),pctx=projection.getContext('2d'),strip=$('vfFilmstrip');if(!camera||camera.dataset.ready)return;camera.dataset.ready='1';
+let frames=[],recordTimer=null,playTimer=null,frameIndex=0,recording=false,playing=false;
+function dancer(ctx,x,y,s,angle,mirror=false){ctx.save();ctx.translate(x,y);ctx.scale(mirror?-s:s,s);ctx.rotate(angle);ctx.strokeStyle='#e7d5ad';ctx.fillStyle='#e4d2a5';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-42,7,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.moveTo(0,-34);ctx.lineTo(0,3);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-25);ctx.lineTo(-19,-42);ctx.moveTo(0,-25);ctx.lineTo(19,-45);ctx.stroke();ctx.fillStyle='#b58b50';ctx.beginPath();ctx.moveTo(-5,-3);ctx.lineTo(-23,28);ctx.lineTo(23,28);ctx.lineTo(5,-3);ctx.closePath();ctx.fill();ctx.strokeStyle='#e8d8b5';ctx.beginPath();ctx.moveTo(-2,25);ctx.lineTo(-14,54);ctx.moveTo(3,25);ctx.lineTo(18,48);ctx.stroke();ctx.restore()}
+function drawFrame(ctx,w,h,n){ctx.clearRect(0,0,w,h);const t=n/12,turn=Math.sin(t*Math.PI*2)*.32;ctx.fillStyle='#21170f';ctx.fillRect(0,0,w,h);const grad=ctx.createRadialGradient(w*.5,h*.42,8,w*.5,h*.5,w*.7);grad.addColorStop(0,'#92734b');grad.addColorStop(.55,'#4d3522');grad.addColorStop(1,'#140e09');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+ctx.fillStyle='#d4c6a5';ctx.fillRect(w*.25,h*.06,w*.5,h*.46);ctx.strokeStyle='#b99a61';ctx.lineWidth=8;ctx.strokeRect(w*.25,h*.06,w*.5,h*.46);ctx.fillStyle='#5c5140';ctx.fillRect(w*.28,h*.09,w*.44,h*.4);ctx.save();ctx.globalAlpha=.35;dancer(ctx,w*.5,h*.42,.78,-turn,true);ctx.restore();
+ctx.strokeStyle='#d6b46e';ctx.lineWidth=5;ctx.beginPath();ctx.ellipse(w*.5,h*.78,w*.29,h*.13,0,0,Math.PI*2);ctx.stroke();ctx.fillStyle='#352316';ctx.beginPath();ctx.ellipse(w*.5,h*.78,w*.28,h*.12,0,0,Math.PI*2);ctx.fill();dancer(ctx,w*.5,h*.75,.92,turn,false);
+ctx.fillStyle='#f1dfb5';ctx.font='italic '+Math.max(10,w*.025)+'px Georgia';ctx.textAlign='center';ctx.fillText('THE BALLERINA',w*.5,h*.96);
+ctx.fillStyle='#e8d5ad';for(let y=8;y<h;y+=Math.max(14,h/24)){ctx.fillRect(3,y,2,3);ctx.fillRect(w-5,y,2,3)}
+// vintage gate vignette and film grain
+ctx.fillStyle='rgba(10,6,3,.17)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='rgba(244,221,173,.28)';ctx.lineWidth=2;ctx.strokeRect(5,5,w-10,h-10)}
+function preview(n){drawFrame(vctx,view.width,view.height,n)}
+function renderStrip(){strip.innerHTML='';if(!frames.length){strip.innerHTML='<span style="color:#bda77f;font:11px Tahoma">حلقه فیلم هنوز خالی است.</span>';return}frames.forEach((src,i)=>{const box=document.createElement('div');box.className='vf-frame';const img=document.createElement('img');img.src=src;img.alt='فریم '+(i+1);box.appendChild(img);strip.appendChild(box)})}
+function makeFilm(){frames=[];for(let i=0;i<16;i++){const c=document.createElement('canvas');c.width=480;c.height=270;drawFrame(c.getContext('2d'),c.width,c.height,i);frames.push(c.toDataURL('image/jpeg',.78))}renderStrip();$('vfStatus').textContent='۱۶ فریم ثبت شد؛ بالرین و انعکاس او روی حلقه فیلم مجازی قرار گرفتند. اکنون فیلم را در سالن سینما پخش کن.';$('vfCinemaStatus').textContent='حلقه آماده نمایش است · ۱۶ فریم · تصویر کلاسیک تک‌رنگِ گرم.';$('vfCinemaEmpty').hidden=true;projection.hidden=false;showProjection(0)}
+function showProjection(i){if(!frames.length)return;const img=new Image();img.onload=()=>{pctx.clearRect(0,0,projection.width,projection.height);pctx.drawImage(img,0,0,projection.width,projection.height)};img.src=frames[i%frames.length];frameIndex=i%frames.length}
+function stopRecord(){recording=false;if(recordTimer){clearInterval(recordTimer);recordTimer=null}camera.classList.remove('running');$('vfRecord').textContent='● ضبط رقص بالرین روی فیلم'}
+function record(){stopRecord();stopPlay();recording=true;camera.classList.add('running');$('vfRecord').textContent='● در حال نوردهی فریم‌ها';$('vfStatus').textContent='شاتر باز و بسته می‌شود؛ چنگک فیلم را فریم‌به‌فریم جلو می‌برد...';let n=0;preview(0);recordTimer=setInterval(()=>{preview(n++);if(n>=16){stopRecord();makeFilm()}},180)}
+function stopPlay(){playing=false;if(playTimer){clearInterval(playTimer);playTimer=null} $('vfProjector').classList.remove('running')}
+function play(){if(!frames.length){$('vfCinemaStatus').textContent='ابتدا در دوربین فیلم بگیر؛ حلقه خالی است.';return}stopPlay();playing=true;$('vfProjector').classList.add('running');$('vfCinemaStatus').textContent='پروژکتور روشن است · شاتر و چنگک هماهنگ · فریم '+(frameIndex+1)+' از '+frames.length;showProjection(frameIndex);playTimer=setInterval(()=>{frameIndex=(frameIndex+1)%frames.length;showProjection(frameIndex);$('vfCinemaStatus').textContent='در حال نمایش · فریم '+(frameIndex+1)+' از '+frames.length+' · قرقره‌ها در حرکت';},115)}
+$('vfRecord').addEventListener('click',record);$('vfStop').addEventListener('click',()=>{stopRecord();$('vfStatus').textContent='دوربین متوقف شد.'});$('vfClear').addEventListener('click',()=>{stopRecord();stopPlay();frames=[];renderStrip();$('vfCinemaEmpty').hidden=false;projection.hidden=true;$('vfStatus').textContent='حلقه فیلم پاک شد.';$('vfCinemaStatus').textContent='منتظر حلقه فیلم دوربین هستم.';preview(0)});
+$('vfPlayFilm').addEventListener('click',play);$('vfPauseFilm').addEventListener('click',()=>{stopPlay();$('vfCinemaStatus').textContent='نمایش مکث شد · فریم فعلی حفظ شد.'});$('vfRewindFilm').addEventListener('click',()=>{stopPlay();frameIndex=0;if(frames.length)showProjection(0);$('vfCinemaStatus').textContent=frames.length?'فیلم به فریم نخست برگشت.':'حلقه فیلمی برای برگشت وجود ندارد.'});
+preview(0);
+})();
 </script></body></html>
