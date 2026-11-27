@@ -165,10 +165,10 @@ for(const id in MK){const o=make(id,1);o.g.position.set(XS[id],.95,0);o.g.scale.
  const b=document.createElement('button');b.id='lb_'+id;b.textContent=NAME[id];b.onclick=()=>open(id);$('lbs').appendChild(b)}
 function chart(x,w,h){x.fillStyle='#ece8dc';x.fillRect(0,0,w,h);x.strokeStyle='#222';x.lineWidth=Math.max(1,h/90);for(let i=0;i<=8;i++){x.beginPath();x.moveTo(i*w/8,0);x.lineTo(i*w/8,h);x.stroke()}for(let i=0;i<=4;i++){x.beginPath();x.moveTo(0,i*h/4);x.lineTo(w,i*h/4);x.stroke()}x.beginPath();x.arc(w/2,h/2,h*.36,0,7);x.stroke();x.fillStyle='#b22';x.font='bold '+h*.2+'px sans-serif';x.textAlign='center';x.fillText('FOCUS',w/2,h*.58)}
 function drawWall(){const p=S.pj;wx.fillStyle='#14161b';wx.fillRect(0,0,1024,576);wx.fillStyle=p.lamp?'#cfcabc':'#55534e';wx.fillRect(153,41,717,403);wx.strokeStyle='#050505';wx.lineWidth=10;wx.strokeRect(148,36,727,413);if(!p.lamp)return;
- const k=1+Math.abs(p.lens-.5)*24,w=640,h=360,cy=(4.5-(1.37+5.45*Math.tan(p.tilt*.4)))*128;tmp.width=Math.max(6,w/k|0);tmp.height=Math.max(6,h/k|0);
+ const k=1+Math.abs(p.lens-.5)*24,w=640,h=360,cyy=(4.5-(1.37+5.45*Math.tan(p.tilt*.4)))*128;tmp.width=Math.max(6,w/k|0);tmp.height=Math.max(6,h/k|0);
  const c=S.cam,fr=c.on?c.live:(p.on&&c.cnt?c.fr[Math.floor(p.t*12)%c.cnt]:null);if(fr)tx.drawImage(fr,0,0,tmp.width,tmp.height);else chart(tx,tmp.width,tmp.height);
  const lb=(p.loop<.3||p.loop>.75)&&(p.on||c.on);let jy=0,al=.96;if(lb){jy=(Math.random()-.5)*50;al=.5+Math.random()*.5}
- wx.save();wx.globalAlpha=al;wx.drawImage(tmp,512-w/2,cy-h/2+jy,w,h);if(Math.abs(p.sync)>.3){wx.globalAlpha=.5;wx.drawImage(tmp,512-w/2,cy-h/2+jy+p.sync*70,w,h)}wx.restore()}
+ wx.save();wx.globalAlpha=al;wx.drawImage(tmp,512-w/2,cyy-h/2+jy,w,h);if(Math.abs(p.sync)>.3){wx.globalAlpha=.5;wx.drawImage(tmp,512-w/2,cyy-h/2+jy+p.sync*70,w,h)}wx.restore()}
 /* ---------- simulation ---------- */
 function typeNote(i){if(S.notes.length>=32)return;S.notes.push(i);S.rev++;INST.tw.forEach(o=>o.strike(i));click();ping(i,.4);touch()}
 function pluck(k,L){const p=L[k],al=Math.max(0,1-Math.abs(S.mb.comb)/.6);if(al>.05){ping(p,al,S.mb.comb*50);S.mb.hit[p]=al}}
