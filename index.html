@@ -20,6 +20,27 @@ button{font:inherit;color:var(--tx);background:#1a2335;border:1px solid var(--ln
 .c{margin:10px 0}.c label{display:flex;justify-content:space-between;color:var(--mu);font-size:13px}.c output{color:var(--ok);direction:ltr}.c input{width:100%;accent-color:var(--ac);margin:6px 0}.c small{color:var(--mu);display:block;line-height:1.7}
 .kb{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.kb button{padding:12px 0;background:#e9e1cc;color:#222;font-weight:700}
 .ab{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.ab button.on{background:#235a45;border-color:var(--ok)}
+
+/* walnut / brass atelier skin */
+:root{--bg:#090706;--pn:#1b120d;--ln:#8b673c;--tx:#f4e5ca;--mu:#c5aa83;--ac:#d6a052;--ok:#8bbd83}
+body{background:radial-gradient(ellipse at 50% 18%,#382316 0,#130e0b 56%,#080706 100%);color:#f4e5ca}
+#hud{background:linear-gradient(180deg,#100b08df,transparent);padding:calc(14px + env(safe-area-inset-top,0px)) 18px 0;z-index:2}
+b.t{font:20px Georgia,serif;color:#f3d6a0;text-shadow:0 2px 12px #000}
+#hint{color:#e8c68f}
+#lbs button{background:linear-gradient(145deg,#342116f5,#120d0bf5);border:1px solid #a77a42;color:#f7e4c3;box-shadow:0 4px 14px #000b,inset 0 1px #f4d59a22;border-radius:7px}
+#lbs button.run{border-color:#d2a65e;color:#ffe0a0;box-shadow:0 0 16px #d69b4566}
+#sheet{background:linear-gradient(160deg,#211711,#100d0b 72%);border:1px solid #946d3d;border-bottom:0;box-shadow:0 -16px 55px #000e,inset 0 1px #e8c58a22}
+.hd{border-bottom:1px solid #73532f;padding:12px 15px 9px}.hd b{color:#f0d3a0;font: bold 17px Georgia,serif}
+button{background:linear-gradient(145deg,#49301d,#21150f);border:1px solid #9a7140;color:#f5e4c8;border-radius:8px;box-shadow:inset 0 1px #fff2}
+#pp{background:linear-gradient(145deg,#94602b,#583414);border-color:#d6a65f;color:#fff0d0}
+#pp.on{background:linear-gradient(145deg,#792c20,#42130f);border-color:#c76c4e}
+#scr{border:2px solid #89633a;background:#080706;box-shadow:0 0 0 3px #25180f,inset 0 0 22px #000}
+#st{background:#160f0bdc;color:#e9c88f;border-top:1px solid #9a714044}
+.pc{border-bottom:1px solid #6f512f;margin-bottom:10px}.pc button,.ab button{background:#241810;border-color:#77542f;color:#d9c09a}
+.pc button.on,.ab button.on{background:linear-gradient(145deg,#5b4325,#302013);border-color:#d4a45e;color:#ffe4ae}
+.c label{color:#d4b98d}.c output{color:#edc27c}.c input{accent-color:#d49b4d}.c small{color:#bba486}
+.kb button{background:linear-gradient(145deg,#f2e5c9,#bba47b);color:#26180f;border:1px solid #80633e;box-shadow:0 3px 0 #59412b}
+@media(max-width:600px){#sheet{height:68vh}.hd b{font-size:15px}#lbs button{font-size:10px;padding:6px 8px}}
 </style></head><body>
 <canvas id="main"></canvas>
 <div id="hud"><b class="t">🏭 کارگاه ماشین‌ها</b><div id="hint">یکی از ماشین‌ها را لمس کن؛ هرچه در کارگاه تنظیم کنی همین‌جا زنده اجرا می‌شود.</div></div>
@@ -266,4 +287,74 @@ const pv=new T.Vector3();let last=performance.now();
  if(!vid)for(const id in XS){pv.set(XS[id],1.75,0).project(cam);const b=$('lb_'+id);b.style.left=(pv.x+1)/2*innerWidth+'px';b.style.top=(1-pv.y)/2*innerHeight+'px'}
  if(S.sel&&mo){const r=MR[S.sel];mc.position.set(Math.sin(my)*Math.cos(mp)*r,MH[S.sel]+Math.sin(mp)*r,Math.cos(my)*Math.cos(mp)*r);mc.lookAt(0,MH[S.sel],0);mr.render(ms,mc)}})(last);
 touch();
+
+/* 3D atelier additions: stage frame, velvet drapes, drawer pulls, gear train, mirror dancer */
+(function(){
+ const brass=MT(0xb98a4e,{metalness:.84,roughness:.28}),wood=MT(0x422316,{roughness:.42}),red=MT(0x641a20,{roughness:.86});
+ function part(parent,geo,mat,x,y,z){const m=new T.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
+ function bar(x,y,z,w,h,d,mat=brass){return part(sc,new T.BoxGeometry(w,h,d),mat,x,y,z)}
+ // screen's architectural brass frame
+ const z=-5.78;
+ bar(0,4.52,z,8.3,.1,.12);bar(0,-.02,z,8.3,.1,.12);bar(-4.12,2.25,z,.1,4.55,.12);bar(4.12,2.25,z,.1,4.55,.12);
+ for(const side of [-1,1]){
+  part(sc,new T.BoxGeometry(.58,4.05,.2),red,side*3.78,2.25,-5.61);
+  for(let j=0;j<5;j++)part(sc,new T.CylinderGeometry(.04,.055,4,8),red,side*(3.55+j*.095),2.25,-5.48);
+  bar(side*3.78,4.32,-5.49,.75,.07,.28);
+  bar(side*4.48,3.25,-4.7,.12,.42,.12,darkBrass);
+  const glow=part(sc,new T.SphereGeometry(.11,16,12),MT(0xffc66f,{emissive:0x9b5618,emissiveIntensity:.8}),side*4.48,3.52,-4.7);
+  const lamp=new T.PointLight(0xffbf72,.7,5);lamp.position.copy(glow.position);sc.add(lamp);
+ }
+ // desk drawers and brass handles
+ for(const side of [-1,1])for(const y of [.34,.62]){
+  const x=side*1.48;bar(x,y,.625,.76,.21,.06,wood);bar(x,y+.085,.66,.62,.012,.012);
+  part(sc,new T.TorusGeometry(.052,.009,8,20,PI),brass,x,y,.672).rotation.x=PI/2;
+ }
+ // exposed slow-running gear train below the table
+ function gear(x,y,r,teeth,dir){const g=new T.Group();g.position.set(x,y,.70);train.add(g);
+  part(g,new T.TorusGeometry(r*.76,r*.1,8,32),brass,0,0,0);
+  part(g,new T.CylinderGeometry(r*.19,r*.19,.07,16),darkBrass,0,0,0).rotation.x=PI/2;
+  for(let i=0;i<teeth;i++){const a=i*2*PI/teeth,t=part(g,new T.BoxGeometry(r*.22,r*.18,.07),brass,Math.cos(a)*r*.93,Math.sin(a)*r*.93,0);t.rotation.z=a}
+  g.userData.speed=dir;return g}
+ const train=new T.Group();train.position.y=.22;sc.add(train);
+ const gears=[gear(-.72,0,.23,16,.5),gear(-.25,0,.16,12,-.67),gear(.22,0,.2,16,.54),gear(.68,0,.13,10,-.8)];
+ cy(train,.027,1.8,0x96703d,0,0,-.05,'x','shaft',18);
+ // mirror and ballerina model in the music box, attached to each instance
+ INST.mb.forEach(o=>{
+  const mirror=part(o.g,new T.PlaneGeometry(.48,.42),new T.MeshStandardMaterial({color:0xaabdc1,metalness:.94,roughness:.12,side:T.DoubleSide}),0,.63,-.235);
+  const frameMat=brass;
+  [[0,.85,.52,.025], [0,.41,.52,.025],[-.25,.63,.025,.44],[.25,.63,.025,.44]].forEach(([x,y,w,h])=>part(o.g,new T.BoxGeometry(w,h,.03),frameMat,x,y,-.21));
+  const dancer=new T.Group();dancer.position.set(0,.63,.22);o.g.add(dancer);
+  const skin=MT(0xf0d7bb),dress=MT(0xf0dfc3,{roughness:.55});
+  part(dancer,new T.CylinderGeometry(.027,.05,.14,12),dress,0,.02,0);
+  part(dancer,new T.SphereGeometry(.027,14,10),skin,0,.115,0);
+  part(dancer,new T.ConeGeometry(.12,.09,24),dress,0,-.055,0).rotation.x=PI;
+  function limb(a,b,r=.009){const A=new T.Vector3(...a),B=new T.Vector3(...b),v=B.clone().sub(A),m=part(dancer,new T.CylinderGeometry(r*.7,r,v.length(),8),skin,...A.clone().add(B).multiplyScalar(.5).toArray());m.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),v.normalize())}
+  limb([0,.06,0],[-.12,.16,0]);limb([-.12,.16,0],[-.19,.25,.01]);limb([0,.06,0],[.12,.15,0]);limb([.12,.15,0],[.19,.22,.01]);
+  limb([-.02,-.09,0],[-.07,-.22,0]);limb([-.07,-.22,0],[-.13,-.27,.02]);limb([.02,-.09,0],[.1,-.18,0]);limb([.1,-.18,0],[.17,-.2,.02]);
+  o.dancer=dancer;
+  const reflection=part(o.g,new T.ConeGeometry(.085,.11,18),new T.MeshBasicMaterial({color:0xeaf1ed,transparent:true,opacity:.28}),0,.63,-.195);
+  reflection.scale.x=.8;o.reflection=reflection;
+ });
+ // camera film is now the recorded ballerina performance; the existing projector still displays captured frames.
+ frame=function(c,n,ex,gate,stock){
+  const w=c.width,h=c.height,x=c.getContext('2d'),bg=x.createLinearGradient(0,0,0,h);
+  bg.addColorStop(0,'#39261d');bg.addColorStop(1,'#090807');x.fillStyle=bg;x.fillRect(0,0,w,h);
+  x.fillStyle='#6b2025';x.fillRect(0,0,22,h);x.fillRect(w-22,0,22,h);
+  x.fillStyle='#bd9457';x.fillRect(28,17,w-56,3);x.fillRect(28,h-18,w-56,3);
+  x.fillStyle='#17100c';x.fillRect(0,h*.82,w,h*.18);
+  for(let i=0;i<9;i++){x.fillStyle='#ffce7c';x.beginPath();x.arc(22+i*(w-44)/8,h*.82,2,0,7);x.fill()}
+  const px=w*.5+Math.sin(n*.11)*w*.1,py=h*.68,sw=Math.sin(n*.18);x.save();x.translate(px,py);x.rotate(Math.sin(n*.08)*.05);
+  x.fillStyle='#f2dfc4';x.strokeStyle='#f2dfc4';x.lineWidth=3;
+  x.beginPath();x.moveTo(0,-30);x.lineTo(-24,-13);x.lineTo(0,-7);x.lineTo(24,-13);x.closePath();x.fill();
+  x.fillRect(-4,-43,8,18);x.beginPath();x.arc(0,-51,5,0,7);x.fill();
+  x.beginPath();x.moveTo(-2,-39);x.lineTo(-18,-50+sw*3);x.lineTo(-29,-58+sw*4);x.moveTo(2,-39);x.lineTo(18,-49-sw*3);x.lineTo(30,-55-sw*4);x.stroke();
+  x.lineWidth=4;x.beginPath();x.moveTo(-3,-8);x.lineTo(-13,8);x.lineTo(-21,15);x.moveTo(3,-8);x.lineTo(12,3);x.lineTo(20,1);x.stroke();x.restore();
+  x.fillStyle='#e8c98f';x.font='10px Georgia';x.textAlign='center';x.fillText('THE MECHANICAL BALLET',w/2,h-4);
+  if(stock){x.globalCompositeOperation='saturation';x.fillStyle='#777';x.fillRect(0,0,w,h);if(stock===2){x.globalCompositeOperation='multiply';x.fillStyle='#d9b47a';x.fillRect(0,0,w,h)}x.globalCompositeOperation='source-over'}
+  if(ex<1){x.fillStyle='rgba(0,0,0,'+((1-ex)*.8)+')';x.fillRect(0,0,w,h)}else if(ex>1){x.fillStyle='rgba(255,255,255,'+Math.min(.8,(ex-1)*.7)+')';x.fillRect(0,0,w,h)}
+  if(Math.abs(gate)>.3){const t=document.createElement('canvas');t.width=w;t.height=h;t.getContext('2d').drawImage(c,0,0);x.fillStyle='#000';x.fillRect(0,0,w,h);x.drawImage(t,0,Math.round(gate*h*.45))}
+ };
+ const started=performance.now();function animateAtelier(){const t=(performance.now()-started)/1000;gears.forEach(g=>g.rotation.z=t*g.userData.speed);INST.mb.forEach(o=>{if(o.dancer)o.dancer.rotation.y=Math.sin(t*1.3)*.25});requestAnimationFrame(animateAtelier)}animateAtelier();
+ const warm=new T.PointLight(0xffc27a,1.05,8);warm.position.set(0,3.5,1.8);sc.add(warm);
+})();
 </script></body></html>
