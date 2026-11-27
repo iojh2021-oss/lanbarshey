@@ -202,3 +202,60 @@ const projectorGlow=light(0xffd18a,.0,12,1.7,1.8,-1.1);
 const oldSim=sim;
 sim=function(dt){oldSim(dt);projectorGlow.intensity=S.pj.lamp&&(S.pj.on||S.cam.on)?.9:S.pj.lamp?.18:0};
 })();
+
+/* ---------- performance / quality selector ---------- */
+(function(){
+ 'use strict';
+ const bar=document.createElement('div');
+ bar.id='qualityBar';
+ bar.innerHTML='<label for="qualitySelect">⚙ کیفیت تصویر</label><select id="qualitySelect" aria-label="انتخاب کیفیت تصویر"><option value="low">گوشی ضعیف · روان</option><option value="medium">متعادل</option><option value="high">کیفیت بالا</option><option value="auto">خودکار</option></select><span id="qualityHint">کاهش فشار گرافیکی</span>';
+ document.body.appendChild(bar);
+ const select=bar.querySelector('select'),hint=bar.querySelector('#qualityHint');
+ const presets={
+  low:{pixel:.68,fps:24,shadow:false,mini:.65,label:'مناسب گوشی ضعیف'},
+  medium:{pixel:.95,fps:30,shadow:true,mini:.9,label:'تعادل کیفیت و سرعت'},
+  high:{pixel:1.35,fps:60,shadow:true,mini:1.25,label:'جزئیات بیشتر'},
+ };
+ function autoMode(){
+  const cores=navigator.hardwareConcurrency||4,mem=navigator.deviceMemory||4;
+  return (cores<=4||mem<=4||matchMedia('(max-width: 700px)').matches)?'low':'medium';
+ }
+ let mode='low',nextFrame=0;
+ function applyQuality(value){
+  mode=value==='auto'?autoMode():value;
+  const p=presets[mode]||presets.low;
+  document.body.classList.toggle('quality-low',mode==='low');
+  if(typeof R!=='undefined'){
+   R.setPixelRatio(Math.min(devicePixelRatio||1,p.pixel));
+   R.setSize(innerWidth,innerHeight,false);
+   R.shadowMap.enabled=p.shadow;
+   if(typeof sp!=='undefined'&&sp.shadow&&sp.shadow.mapSize){
+    const size=mode==='low'?256:mode==='medium'?512:1024;
+    sp.shadow.mapSize.set(size,size);
+    if(sp.shadow.map){sp.shadow.map.dispose();sp.shadow.map=null}
+   }
+  }
+  if(typeof mr!=='undefined'&&mr){
+   mr.setPixelRatio(Math.min(devicePixelRatio||1,p.mini));
+   mr.setSize($('mini').clientWidth,$('mini').clientHeight,false);
+  }
+  if(typeof sz==='function'&&typeof S!=='undefined'&&S.sel)sz();
+  nextFrame=0;
+  hint.textContent=p.label+' · '+p.fps+'fps';
+  try{localStorage.setItem('atelier-quality',value)}catch(e){}
+ }
+ const oldRender=R.render.bind(R);
+ R.render=function(){
+  const now=performance.now(),step=1000/((presets[mode]||presets.low).fps);
+  if(now<nextFrame)return;
+  nextFrame=now+step;
+  return oldRender.apply(null,arguments);
+ };
+ let saved='auto';
+ try{saved=localStorage.getItem('atelier-quality')||'auto'}catch(e){}
+ if(!['low','medium','high','auto'].includes(saved))saved='auto';
+ select.value=saved;
+ select.addEventListener('change',()=>applyQuality(select.value));
+ applyQuality(saved);
+ window.addEventListener('resize',()=>applyQuality(select.value),{passive:true});
+})();
