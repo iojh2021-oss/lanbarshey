@@ -25,6 +25,12 @@ button{font:inherit;color:var(--tx);background:#1a2335;border:1px solid var(--ln
 <div id="hud"><b class="t">🏭 کارگاه ماشین‌ها</b><div id="hint">یکی از ماشین‌ها را لمس کن؛ هرچه در کارگاه تنظیم کنی همین‌جا زنده اجرا می‌شود.</div></div>
 <div id="lbs"></div>
 <div id="sheet"><div class="hd"><b id="ttl"></b><button id="pp"></button><button id="x">✕</button></div><div id="scr"><canvas id="mini"></canvas><div id="st"></div></div><div id="ctl"></div></div>
+<script>
+function showErr(m){var d=document.createElement('pre');d.style.cssText='position:fixed;top:80px;left:0;right:0;z-index:99;background:#400;color:#fff;font-size:12px;padding:8px;white-space:pre-wrap;direction:ltr';d.textContent=m;document.body.appendChild(d)}
+window.addEventListener('error',function(e){showErr('ERR: '+e.message+' @ line '+e.lineno+':'+e.colno)});
+window.addEventListener('unhandledrejection',function(e){showErr('PROMISE: '+e.reason)});
+window.addEventListener('load',function(){var c=document.createElement('canvas'),gl=c.getContext('webgl')||c.getContext('experimental-webgl');showErr('three: '+(typeof THREE)+' | webgl: '+(gl?'yes':'NO')+' | canvas: '+(document.getElementById('main')?document.getElementById('main').clientWidth+'x'+document.getElementById('main').clientHeight:'none'))});
+</script>
 <script src="three.min.js"></script>
 <script>
 'use strict';
