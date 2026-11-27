@@ -290,7 +290,7 @@ touch();
 
 /* 3D atelier additions: stage frame, velvet drapes, drawer pulls, gear train, mirror dancer */
 (function(){
- const brass=MT(0xb98a4e,{metalness:.84,roughness:.28}),wood=MT(0x422316,{roughness:.42}),red=MT(0x641a20,{roughness:.86});
+ const brass=MT(0xb98a4e,{metalness:.84,roughness:.28}),darkBrass=MT(0x654321,{metalness:.78,roughness:.34}),wood=MT(0x422316,{roughness:.42}),red=MT(0x641a20,{roughness:.86});
  function part(parent,geo,mat,x,y,z){const m=new T.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
  function bar(x,y,z,w,h,d,mat=brass){return part(sc,new T.BoxGeometry(w,h,d),mat,x,y,z)}
  // screen's architectural brass frame
