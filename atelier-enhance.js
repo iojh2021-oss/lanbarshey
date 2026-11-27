@@ -259,3 +259,21 @@ sim=function(dt){oldSim(dt);projectorGlow.intensity=S.pj.lamp&&(S.pj.on||S.cam.o
  applyQuality(saved);
  window.addEventListener('resize',()=>applyQuality(select.value),{passive:true});
 })();
+
+/* Keep mini-view quality capped after the original resize helper runs. */
+(function(){
+ const originalSize=sz;
+ sz=function(){
+  originalSize();
+  const p=({low:.65,medium:.9,high:1.25})[mode]||.65;
+  mr.setPixelRatio(Math.min(devicePixelRatio||1,p));
+ };
+ const miniRender=mr.render.bind(mr);
+ let miniNext=0;
+ mr.render=function(){
+  const fps=({low:24,medium:30,high:60})[mode]||24,now=performance.now();
+  if(now<miniNext)return;
+  miniNext=now+1000/fps;
+  return miniRender.apply(null,arguments);
+ };
+})();
