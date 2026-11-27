@@ -175,8 +175,7 @@ sc.add(new T.HemisphereLight(0x8899bb,0x221810,.5));
 const sp=new T.SpotLight(0xffe2b8,1.6,14,.9,.5);sp.position.set(0,4.2,2.2);sp.target.position.set(0,.9,0);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);sc.add(sp,sp.target);
 const sl=new T.PointLight(0xdfe8ff,0,9);sl.position.set(0,2.6,-4.5);sc.add(sl);
 const fl=new T.Mesh(new T.PlaneGeometry(10,14),MT(0x2a2018,{roughness:.9}));fl.rotation.x=-PI/2;fl.position.z=-1;fl.receiveShadow=true;sc.add(fl);
-const wm=MT(0x2a1517,{roughness:.9});[-5,5].forEach(x=>{const w=new T.Mesh(new T.PlaneGeometry(14,4.6),wm);w.rotation.y=x<0?PI/2:-PI/2;w.position.set(x,2.3,-1);sc.add(w)});
-const ce=new T.Mesh(new T.PlaneGeometry(10,14),wm);ce.rotation.x=PI/2;ce.position.set(0,4.6,-1);sc.add(ce);
+
 const WC=document.createElement('canvas');WC.width=1024;WC.height=576;const wx=WC.getContext('2d'),wtex=new T.CanvasTexture(WC),tmp=document.createElement('canvas'),tx=tmp.getContext('2d');
 const wall=new T.Mesh(new T.PlaneGeometry(8,4.5),new T.MeshBasicMaterial({map:wtex}));wall.position.set(0,2.25,-6);sc.add(wall);
 [-4.6,4.6].forEach(x=>{const c=new T.Mesh(new T.BoxGeometry(.8,4.5,.3),MT(0x6a1218,{roughness:.9}));c.position.set(x,2.25,-5.8);sc.add(c)});
