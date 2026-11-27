@@ -48,7 +48,7 @@ for(const side of [-1,1]){
  }
 }
 /* Rear wall paneling and tall bookcase alcoves */
-for(let x=-4.25;x<=4.26;x+=1.42){
+for(let x of [-4.25,4.25]){
  box(sc,x,2.23,-5.86,1.32,4.35,.16,walnut);
  box(sc,x,2.23,-5.75,1.23,4.2,.035,walnut2);
  for(let y=.55;y<4.2;y+=.9)box(sc,x,y,-5.69,1.2,.035,.06,gold);
@@ -177,8 +177,7 @@ INST.mb.forEach(o=>{
  o.g.userData.windingCrank=crank;
 });
 /* Projection screen gains an inset matte, gold beading and theatre footlights */
-box(sc,0,2.24,-5.71,7.12,3.96,.045,black);
-box(sc,0,2.24,-5.67,6.94,3.78,.018,walnut2);
+/* Keep the live projection canvas unobstructed; the existing wall canvas is the screen surface. */
 for(let x=-3.32;x<=3.33;x+=.22){
  const bulb=mesh(sc,new T.SphereGeometry(.035,12,10),glow,x,.23,-5.55);
  const l=new T.PointLight(0xffc36e,.055,1.2);l.position.copy(bulb.position);sc.add(l);
