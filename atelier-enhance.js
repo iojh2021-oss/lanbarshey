@@ -221,8 +221,10 @@ sim=function(dt){oldSim(dt);projectorGlow.intensity=S.pj.lamp&&(S.pj.on||S.cam.o
   return (cores<=4||mem<=4||matchMedia('(max-width: 700px)').matches)?'low':'medium';
  }
  let mode='low',nextFrame=0;
+ window.__atelierQualityMode=mode;
  function applyQuality(value){
   mode=value==='auto'?autoMode():value;
+  window.__atelierQualityMode=mode;
   const p=presets[mode]||presets.low;
   document.body.classList.toggle('quality-low',mode==='low');
   if(typeof R!=='undefined'){
@@ -265,13 +267,13 @@ sim=function(dt){oldSim(dt);projectorGlow.intensity=S.pj.lamp&&(S.pj.on||S.cam.o
  const originalSize=sz;
  sz=function(){
   originalSize();
-  const p=({low:.65,medium:.9,high:1.25})[mode]||.65;
+  const p=({low:.65,medium:.9,high:1.25})[window.__atelierQualityMode]||.65;
   mr.setPixelRatio(Math.min(devicePixelRatio||1,p));
  };
  const miniRender=mr.render.bind(mr);
  let miniNext=0;
  mr.render=function(){
-  const fps=({low:24,medium:30,high:60})[mode]||24,now=performance.now();
+  const fps=({low:24,medium:30,high:60})[window.__atelierQualityMode]||24,now=performance.now();
   if(now<miniNext)return;
   miniNext=now+1000/fps;
   return miniRender.apply(null,arguments);
