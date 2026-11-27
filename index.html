@@ -1,494 +1,263 @@
-<!doctype html>
-<html lang="fa" dir="rtl"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#20150f"><title>گرامافونِ حروف | ماشین‌تحریر موزیکال</title>
+<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>کارگاه ماشین‌ها</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--night:#17120f;--panel:#281d16;--wood:#783a25;--wood2:#a65b35;--brass:#d5ad63;--gold:#f1d79b;--paper:#f1e5c9;--ink:#33251b;--muted:#c9b393}
-*{box-sizing:border-box}body{margin:0;color:#f5e6c8;background:radial-gradient(ellipse at 50% -15%,#59402d 0,#241a14 48%,#100d0b 100%);font-family:Georgia,"Times New Roman",Tahoma,serif;padding:16px;line-height:1.55}.app{max-width:1100px;margin:auto}header{text-align:center;padding:12px 0 16px}h1{font-size:clamp(24px,4vw,39px);letter-spacing:1px;color:var(--gold);margin:0;text-shadow:0 2px 10px #000}header p{color:var(--muted);font:13px Tahoma;margin:5px 0}.ornament{color:#a67a3d;letter-spacing:8px}
-.toolbar,.panel{background:linear-gradient(145deg,#39291e,#1d1511);border:1px solid #79542e;border-radius:12px;box-shadow:0 9px 28px #0007}.toolbar{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;padding:11px;margin-bottom:14px;font:12px Tahoma}.toolbar button,.toolbar select{font:12px Tahoma;color:#f8e8c8;background:linear-gradient(#61442c,#2c1d14);border:1px solid #b18a4d;border-radius:7px;padding:8px 12px;cursor:pointer}.toolbar .main{background:linear-gradient(#f5d998,#b67c32);color:#24170d;font-weight:bold}.toolbar label{display:flex;align-items:center;gap:5px;color:#e2cda5}.toolbar input{width:85px;accent-color:#d6a650}
-.machine-shell{position:relative;background:linear-gradient(120deg,#b56b42,#6f3020 35%,#9c4b2d 65%,#54251b);border:7px solid #3b1e16;border-radius:25px;padding:15px 14px 0;box-shadow:0 25px 55px #000b,inset 0 3px 12px #ffd49b55;overflow:hidden}.machine-shell:before{content:"";position:absolute;inset:7px;border:1px solid #d9a35c77;border-radius:17px;pointer-events:none}.brand{position:absolute;top:10px;left:50%;transform:translateX(-50%);font:italic 12px Georgia;color:#f2cf87;letter-spacing:3px;text-shadow:0 2px 2px #42180e;z-index:3;white-space:nowrap}
-.top-mechanism{height:225px;max-width:850px;margin:12px auto 0;position:relative}.paper-frame{position:absolute;left:16%;right:16%;top:8px;height:142px;background:#d9c9a7;border:8px solid #49271b;border-radius:7px;box-shadow:0 5px 8px #160d0b,inset 0 0 0 2px #a27b4e;overflow:hidden}.paper{position:absolute;inset:0 14px;background:repeating-linear-gradient(0deg,#f2e8d2 0 28px,#e9dec6 29px 30px);color:#34251a;padding:8px 12px;transform:translateY(0);transition:transform .3s}.paper-head{font:italic 14px Georgia;text-align:center;border-bottom:1px solid #ad9b7c;padding-bottom:4px;margin-bottom:6px;color:#775433}.typed{font:19px Georgia;letter-spacing:4px;direction:ltr;text-align:left;min-height:85px;overflow:hidden;white-space:normal;word-break:break-all}.typed span{display:inline-block;animation:ink .18s ease-out;color:#2d2118}.typed .rest{color:#997b54}.typed .bar{color:#7b5a33;margin:0 8px}.roller{position:absolute;bottom:9px;left:8%;right:8%;height:19px;border-radius:12px;background:linear-gradient(#e5e0d2,#595653 35%,#171718 60%,#bdb9ac);border:1px solid #39302a;box-shadow:0 3px 5px #000}.roller-knob{position:absolute;bottom:2px;width:37px;height:37px;border-radius:50%;background:radial-gradient(circle,#777 0 16%,#d8d2c2 18% 25%,#414044 29% 50%,#c3b9a5 53% 60%,#272426 65%);border:2px solid #211a16;z-index:2}.roller-knob.left{left:8%}.roller-knob.right{right:8%}.roller.turning{animation:roll .65s linear infinite}.ribbon{position:absolute;top:160px;left:25%;right:25%;height:14px;background:linear-gradient(90deg,#1a1515 0 48%,#a13d2d 49% 52%,#171516 53%);border:2px solid #c3a16b;border-radius:4px;box-shadow:0 3px 5px #0008}.spool{position:absolute;top:145px;width:39px;height:39px;border:5px solid #c6a66b;border-radius:50%;background:repeating-conic-gradient(#262020 0 12deg,#6a2720 13deg 25deg);box-shadow:0 2px 7px #000}.spool:after{content:"";position:absolute;inset:10px;border-radius:50%;background:radial-gradient(circle,#d8c18c,#514333)}.spool.left{left:21%}.spool.right{right:21%}.guide{position:absolute;top:147px;left:50%;width:8px;height:29px;background:linear-gradient(90deg,#555,#e4d7b6,#51463a);border-radius:3px}
-.carriage{position:absolute;left:20%;right:20%;top:0;height:9px;background:linear-gradient(#e6d8b4,#63513a,#e0c58d);border-radius:5px;transition:transform .25s;z-index:4}.carriage:before,.carriage:after{content:"";position:absolute;top:-5px;width:10px;height:18px;background:#c6a66b;border:2px solid #57432c;border-radius:3px}.carriage:before{left:0}.carriage:after{right:0}
-.basket{height:90px;max-width:720px;margin:0 auto;background:repeating-linear-gradient(0deg,#151518 0 3px,#38373a 3px 5px);clip-path:polygon(0 0,100% 0,88% 100%,12% 100%);position:relative;border-bottom:3px solid #bd985d}.typebars{position:absolute;inset:0;display:flex;justify-content:center;gap:13px;overflow:hidden}.typebar{width:5px;height:75px;background:linear-gradient(90deg,#555,#e2d7c3,#49413a);transform-origin:bottom center;transform:rotate(var(--a));border-radius:4px;position:relative;transition:transform .1s}.typebar:after{content:"";position:absolute;top:0;left:-4px;width:13px;height:10px;background:linear-gradient(#e9dfc9,#777);border:1px solid #302a25;border-radius:3px}.typebar.strike{transform:rotate(0deg) translateY(-17px)!important}
-.bed{background:linear-gradient(#9b5234,#632b1d);border:2px solid #492218;border-radius:14px;padding:12px 11px 13px;box-shadow:inset 0 5px 10px #f3bd7a3b}.keys{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:8px;direction:ltr}.key{height:60px;border:2px solid #7e776c;border-radius:50%;background:radial-gradient(circle at 34% 25%,#fff,#d3d0c7 35%,#85817b 72%,#282522 79%);box-shadow:0 5px 0 #3c2118,0 7px 9px #0009;color:#24211e;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation;padding:1px;transition:transform .08s}.key b{font:bold 17px Georgia}.key small{font:9px Tahoma}.key:active,.key.active{transform:translateY(5px);box-shadow:0 0 0 #3c2118,0 0 15px #ffe2a0}.key.utility{height:43px;border-radius:8px;background:linear-gradient(#f4e5c5,#99886b);font:11px Tahoma}.front-rail{height:12px;margin:8px 8px 0;background:linear-gradient(#e3c88e,#4c3928,#c7a36b);border-radius:7px;box-shadow:0 3px 5px #0008}.lower{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.panel{padding:12px}.panel h2{font:15px Tahoma;color:#e8c887;margin:0 0 8px}.gear-stage{height:190px;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden;background:radial-gradient(ellipse,#493322,#211812 72%);border-radius:8px;border:1px solid #70502d}.gear{width:105px;height:105px;position:relative;flex:none;animation:spin 9s linear infinite}.gear.reverse{animation-direction:reverse;animation-duration:6s}.gear svg{width:100%;height:100%;filter:drop-shadow(0 3px 4px #000)}.gear.small{width:73px;height:73px}.gear.paused{animation-play-state:paused}.mechanism-labels{display:flex;justify-content:space-around;flex-wrap:wrap;font:10px Tahoma;color:#c9b38e;margin-top:7px}.meter{height:7px;background:#140f0c;border-radius:8px;overflow:hidden;margin-top:8px}.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#a75a35,#f0d08b);transition:width .15s}
-.score{background:#f1e5c9;border-radius:8px;padding:8px;color:#31251b}.score canvas{display:block;width:100%;height:auto}.status{text-align:center;color:#efd49b;font:12px Tahoma;min-height:27px;padding:8px}.footer{font:11px Tahoma;color:#ad9979;text-align:center;padding:15px}
-@keyframes spin{to{transform:rotate(360deg)}}@keyframes roll{to{transform:rotate(360deg)}}@keyframes ink{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-@media(max-width:650px){body{padding:8px}.machine-shell{padding:10px 8px 0;border-width:5px}.top-mechanism{height:195px}.paper-frame{left:12%;right:12%;height:128px}.paper-head{font-size:11px}.typed{font-size:15px}.spool{top:134px;width:32px;height:32px}.spool.left{left:15%}.spool.right{right:15%}.ribbon{top:148px;left:20%;right:20%}.guide{top:139px}.roller-knob{width:30px;height:30px}.basket{height:73px}.keys{grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}.key{height:53px}.lower{grid-template-columns:1fr}.gear-stage{height:160px}.gear{width:88px;height:88px}.gear.small{width:65px;height:65px}.toolbar{gap:6px}.toolbar button{padding:7px 9px}}
-
-/* ── Antique musical treadle sewing machine: appended module ── */
-.sewing-section{margin-top:34px;padding-top:22px;border-top:2px solid #916c3e}
-.sewing-section .section-title{text-align:center;color:#efd49b;font:clamp(22px,4vw,31px) Georgia;margin:0 0 5px}
-.sewing-section .section-sub{text-align:center;color:#c9b393;font:12px Tahoma;margin:0 0 17px}
-.sewing-frame{background:linear-gradient(145deg,#3a291d,#19120e);border:1px solid #856039;border-radius:17px;padding:14px;box-shadow:0 12px 30px #0008}
-.sewing-svg-wrap{background:radial-gradient(ellipse at 48% 43%,#5a402b,#211811 72%);border:1px solid #775632;border-radius:12px;overflow:hidden}
-.sewing-svg{width:100%;height:auto;display:block}
-.sew-metal{fill:url(#sewBrass);stroke:#4c3019;stroke-width:2}
-.sew-dark{fill:#28201a;stroke:#d1aa65;stroke-width:2}
-.sew-label{fill:#f0d7a2;font:12px Tahoma}
-.sew-small{fill:#d6bd91;font:10px Tahoma}
-.sew-run .sew-wheel{animation:sewSpin var(--sew-speed,1s) linear infinite;transform-box:fill-box;transform-origin:center}
-.sew-run .sew-crank{animation:sewSpin var(--sew-speed,1s) linear infinite;transform-box:fill-box;transform-origin:center}
-.sew-run .sew-needle{animation:sewNeedle calc(var(--sew-speed,1s) / 2) ease-in-out infinite}
-.sew-run .sew-takeup{animation:sewTakeup calc(var(--sew-speed,1s) / 2) ease-in-out infinite}
-.sew-run .sew-feed{animation:sewFeed var(--sew-speed,1s) steps(2,end) infinite}
-.sew-run .sew-shuttle{animation:sewShuttle calc(var(--sew-speed,1s) / 2) ease-in-out infinite}
-.sew-run .sew-pedal{animation:sewPedal var(--sew-speed,1s) ease-in-out infinite;transform-box:fill-box;transform-origin:top center}
-@keyframes sewSpin{to{transform:rotate(360deg)}}
-@keyframes sewNeedle{0%,100%{transform:translateY(-2px)}50%{transform:translateY(17px)}}
-@keyframes sewTakeup{0%,100%{transform:translateY(7px)}50%{transform:translateY(-9px)}}
-@keyframes sewFeed{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
-@keyframes sewShuttle{0%,100%{transform:translateX(-10px)}50%{transform:translateX(15px)}}
-@keyframes sewPedal{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-.sew-controls{display:flex;gap:9px;justify-content:center;align-items:center;flex-wrap:wrap;padding:13px 4px 4px;font:12px Tahoma;color:#e8d2a7}
-.sew-controls button{border:1px solid #b28a4e;border-radius:8px;padding:9px 14px;background:linear-gradient(#69472d,#2b1c13);color:#ffedca;cursor:pointer;font:12px Tahoma}
-.sew-controls .sew-primary{background:linear-gradient(#f2d38e,#aa7736);color:#27180d;font-weight:bold}
-.sew-controls input{accent-color:#d6aa5d;width:105px}
-.sew-info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
-.sew-info{border:1px solid #674a2d;border-radius:9px;background:#211811;padding:10px;color:#d8c39e;font:11px/1.8 Tahoma}
-.sew-info b{display:block;color:#f0d49a;font-size:12px;margin-bottom:3px}
-.sew-status{text-align:center;color:#efd49b;font:12px Tahoma;min-height:23px;padding-top:8px}
-.sew-how{margin-top:13px;border-top:1px solid #654a2c;padding-top:11px;color:#cbb895;font:12px/2 Tahoma}
-.sew-how strong{color:#f0d49a}
-@media(max-width:650px){.sewing-frame{padding:8px}.sew-info-grid{grid-template-columns:1fr 1fr}.sew-label{font-size:14px}}
-.punched-module{margin-top:16px;border:1px solid #80603b;border-radius:12px;padding:13px;background:linear-gradient(145deg,#302116,#17110d)}.punched-head{text-align:center;color:#f0d49a;font:20px Georgia}.punched-intro{text-align:center;color:#cbb895;font:11px Tahoma}.tape-machine{position:relative;min-height:225px;border:1px solid #87633a;border-radius:10px;background:radial-gradient(ellipse,#513a26,#17110d 75%);padding:20px 12px;overflow:hidden}.tape-reel{position:absolute;top:22px;width:68px;height:68px;border-radius:50%;border:8px solid #b88a4c;background:repeating-conic-gradient(#38271a 0 12deg,#d3ad68 13deg 19deg,#4b3020 20deg 30deg);box-shadow:0 3px 9px #000;z-index:2}.tape-reel:after{content:"";position:absolute;inset:17px;border-radius:50%;background:radial-gradient(circle,#e6ca8b,#624426 65%,#20150f 70%)}.tape-reel.left{left:15px}.tape-reel.right{right:15px}.tape-reel.spin{animation:sewSpin .9s linear infinite}.tape-path{position:relative;margin:38px 70px 0;height:105px;background:linear-gradient(#e6d5ad,#c6ad7f);border:7px solid #624327;border-radius:5px;overflow:hidden}.tape-grid{position:absolute;inset:0;display:flex;direction:ltr;transition:transform .12s}.tape-column{flex:0 0 38px;height:100%;border-left:1px solid #a58c63;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center}.tape-hole{width:12px;height:12px;border-radius:50%;background:#59452e;border:1px solid #8a7048;box-shadow:inset 0 2px 3px #1b120b}.tape-hole.on{background:#f7edcf;border:2px solid #74532c;box-shadow:0 0 0 2px #b99150}.tape-column.current{background:#e6bd6b66;box-shadow:inset 0 0 0 2px #95672f}.tape-reader{position:absolute;left:50%;top:10px;bottom:10px;width:4px;background:#c33e2e;box-shadow:0 0 10px #ff8a5e;z-index:3}.tape-reader:before{content:"خوانشگر";position:absolute;top:-18px;left:-25px;width:55px;text-align:center;color:#f1d59a;font:9px Tahoma}.tape-legend,.tape-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;color:#d4bf98;font:11px Tahoma;margin-top:10px}.tape-controls button{border:1px solid #b28a4e;border-radius:7px;padding:8px 12px;background:linear-gradient(#69472d,#2b1c13);color:#ffedca;cursor:pointer;font:11px Tahoma}.tape-controls .primary{background:linear-gradient(#f2d38e,#aa7736);color:#27180d;font-weight:bold}.tape-controls input{width:95px;accent-color:#d6aa5d}.tape-readout{text-align:center;color:#f0d49a;font:12px Tahoma;min-height:22px;padding-top:10px}.tape-explain{color:#cbb895;font:11px/1.9 Tahoma;border-top:1px solid #614729;margin-top:10px;padding-top:9px}@media(max-width:600px){.tape-path{margin-left:45px;margin-right:45px}.tape-reel{width:54px;height:54px;border-width:6px}.tape-reel:after{inset:13px}.tape-column{flex-basis:31px}.tape-hole{width:10px;height:10px}}</style></head><body><main class="app">
-<header><div class="ornament">✦ ━━━━━━━━━ ✦</div><h1>گرامافونِ حروف</h1><p>ماشین‌تحریر موزیکال مکانیکی · کارگاه موسیقیِ عصر ماشین‌های برنجی</p><div class="ornament">❧</div></header>
-<div class="toolbar"><button class="main" id="play">▶ اجرای ملودی</button><button id="stop">■ توقف</button><button id="undo">↶ یک ضربه برگشت</button><button id="clear">پاک‌کردن کاغذ</button><label>سرعت <input id="tempo" type="range" min="55" max="170" value="105"><b id="tempoVal">105</b></label><label>اکتاو <button id="octDown">−</button><b id="oct">4</b><button id="octUp">+</button></label></div>
-<section class="machine-shell"><div class="brand">THE MUSICAL TYPEWRITER · No. 08</div>
-<div class="top-mechanism"><div class="carriage" id="carriage"></div><div class="paper-frame"><div class="paper"><div class="paper-head">✦ MUSICAL COMPOSITION ✦</div><div class="typed" id="typed"></div></div><div class="roller" id="roller"></div></div><div class="roller-knob left" id="knobL"></div><div class="roller-knob right" id="knobR"></div><div class="spool left" id="spoolL"></div><div class="spool right" id="spoolR"></div><div class="ribbon" id="ribbon"></div><div class="guide"></div></div>
-<div class="basket"><div class="typebars" id="typebars"></div></div>
-<div class="bed"><div class="keys" id="keys">
-<button class="key" data-n="0" data-k="a"><b>A</b><small>دو · C</small></button><button class="key" data-n="2" data-k="s"><b>S</b><small>ر · D</small></button><button class="key" data-n="4" data-k="d"><b>D</b><small>می · E</small></button><button class="key" data-n="5" data-k="f"><b>F</b><small>فا · F</small></button><button class="key" data-n="7" data-k="g"><b>G</b><small>سل · G</small></button><button class="key" data-n="9" data-k="h"><b>H</b><small>لا · A</small></button><button class="key" data-n="11" data-k="j"><b>J</b><small>سی · B</small></button><button class="key" data-n="12" data-k="k"><b>K</b><small>دو · C</small></button><button class="key" data-n="14" data-k="l"><b>L</b><small>ر · D</small></button><button class="key" data-n="16" data-k=";"><b>;</b><small>می · E</small></button>
-<button class="key" data-n="1" data-k="q"><b>Q</b><small>دو♯</small></button><button class="key" data-n="3" data-k="w"><b>W</b><small>ر♯</small></button><button class="key" data-n="6" data-k="e"><b>E</b><small>فا♯</small></button><button class="key" data-n="8" data-k="r"><b>R</b><small>سل♯</small></button><button class="key" data-n="10" data-k="t"><b>T</b><small>لا♯</small></button><button class="key utility" data-act="rest">SPACE<br>سکوت</button><button class="key utility" data-act="bar">ENTER<br>میزان</button><button class="key utility" data-act="del">⌫<br>حذف</button><button class="key utility" data-act="oct">OCT<br>اکتاو</button><button class="key utility" data-act="play">▶<br>پخش</button>
-</div><div class="front-rail"></div></div></section>
-<div class="lower"><section class="panel"><h2>⚙ جعبه‌دنده و انتقال نیرو</h2><div class="gear-stage" id="gearStage">
-<div class="gear" id="gear1"><svg viewBox="0 0 100 100"><defs><radialGradient id="br"><stop stop-color="#f3d99a"/><stop offset=".55" stop-color="#a97936"/><stop offset="1" stop-color="#4c3018"/></radialGradient></defs><path d="M43 2h14l3 9 8 3 8-5 10 10-5 8 3 8 9 3v14l-9 3-3 8 5 8-10 10-8-5-8 3-3 9H43l-3-9-8-3-8 5-10-10 5-8-3-8-9-3V41l9-3 3-8-5-8 10-10 8 5 8-3z" fill="url(#br)" stroke="#e4c27b" stroke-width="2"/><circle cx="50" cy="50" r="25" fill="#302219" stroke="#e8ca87" stroke-width="4"/><circle cx="50" cy="50" r="8" fill="#d6b36c"/><path d="M50 25v17m25 8H58M50 75V58M25 50h17" stroke="#c89c52" stroke-width="3"/></svg></div>
-<div class="gear small reverse" id="gear2"><svg viewBox="0 0 100 100"><path d="M43 2h14l3 9 8 3 8-5 10 10-5 8 3 8 9 3v14l-9 3-3 8 5 8-10 10-8-5-8 3-3 9H43l-3-9-8-3-8 5-10-10 5-8-3-8-9-3V41l9-3 3-8-5-8 10-10 8 5 8-3z" fill="#ad7938" stroke="#e6c782" stroke-width="3"/><circle cx="50" cy="50" r="24" fill="#302219" stroke="#e6c782" stroke-width="5"/><circle cx="50" cy="50" r="7" fill="#e6c782"/></svg></div>
-<div class="gear small" id="gear3"><svg viewBox="0 0 100 100"><path d="M43 2h14l3 9 8 3 8-5 10 10-5 8 3 8 9 3v14l-9 3-3 8 5 8-10 10-8-5-8 3-3 9H43l-3-9-8-3-8 5-10-10 5-8-3-8-9-3V41l9-3 3-8-5-8 10-10 8 5 8-3z" fill="#9b682e" stroke="#e6c782" stroke-width="3"/><circle cx="50" cy="50" r="22" fill="#302219" stroke="#e6c782" stroke-width="5"/><circle cx="50" cy="50" r="7" fill="#e6c782"/></svg></div></div><div class="mechanism-labels"><span>چرخ محرک</span><span>چرخ واسط</span><span>محور کالسکه</span></div><div class="meter"><i id="power"></i></div><div class="mechanism-labels"><span>انتقال نیرو از کلید به چرخ‌دنده و کالسکه</span><span id="gearState">آماده</span></div></section>
-<section class="panel"><h2>♬ کاغذ نت‌نگاری</h2><div class="score"><canvas id="score" width="560" height="190"></canvas></div><div class="mechanism-labels"><span id="noteCount">۰ نت</span><span>نت‌ها با هر ضربه چاپ می‌شوند</span></div></section></div>
-<div class="status" id="status">دستگاه آماده است؛ یک کلید را فشار بده.</div><div class="footer">ساخته‌شده برای لذتِ تایپ و موسیقی · صدای تولیدشده در مرورگر · بدون نیاز به اینترنت</div>
-</main>
+:root{--bg:#0b0d12;--pn:#121826;--ln:#27324a;--tx:#e8ecf5;--mu:#93a0bb;--ac:#ff5a47;--ok:#3ddc84;box-sizing:border-box}
+*{box-sizing:inherit}html,body{height:100%;margin:0;background:var(--bg);color:var(--tx);font:14px Vazirmatn,Tahoma,sans-serif;overflow:hidden;touch-action:none}
+#main{position:fixed;inset:0;width:100%;height:100%}
+#hud{position:fixed;top:0;inset-inline:0;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 0;pointer-events:none}
+b.t{font-size:17px;text-shadow:0 2px 8px #000}#hint{font-size:12px;color:#ffe3a3;text-shadow:0 1px 6px #000;margin-top:2px}
+#lbs button{position:fixed;transform:translate(-50%,-50%);font-size:11px;padding:5px 8px;border-radius:10px;background:#0d1320d9;border:1px solid var(--ln);color:var(--tx);white-space:nowrap}
+#lbs button.run{border-color:var(--ok);color:var(--ok)}
+button{font:inherit;color:var(--tx);background:#1a2335;border:1px solid var(--ln);border-radius:12px;padding:8px 12px}
+#sheet{position:fixed;inset-inline:0;bottom:0;height:64vh;background:var(--pn);border:1px solid var(--ln);border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .5s cubic-bezier(.2,.9,.25,1);display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -12px 40px #000a;z-index:5}
+#sheet.on{transform:none}.hd{display:flex;gap:8px;align-items:center;padding:10px 14px 6px}.hd b{flex:1;font-size:16px}
+#pp{background:#1f7a4d;border-color:#2fb36e;font-weight:700}#pp.on{background:#8a2a22;border-color:#ff7a68}
+#scr{margin:0 12px;border:2px solid #34415f;border-radius:14px;overflow:hidden;background:#000;position:relative;box-shadow:inset 0 0 18px #000}
+#mini{width:100%;height:clamp(140px,26vh,270px);display:block;background:radial-gradient(#28324a,#0e131f);touch-action:none}
+#st{position:absolute;inset-inline:0;bottom:0;padding:4px 10px;font-size:11px;background:#000a;color:#ffe3a3}
+#ctl{flex:1;overflow:auto;padding:10px 14px 16px;touch-action:pan-y}
+.pc{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}.pc button{white-space:nowrap;font-size:12px;padding:6px 10px}.pc button.on{background:#235a45;border-color:var(--ok)}
+.c{margin:10px 0}.c label{display:flex;justify-content:space-between;color:var(--mu);font-size:13px}.c output{color:var(--ok);direction:ltr}.c input{width:100%;accent-color:var(--ac);margin:6px 0}.c small{color:var(--mu);display:block;line-height:1.7}
+.kb{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:8px 0}.kb button{padding:12px 0;background:#e9e1cc;color:#222;font-weight:700}
+.ab{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.ab button.on{background:#235a45;border-color:var(--ok)}
+</style></head><body>
+<canvas id="main"></canvas>
+<div id="hud"><b class="t">🏭 کارگاه ماشین‌ها</b><div id="hint">یکی از ماشین‌ها را لمس کن؛ هرچه در کارگاه تنظیم کنی همین‌جا زنده اجرا می‌شود.</div></div>
+<div id="lbs"></div>
+<div id="sheet"><div class="hd"><b id="ttl"></b><button id="pp"></button><button id="x">✕</button></div><div id="scr"><canvas id="mini"></canvas><div id="st"></div></div><div id="ctl"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-(()=>{'use strict';const $=id=>document.getElementById(id),fa=['دو','دو♯','ر','ر♯','می','فا','فا♯','سل','سل♯','لا','لا♯','سی'],en=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];let octave=4,events=[],ctx=null,token=0,step=0,carriage=0;const bars=[...$('typebars').children];for(let i=0;i<17;i++){let b=document.createElement('i');b.className='typebar';b.style.setProperty('--a',((i-8)*5)+'deg');$('typebars').appendChild(b)}const typebars=[...$('typebars').children];function audio(){ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();return ctx}function tone(m,d=.32,delay=0){let c=audio(),o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=440*Math.pow(2,(m-69)/12);g.gain.setValueAtTime(.0001,c.currentTime+delay);g.gain.exponentialRampToValueAtTime(.16,c.currentTime+delay+.018);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+delay+d);o.connect(g);g.connect(c.destination);o.start(c.currentTime+delay);o.stop(c.currentTime+delay+d+.02)}function mech(i){let b=typebars[i%typebars.length];b.classList.add('strike');$('knobL').classList.add('turning');$('knobR').classList.add('turning');$('roller').classList.add('turning');$('spoolL').style.transform='rotate(35deg)';$('spoolR').style.transform='rotate(-35deg)';$('carriage').style.transform='translateX('+((step%9)*-7)+'px)';$('power').style.width='100%';$('gearState').textContent='در حال انتقال نیرو';setTimeout(()=>{b.classList.remove('strike');$('knobL').classList.remove('turning');$('knobR').classList.remove('turning');$('roller').classList.remove('turning');$('spoolL').style.transform='';$('spoolR').style.transform='';$('power').style.width='12%';$('gearState').textContent='آماده'},230);step++}function render(){let t=$('typed');t.innerHTML='';for(let e of events){let s=document.createElement('span');if(e.t==='n'){s.textContent=en[e.m%12]+' ';}else if(e.t==='rest'){s.className='rest';s.textContent='𝄽 ';}else{s.className='bar';s.textContent='│';}t.appendChild(s)}$('noteCount').textContent=events.filter(e=>e.t==='n').length+' نت';drawScore();$('status').textContent=events.length+' ضربه ثبت‌شده · اکتاو '+octave;window.__lanbarsheyScore=events.map(e=>({...e}));document.dispatchEvent(new CustomEvent('scorechange',{detail:{events:window.__lanbarsheyScore}}));}function drawScore(){let c=$('score').getContext('2d'),w=560,h=190;c.clearRect(0,0,w,h);c.fillStyle='#f1e5c9';c.fillRect(0,0,w,h);c.fillStyle='#463322';c.font='italic 14px Georgia';c.textAlign='center';c.fillText('Musical composition',280,19);for(let i=0;i<5;i++){c.strokeStyle='#8c7a5d';c.lineWidth=1;c.beginPath();c.moveTo(28,55+i*13);c.lineTo(535,55+i*13);c.stroke()}c.font='44px Georgia';c.fillText('𝄞',24,111);let x=80;for(let e of events){if(e.t==='bar'){c.strokeStyle='#392c20';c.beginPath();c.moveTo(x,50);c.lineTo(x,120);c.stroke();x+=16;continue}if(e.t==='rest'){c.font='23px Georgia';c.fillText('𝄽',x,93);x+=25;continue}let y=100-(e.m-60)*2.6;c.beginPath();c.ellipse(x,y,6,4,-.3,0,Math.PI*2);c.fillStyle='#30251b';c.fill();c.beginPath();c.moveTo(x+5,y);c.lineTo(x+5,y-26);c.stroke();if(y<56||y>108){c.beginPath();c.moveTo(x-8,y);c.lineTo(x+9,y);c.stroke()}x+=25;if(x>540)x=80}}function note(s,k){let m=12*(octave+1)+s;events.push({t:'n',m});carriage++;mech(step);render();tone(m);$('status').textContent=fa[s%12]+' · ضربهٔ مکانیکی، چاپ روی کاغذ و پخش نت';let b=document.querySelector('[data-k="'+k+'"]');if(b){b.classList.add('active');setTimeout(()=>b.classList.remove('active'),130)}}function act(a){if(a==='rest')events.push({t:'rest'});if(a==='bar')events.push({t:'bar'});if(a==='del')events.pop();if(a==='oct'){octave=octave>=7?2:octave+1;$('oct').textContent=octave}if(a==='play')play();if(a==='rest'||a==='bar'||a==='del'){mech(step);render()}}function play(){if(!events.length){$('status').textContent='ابتدا نت‌ها را تایپ کن';return}let id=++token,t=0,i=0;for(let e of events){let index=i++;setTimeout(()=>{if(id!==token)return;if(e.t==='n'){tone(e.m,.3);mech(index);$('status').textContent='اجرای مکانیکی: '+en[e.m%12]+' · '+fa[e.m%12]}else mech(index)},t*1000);if(e.t==='n')t+=60/+$('tempo').value;else if(e.t==='rest')t+=.55;else t+=.12}setTimeout(()=>{if(id===token)$('status').textContent='اجرای ملودی پایان یافت'},t*1000+100)}$('keys').addEventListener('click',e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.n!==undefined)note(+b.dataset.n,b.dataset.k);else act(b.dataset.act)});document.addEventListener('keydown',e=>{if(e.repeat||e.ctrlKey||e.metaKey||e.altKey)return;let b=[...document.querySelectorAll('[data-k]')].find(x=>x.dataset.k===e.key.toLowerCase());if(b)note(+b.dataset.n,b.dataset.k);else if(e.code==='Space'){e.preventDefault();act('rest')}else if(e.key==='Enter')act('bar');else if(e.key==='Backspace'){e.preventDefault();act('del')}});$('play').onclick=play;$('stop').onclick=()=>{token++;$('status').textContent='پخش متوقف شد'};$('undo').onclick=()=>act('del');$('clear').onclick=()=>{events=[];render()};$('octDown').onclick=()=>{octave=Math.max(2,octave-1);$('oct').textContent=octave};$('octUp').onclick=()=>{octave=Math.min(7,octave+1);$('oct').textContent=octave};$('tempo').oninput=e=>$('tempoVal').textContent=e.target.value;$('tempo').value=105;drawScore();render()})();
-</script>
-<section class="sewing-section" id="musical-sewing-machine">
-<h2 class="section-title">✦ چرخ خیاطی موزیکال ✦</h2>
-<p class="section-sub">مدل کلاسیک پدالی با تسمه، فلایویل، میل‌لنگ و ماکو · کارگاه خیاطیِ عصر برنج و چوب</p>
-<div class="sewing-frame">
-<div class="sewing-svg-wrap" id="sewScene">
-<svg class="sewing-svg" viewBox="0 0 920 570" role="img" aria-label="نمای فنی و متحرک چرخ خیاطی کلاسیک پدالی و اجزای داخلی">
-<defs>
-<linearGradient id="sewWood" x2="0" y2="1"><stop stop-color="#a45e38"/><stop offset=".5" stop-color="#63301e"/><stop offset="1" stop-color="#321a13"/></linearGradient>
-<linearGradient id="sewBrass" x2="1" y2="1"><stop stop-color="#f3dc9d"/><stop offset=".45" stop-color="#b9853e"/><stop offset="1" stop-color="#68421f"/></linearGradient>
-<linearGradient id="sewIron" x2="0" y2="1"><stop stop-color="#77716a"/><stop offset=".45" stop-color="#29292a"/><stop offset="1" stop-color="#0f1011"/></linearGradient>
-<pattern id="sewGrain" width="80" height="12" patternUnits="userSpaceOnUse"><path d="M0 5 Q20 0 40 5T80 5" fill="none" stroke="#e1a16b" opacity=".13"/></pattern>
-</defs>
-<!-- wall / tabletop -->
-<path d="M45 360 H875 V389 H45Z" fill="url(#sewWood)" stroke="#d0a166" stroke-width="3"/><path d="M45 360H875V389H45Z" fill="url(#sewGrain)"/>
-<!-- machine cast body silhouette -->
-<path d="M170 333 V192 Q170 145 220 145 H625 Q674 145 674 192 V216 H622 V195 H246 V240 H290 V333 H245 V281 H215 V333Z" fill="url(#sewIron)" stroke="#c79a58" stroke-width="4"/>
-<path d="M210 157 Q210 130 245 130 H608 Q642 130 642 157 V177 H210Z" fill="url(#sewIron)" stroke="#d4ad68" stroke-width="3"/>
-<path d="M236 180 H612 V201 H236Z" fill="#171719" stroke="#9b7747"/>
-<text x="430" y="171" text-anchor="middle" fill="#e9ca88" font-size="17" font-family="Georgia" letter-spacing="4">SINGER · MUSICAL No. 1889</text>
-<!-- hand wheel -->
-<g class="sew-wheel" transform-origin="724px 241px">
-<circle cx="724" cy="241" r="83" fill="none" stroke="url(#sewBrass)" stroke-width="11"/>
-<circle cx="724" cy="241" r="65" fill="none" stroke="#d7b36f" stroke-width="4"/>
-<circle cx="724" cy="241" r="15" fill="url(#sewBrass)" stroke="#382719" stroke-width="3"/>
-<g stroke="#d9b66e" stroke-width="8"><path d="M724 160V226M724 256V322M643 241H709M739 241H805M667 184L713 230M735 252L781 298M781 184L735 230M713 252L667 298"/></g></g>
-<text x="725" y="345" class="sew-label" text-anchor="middle">فلایویل / چرخ دستی</text>
-<!-- belt -->
-<path d="M724 158 Q842 185 824 405 Q815 451 760 456 L754 448 Q800 433 806 398 Q827 207 718 169Z" fill="#4c2119" stroke="#d3a45e" stroke-width="4"/>
-<!-- upper spool & thread path -->
-<path d="M320 116V91" stroke="#d4b474" stroke-width="5"/><ellipse cx="320" cy="89" rx="28" ry="7" fill="#a87a3d"/><rect x="296" y="54" width="48" height="34" rx="8" fill="#d7c5a0" stroke="#5a4129" stroke-width="3"/><path d="M320 56V89" stroke="#e8dfc9" stroke-width="2"/>
-<path d="M320 117 Q355 120 363 151 L378 183" fill="none" stroke="#d7c7a3" stroke-width="2"/>
-<text x="320" y="43" class="sew-label" text-anchor="middle">قرقره نخ بالا</text>
-<!-- take-up lever -->
-<g class="sew-takeup"><path d="M373 183 L399 211" stroke="url(#sewBrass)" stroke-width="9" stroke-linecap="round"/><circle cx="373" cy="183" r="8" fill="#e5c47b"/><circle cx="399" cy="211" r="5" fill="#ead7a4"/></g>
-<text x="410" y="195" class="sew-small">اهرم نخ‌کش</text>
-<!-- needle bar assembly -->
-<rect x="274" y="204" width="28" height="116" rx="8" fill="url(#sewBrass)" stroke="#3a2618" stroke-width="3"/>
-<g class="sew-needle"><path d="M288 275V351" stroke="#e2e1d8" stroke-width="5"/><path d="M288 348l-4 10h8z" fill="#eee"/></g>
-<text x="245" y="290" class="sew-label" text-anchor="end">میله و سوزن</text>
-<!-- presser foot -->
-<path d="M312 284V338" stroke="#c9a45e" stroke-width="8"/><path d="M297 339H330L337 346H291Z" fill="url(#sewBrass)" stroke="#4b321e" stroke-width="2"/>
-<text x="349" y="339" class="sew-small">پایه فشار</text>
-<!-- throat plate / fabric -->
-<rect x="235" y="354" width="144" height="8" rx="3" fill="url(#sewBrass)"/><path d="M288 354H350V349H288Z" fill="#d8b477"/>
-<path d="M335 348H535V356H335Z" fill="#a64b42" stroke="#e2b57c" stroke-width="2"/>
-<path d="M350 351H520" stroke="#f1d7ad" stroke-width="2" stroke-dasharray="5 5"/>
-<text x="465" y="341" class="sew-label" text-anchor="middle">پارچه و خط دوخت</text>
-<!-- feed dogs -->
-<g class="sew-feed"><path d="M301 363v-9m10 9v-9m10 9v-9m10 9v-9m10 9v-9" stroke="#e2c17c" stroke-width="5" stroke-linecap="round"/></g>
-<text x="363" y="380" class="sew-small">دندانه‌های پیش‌بر پارچه</text>
-<!-- inner mechanism window -->
-<rect x="390" y="218" width="210" height="119" rx="12" fill="#171412" stroke="#c69b5a" stroke-width="3"/>
-<text x="495" y="235" text-anchor="middle" class="sew-small">بخش انتقال نیرو درون بدنه</text>
-<g class="sew-wheel" transform-origin="449px 284px"><circle cx="449" cy="284" r="38" fill="none" stroke="#d0a45c" stroke-width="8" stroke-dasharray="8 5"/><circle cx="449" cy="284" r="9" fill="#d0a45c"/><path d="M449 246V275M411 284H440M449 322V293M487 284H458" stroke="#d0a45c" stroke-width="5"/></g>
-<g class="sew-wheel" transform-origin="535px 284px"><circle cx="535" cy="284" r="27" fill="none" stroke="#a77a3b" stroke-width="7" stroke-dasharray="7 4"/><circle cx="535" cy="284" r="7" fill="#d0a45c"/></g>
-<path d="M486 284H506" stroke="#d2aa64" stroke-width="6"/>
-<!-- bobbin / shuttle under plate -->
-<rect x="253" y="389" width="130" height="68" rx="8" fill="#171514" stroke="#c49a5c" stroke-width="3"/>
-<g class="sew-shuttle"><path d="M281 423 Q318 390 356 423 Q318 455 281 423Z" fill="url(#sewBrass)" stroke="#e5c47a" stroke-width="2"/><ellipse cx="318" cy="423" rx="13" ry="18" fill="#4a3020" stroke="#e2c37e" stroke-width="3"/></g>
-<text x="318" y="475" class="sew-label" text-anchor="middle">ماکو و ماسوره زیر صفحه</text>
-<!-- treadle table legs -->
-<path d="M110 389V512H128V389M780 389V512H798V389" fill="url(#sewWood)" stroke="#c28c52" stroke-width="3"/>
-<path d="M112 511H798" stroke="#a77b48" stroke-width="8"/>
-<!-- treadle wheel -->
-<g class="sew-crank"><circle cx="690" cy="463" r="49" fill="none" stroke="url(#sewBrass)" stroke-width="8"/><circle cx="690" cy="463" r="8" fill="#e0bd76"/><path d="M690 414V455M690 471V512M641 463H682M698 463H739" stroke="#cba361" stroke-width="5"/></g>
-<path d="M690 463L724 425" stroke="#caa15f" stroke-width="6"/>
-<path d="M690 512L760 532" stroke="#c9a15e" stroke-width="5"/>
-<g class="sew-pedal"><path d="M600 530Q690 505 780 535L772 549Q690 525 607 545Z" fill="url(#sewIron)" stroke="#d5ad68" stroke-width="3"/><path d="M630 535l8 7m15-10 8 7m15-9 8 7m15-8 8 7m15-6 8 7" stroke="#cda765" stroke-width="2"/></g>
-<text x="690" y="565" class="sew-label" text-anchor="middle">پدال پایی و میله رابط</text>
-<text x="98" y="430" class="sew-small">پایه چدنی</text>
-<text x="98" y="446" class="sew-small">و میز چوبی</text>
-</svg>
-</div>
-<div class="sew-controls"><button class="sew-primary" id="sewStart">▶ شروع دوخت و موسیقی</button><button id="sewStop">■ توقف</button><button id="sewStep">یک دور مکانیزم</button><label>سرعت پدال <input id="sewSpeed" type="range" min="45" max="150" value="90"><b id="sewSpeedVal">90</b></label></div>
-<div class="sew-status" id="sewStatus">چرخ خیاطی آماده است؛ شروع را بزن تا چرخه دوخت و موسیقی را ببینی.</div><div class="mechanical-transfer" id="sewTransfer"><h3>نوار انتقال مکانیکی نت · خروجی سوزن و ماکو</h3><p>هر نت به یک ستون سوراخ‌گذاری‌شده تبدیل می‌شود؛ جای سوراخ در ۱۲ ردیف، ارتفاع نت را مشخص می‌کند. سوراخ‌های کناری، گام زمانی و پیشروی نوار را نشان می‌دهند.</p><div class="transfer-reel"><div class="transfer-track" id="sewEncodedTape"><span>پس از تایپ نت‌ها، الگوی سوراخ‌ها اینجا ساخته می‌شود.</span></div></div><div class="transfer-readout" id="sewTransferStatus">ورودی: منتظر کاغذ نت ماشین تایپ</div></div>
-<div class="sew-info-grid">
-<div class="sew-info"><b>۱. نیروی محرک</b>پدال، میله رابط و چرخ بزرگ زیر میز را می‌چرخانند؛ تسمه حرکت را به فلایویل و میل اصلی می‌رساند.</div>
-<div class="sew-info"><b>۲. حرکت سوزن</b>میل‌لنگ و بادامک، چرخش میل اصلی را به حرکت بالا و پایین میله سوزن و اهرم نخ‌کش تبدیل می‌کنند.</div>
-<div class="sew-info"><b>۳. قفل دوخت</b>ماکو یا قلاب، حلقه نخ سوزن را می‌گیرد و دور نخ ماسوره می‌برد تا دو نخ در پارچه قفل شوند.</div>
-<div class="sew-info"><b>۴. پیش‌بر پارچه</b>دندانه‌های زیر صفحه در چهار حرکت بالا، جلو، پایین و عقب پارچه را به اندازه طول بخیه جابه‌جا می‌کنند.</div>
-<div class="sew-info"><b>۵. تنظیم نخ</b>قرقره، راهنماها، دیسک‌های کشش و اهرم نخ‌کش مقدار نخ آزاد و سفت‌شدن هر بخیه را کنترل می‌کنند.</div>
-<div class="sew-info"><b>۶. موسیقی مکانیکی</b>در این مدل نمایشی، چرخش و ضربه‌های دوخت با نت‌های کوتاه هماهنگ می‌شوند؛ صدای موسیقی از مرورگر ساخته می‌شود.</div>
-</div>
-<div class="sew-how"><strong>چرخهٔ یک بخیه:</strong> سوزن نخ بالا را از پارچه عبور می‌دهد ← هنگام بالا آمدن، حلقه نخ شکل می‌گیرد ← ماکو/قلاب حلقه را دور نخ ماسوره می‌برد ← اهرم نخ‌کش بخیه را سفت می‌کند ← دندانه‌های پیش‌بر پارچه را یک گام جلو می‌برند. این مدل تصویری یک چرخ خیاطی پدالی کلاسیک با مکانیزم قلاب/ماکوی نمایشی را نشان می‌دهد؛ جزئیات واقعی بین مدل‌های شاتل و قلاب گردان متفاوت است.</div>
-</div>
-</section>
-
-<style>
-/* Complete interactive punched-roll reader */
-.punched-module{margin-top:16px;border:1px solid #80603b;border-radius:12px;padding:14px;background:linear-gradient(145deg,#302116,#17110d)}
-.punched-head{text-align:center;color:#f0d49a;font:22px Georgia;margin:4px}.punched-intro{text-align:center;color:#cbb895;font:12px Tahoma}
-.tape-machine{position:relative;min-height:240px;border:1px solid #87633a;border-radius:10px;background:radial-gradient(ellipse,#513a26,#17110d 75%);padding:20px 12px;overflow:hidden}
-.tape-reel{position:absolute;top:24px;width:70px;height:70px;border-radius:50%;border:8px solid #b88a4c;background:repeating-conic-gradient(#38271a 0 12deg,#d3ad68 13deg 19deg,#4b3020 20deg 30deg);box-shadow:0 3px 9px #000;z-index:2}
-.tape-reel:after{content:"";position:absolute;inset:17px;border-radius:50%;background:radial-gradient(circle,#e6ca8b,#624426 65%,#20150f 70%)}
-.tape-reel.left{left:14px}.tape-reel.right{right:14px}.tape-reel.spin{animation:sewSpin .85s linear infinite}
-.tape-path{position:relative;margin:42px 72px 0;height:120px;background:linear-gradient(#e6d5ad,#c6ad7f);border:7px solid #624327;border-radius:5px;overflow:hidden;box-shadow:0 5px 12px #000}
-.tape-grid{position:absolute;inset:0;display:flex;direction:ltr;transition:transform .15s}
-.tape-column{flex:0 0 42px;height:100%;border-left:1px solid #a58c63;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;cursor:pointer;position:relative}
-.tape-column.current{background:#e6bd6b77;box-shadow:inset 0 0 0 2px #95672f}
-.tape-hole{width:13px;height:13px;border-radius:50%;background:#59452e;border:1px solid #8a7048;box-shadow:inset 0 2px 3px #1b120b;display:block}
-.tape-hole.on{background:#fff4d4;border:2px solid #74532c;box-shadow:0 0 0 2px #b99150,inset 0 1px 2px #fff}
-.tape-reader{position:absolute;left:50%;top:8px;bottom:8px;width:4px;background:#bd3828;box-shadow:0 0 10px #ff8a5e;z-index:3;pointer-events:none}
-.tape-reader:before{content:"خوانشگر";position:absolute;top:-18px;left:-26px;width:55px;text-align:center;color:#f1d59a;font:9px Tahoma}
-.tape-legend,.tape-controls{display:flex;gap:9px;justify-content:center;align-items:center;flex-wrap:wrap;color:#d4bf98;font:11px Tahoma;margin-top:11px}
-.tape-controls button,.tape-editor button{border:1px solid #b28a4e;border-radius:7px;padding:8px 12px;background:linear-gradient(#69472d,#2b1c13);color:#ffedca;cursor:pointer;font:11px Tahoma}
-.tape-controls .primary,.tape-editor .primary{background:linear-gradient(#f2d38e,#aa7736);color:#27180d;font-weight:bold}
-.tape-controls input{width:100px;accent-color:#d6aa5d}
-.tape-readout{text-align:center;color:#f0d49a;font:12px Tahoma;min-height:22px;padding-top:10px}
-.tape-editor{border-top:1px solid #614729;margin-top:12px;padding-top:12px;color:#d9c49e;font:11px/1.8 Tahoma}
-.tape-editor-head{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.tape-edit-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin-top:9px;direction:ltr}
-.tape-cell{border:1px solid #87643e;border-radius:5px;background:#2a1d14;color:#f0d49a;padding:6px 2px;text-align:center;cursor:pointer;font:10px Tahoma;min-height:37px}
-.tape-cell.active{background:#b58a4a;color:#20150d;border-color:#f1d49a}
-.tape-row-labels{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;text-align:center;color:#c8ae80;font:10px Tahoma;margin-top:6px;direction:ltr}
-.tape-help{color:#bca986;font-size:10px;margin-top:8px}
-@media(max-width:600px){.tape-path{margin-left:48px;margin-right:48px}.tape-reel{width:54px;height:54px;border-width:6px}.tape-reel:after{inset:13px}.tape-column{flex-basis:34px}.tape-hole{width:10px;height:10px}.tape-edit-grid{gap:3px}.tape-cell{font-size:9px;padding:5px 0}}
-</style>
-<div class="punched-module" id="punched-music-tape">
-<h3 class="punched-head">♫ دستگاه نوار موسیقی سوراخ‌دار</h3>
-<p class="punched-intro">نوار پانچ‌شده، قرقره تغذیه، مسیر هدایت، خوانشگر هشت‌کاناله و اجرای نت‌ها</p>
-<div class="tape-machine">
-<div class="tape-reel left" id="tapeReelL"></div><div class="tape-reel right" id="tapeReelR"></div>
-<div class="tape-path"><div class="tape-reader"></div><div class="tape-grid" id="tapeGrid"></div></div>
-<div class="tape-legend"><span>● سوراخ پانچ‌شده</span><span>○ بخش بدون سوراخ</span><span>خط قرمز: هد خوانشگر</span></div>
-</div>
-<div class="tape-controls">
-<button class="primary" id="tapePlay">▶ پخش نوار</button><button id="tapeStop">■ توقف</button><button id="tapeRewind">↶ ابتدا</button>
-<button id="tapeDemo">♫ ملودی نمونه</button>
-<label>سرعت <input id="tapeTempo" type="range" min="50" max="180" value="110"><b id="tapeTempoVal">110</b></label>
-</div>
-<div class="tape-readout" id="tapeReadout">نوار آماده است؛ برای شنیدن ملودی پخش را بزن یا سوراخ‌ها را ویرایش کن.</div>
-<div class="tape-editor">
-<div class="tape-editor-head"><strong>کارگاه پانچ نوار — برای ایجاد یا حذف سوراخ روی خانه‌ها بزن</strong><span id="tapeCount">۱۶ گام</span></div>
-<div class="tape-row-labels"><span>دو</span><span>ر</span><span>می</span><span>فا</span><span>سل</span><span>لا</span><span>سی</span><span>دو↑</span></div>
-<div class="tape-edit-grid" id="tapeEditGrid"></div>
-<div class="tape-controls" style="margin-top:10px">
-<button id="tapeAdd">＋ افزودن گام</button><button id="tapeRemove">− حذف گام آخر</button><button id="tapeClear">پاک‌کردن نوار</button><button id="tapeChord">آکورد نمونه</button>
-</div>
-<div class="tape-help">هر ستون یک لحظه از موسیقی است؛ می‌توانی در یک ستون چند سوراخ بسازی تا چند نت هم‌زمان اجرا شوند. تغییرات بلافاصله روی نوار نمایشی اعمال می‌شوند.</div>
-</div>
-<div class="tape-explain"><strong>مسیر مکانیکی:</strong> قرقرهٔ بازکننده نوار را آزاد می‌کند ← غلتک‌های راهنما نوار را صاف و هم‌راستا نگه می‌دارند ← سوراخ‌ها از مقابل ردیف پین‌های خوانشگر عبور می‌کنند ← پین‌های فعال، در ساز واقعی اهرم‌ها یا دریچه‌های هوای متناظر را تحریک می‌کنند ← نت‌ها به‌ترتیب زمان اجرا می‌شوند ← قرقرهٔ جمع‌کننده نوار مصرف‌شده را می‌پیچد. در این نسخه وب، تشخیص سوراخ‌ها و تولید صدا نرم‌افزاری است و چرخش قرقره‌ها و هد خوانشگر به‌صورت انیمیشن نمایش داده می‌شود.</div>
-</div>
-<script>
-(()=>{const $=id=>document.getElementById(id),grid=$('tapeGrid'),edit=$('tapeEditGrid');if(!grid||!edit||grid.dataset.ready)return;grid.dataset.ready='1';
-const labels=['دو','ر','می','فا','سل','لا','سی','دو↑'],midi=[60,62,64,65,67,69,71,72];
-let pattern=[[1,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,1,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0]];
-let pos=0,timer=null,ctx=null,stepMs=545;
-function audio(){try{ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();return ctx}catch(e){return null}}
-function tone(row){const c=audio();if(!c)return;const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=440*Math.pow(2,(midi[row]-69)/12);g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.085,c.currentTime+.018);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.27);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.29)}
-function render(){grid.innerHTML='';edit.innerHTML='';pattern.forEach((col,i)=>{const c=document.createElement('div');c.className='tape-column';c.dataset.i=i;col.forEach(v=>{const d=document.createElement('i');d.className='tape-hole'+(v?' on':'');c.appendChild(d)});grid.appendChild(c);
-const ec=document.createElement('div');ec.style.display='contents';col.forEach((v,row)=>{const b=document.createElement('button');b.type='button';b.className='tape-cell'+(v?' active':'');b.textContent=v?'●':'·';b.title='گام '+(i+1)+'، نت '+labels[row]+'؛ برای تغییر بزن';b.setAttribute('aria-label',b.title);b.onclick=()=>{pattern[i][row]=pattern[i][row]?0:1;render()};ec.appendChild(b)});edit.appendChild(ec)});$('tapeCount').textContent=pattern.length+' گام';}
-function stop(){if(timer){clearInterval(timer);timer=null}['tapeReelL','tapeReelR'].forEach(id=>$(id).classList.remove('spin'));$('tapePlay').textContent='▶ پخش نوار';const sewing=$('sewScene');if(sewing)sewing.classList.remove('sew-run')}
-function show(n){pos=n;[...grid.children].forEach((c,j)=>c.classList.toggle('current',j===n));const active=pattern[n].map((v,i)=>v?i:-1).filter(i=>i>=0);active.forEach(tone);$('tapeReadout').textContent='گام '+(n+1)+' از '+pattern.length+' · '+(active.length?active.map(i=>labels[i]).join(' + '):'سکوت');const col=grid.children[n];if(col){const x=col.offsetLeft;grid.style.transform='translateX('+Math.max(-Math.max(0,grid.scrollWidth-grid.parentElement.clientWidth),-x+grid.parentElement.clientWidth/2-21)+'px)'}}
-function tick(){show(pos);pos++;if(pos>=pattern.length){stop();pos=0;$('tapeReadout').textContent='پایان نوار · برای اجرای دوباره پخش را بزن'}}
-function play(){stop();if(pos>=pattern.length)pos=0;const bpm=+$('tapeTempo').value;stepMs=60000/bpm;['tapeReelL','tapeReelR'].forEach(id=>$(id).classList.add('spin'));$('tapePlay').textContent='Ⅱ در حال پخش';const sewing=$('sewScene');if(sewing){sewing.style.setProperty('--sew-speed',(160/bpm)+'s');sewing.classList.add('sew-run')}tick();if(pos!==0||timer===null)timer=setInterval(tick,stepMs)}
-$('tapePlay').onclick=()=>timer?stop():play();$('tapeStop').onclick=stop;$('tapeRewind').onclick=()=>{stop();pos=0;grid.style.transform='translateX(0)';show(0);pos=0};
-$('tapeTempo').oninput=e=>{$('tapeTempoVal').textContent=e.target.value;if(timer){const was=pos;play();pos=was}};
-$('tapeAdd').onclick=()=>{if(pattern.length<48){pattern.push(Array(8).fill(0));render()}};
-$('tapeRemove').onclick=()=>{if(pattern.length>1){pattern.pop();pos=Math.min(pos,pattern.length-1);render();show(pos)}};
-$('tapeClear').onclick=()=>{stop();pattern=Array.from({length:16},()=>Array(8).fill(0));pos=0;render();show(0)};
-$('tapeDemo').onclick=()=>{stop();pattern=[[1,0,0,0,0,0,0,0],[0,0,1,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0],[0,0,0,1,0,0,0,0],[0,1,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,1,0,0,0,0,0],[1,0,0,0,0,0,0,0]];pos=0;render();play()};
-$('tapeChord').onclick=()=>{stop();pattern=[[1,0,1,0,1,0,0,0],[0,0,0,1,0,0,1,0],[1,0,0,0,1,0,0,1],[0,1,0,0,0,1,0,0],[1,0,1,0,1,0,0,0],[0,0,0,1,0,0,1,0],[1,0,0,0,1,0,0,1],[0,1,0,0,0,1,0,0]];pos=0;render();play()};
-render();show(0);
-})();
-</script>
-<script>
-(()=>{const scene=document.getElementById('sewScene'),start=document.getElementById('sewStart'),stop=document.getElementById('sewStop'),step=document.getElementById('sewStep'),speed=document.getElementById('sewSpeed'),status=document.getElementById('sewStatus'),tape=document.getElementById('sewEncodedTape'),transfer=document.getElementById('sewTransferStatus');if(!scene||!start||scene.dataset.bridgeReady)return;scene.dataset.bridgeReady='1';let running=false,ctx=null,events=[],timer=null,at=0;
-function sound(m){try{ctx??=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=220*Math.pow(2,((m||60)-57)/12);g.gain.setValueAtTime(.0001,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.045,ctx.currentTime+.012);g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.13);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+.15)}catch(e){}}
-function setSpeed(){let s=+speed.value;scene.style.setProperty('--sew-speed',(160/s).toFixed(2)+'s');document.getElementById('sewSpeedVal').textContent=s}
-function encode(list){events=(list||[]).map(e=>({...e}));tape.innerHTML='';let notes=events.filter(e=>e.t==='n');if(!notes.length){tape.innerHTML='<span>ابتدا در ماشین تایپ نت وارد کن.</span>';transfer.textContent='ورودی: نوار خالی';window.__lanbarsheyStitchedScore=[];document.dispatchEvent(new CustomEvent('stitchedscorechange',{detail:{events:[]}}));return}
-notes.forEach((e,i)=>{let col=document.createElement('div');col.className='transfer-column';col.title='گام '+(e.m%12+1)+' · نت '+(i+1);for(let row=0;row<12;row++){let hole=document.createElement('i');if(row===11-(e.m%12))hole.className='hole';col.appendChild(hole)}tape.appendChild(col)});
-window.__lanbarsheyStitchedScore=events.map(e=>({...e}));transfer.textContent=notes.length+' ستون سوراخ‌دار ساخته شد · '+events.filter(e=>e.t==='rest').length+' مکث · نوار آماده ورود به سیلندر جعبه موسیقی';document.dispatchEvent(new CustomEvent('stitchedscorechange',{detail:{events:window.__lanbarsheyStitchedScore}}))}
-function one(){scene.classList.add('sew-run');sound(events[at]?.m||60);status.textContent='دوخت گام '+(at+1)+' · فلایویل → میل‌لنگ → سوزن → ماکو → دندانه پیش‌بر';const col=tape.children[at];if(col){col.style.outline='3px solid #f2d18a';col.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}at++}
-function halt(){running=false;if(timer)clearTimeout(timer);timer=null;scene.classList.remove('sew-run');start.textContent='▶ شروع دوخت و انتقال نوار'}
-function tick(){if(!running)return;if(at>=events.length){halt();status.textContent='دوخت الگوی نت کامل شد؛ نوار سوراخ‌دار به جعبه موسیقی تحویل شد.';return}one();timer=setTimeout(tick,Math.max(180,16000/(+speed.value||100)))}
-function run(){if(!events.length){status.textContent='ابتدا نت‌ها را در ماشین تایپ وارد کن.';return}halt();at=0;running=true;start.textContent='Ⅱ توقف دوخت';tick()}
-start.addEventListener('click',()=>running?halt():run());stop.addEventListener('click',halt);step.addEventListener('click',()=>{halt();if(!events.length)return;one();if(at>=events.length)at=0;setTimeout(()=>scene.classList.remove('sew-run'),350)});speed.addEventListener('input',setSpeed);document.addEventListener('scorechange',e=>{halt();encode(e.detail?.events||[])});setSpeed();encode(window.__lanbarsheyScore||[]);window.__runSewing=run;window.__stopSewing=halt;})();
-</script>
-
-<style>
-/* Linked typewriter -> stitcher -> mechanical music box */
-#mechanical-music-box{margin:26px auto 32px;max-width:1120px;padding:18px;border:1px solid #a27a43;border-radius:18px;background:linear-gradient(145deg,#3b281b,#17110d 70%);color:#ead8b4;box-shadow:0 12px 35px #0007;font-family:Tahoma,serif}
-#mechanical-music-box .mb-title{text-align:center;color:#f3d99c;font:26px Georgia;margin:4px 0 6px}
-#mechanical-music-box .mb-sub{text-align:center;color:#c9b38c;font:12px/1.9 Tahoma;margin:0 auto 18px;max-width:760px}
-#mechanical-music-box .mb-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 16px}
-#mechanical-music-box .mb-flow span{padding:9px 5px;text-align:center;border:1px solid #86633c;border-radius:8px;background:#241910;color:#e8cb91;font:11px Tahoma}
-#mechanical-music-box .mb-stage{position:relative;min-height:370px;border:1px solid #a17b45;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 50% 32%,#70502e,#302016 57%,#17110d)}
-#mechanical-music-box .mb-lid{position:absolute;left:5%;right:5%;top:12px;height:118px;border:7px solid #d3b16f;border-radius:50% 50% 10px 10px;background:linear-gradient(150deg,#eee8d8,#a89a7d);box-shadow:inset 0 0 0 5px #6d4a27;transform:perspective(500px) rotateX(-8deg)}
-#mechanical-music-box .mb-mirror{position:absolute;inset:10px 12px 13px;border-radius:50% 50% 7px 7px;background:linear-gradient(135deg,#e9e8df,#9da3a0 45%,#e6e1d5 70%,#8e938d);border:2px solid #d4c39c;box-shadow:inset 0 0 18px #fff9}
-#mechanical-music-box .mb-mirror:after{content:"MUSIQUE · SOUVENIR";position:absolute;top:18px;left:0;right:0;text-align:center;color:#82745e;font:italic 12px Georgia;letter-spacing:3px}
-#mechanical-music-box .mb-box{position:absolute;left:5%;right:5%;bottom:0;height:245px;border:7px solid #c89d57;border-bottom:0;border-radius:48% 48% 0 0 / 22% 22% 0 0;background:linear-gradient(145deg,#6e4626,#26180f 65%);box-shadow:inset 0 7px 18px #f5d38a55}
-#mechanical-music-box .mb-disc{position:absolute;left:50%;top:25px;width:min(64vw,390px);height:min(64vw,390px);max-height:210px;max-width:390px;transform:translateX(-50%);border-radius:50%;border:7px double #d9b96e;background:repeating-conic-gradient(from 0deg,#382619 0 30deg,#b18a4c 31deg 32deg,#302015 33deg 60deg);box-shadow:0 0 0 7px #50351e,0 7px 20px #0009;overflow:hidden}
-#mechanical-music-box .mb-disc:before{content:"";position:absolute;inset:13%;border:2px solid #e5ca88;border-radius:50%;background:radial-gradient(circle,#9b7441 0 8%,#3d291b 9% 60%,#6d4a29 61% 62%,transparent 63%)}
-#mechanical-music-box .mb-disc:after{content:"";position:absolute;inset:30%;border:2px solid #d5b26c;border-radius:50%;background:radial-gradient(circle,#d8bd7d,#614324 68%,#26180e)}
-#mechanical-music-box .mb-dancer{position:absolute;z-index:4;left:50%;top:23px;width:74px;height:150px;transform:translateX(-50%);transform-origin:50% 88%;filter:drop-shadow(0 4px 3px #0009)}
-#mechanical-music-box .mb-dancer .head{position:absolute;top:0;left:29px;width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff1c9,#c38d49 65%,#68401e)}
-#mechanical-music-box .mb-dancer .body{position:absolute;top:17px;left:33px;width:9px;height:53px;border-radius:8px;background:linear-gradient(90deg,#f2dfae,#a8793b,#f6e6b7);transform:rotate(-5deg)}
-#mechanical-music-box .mb-dancer .arm{position:absolute;top:25px;left:35px;width:5px;height:43px;border-radius:5px;background:#e8d3a4;transform-origin:top;transform:rotate(48deg)}
-#mechanical-music-box .mb-dancer .arm.a2{transform:rotate(-58deg)}
-#mechanical-music-box .mb-dancer .skirt{position:absolute;top:58px;left:8px;width:58px;height:53px;background:linear-gradient(120deg,#f4e5c1,#b58b4d 55%,#f7e7c5);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);border-bottom:3px solid #f6e6bd}
-#mechanical-music-box .mb-dancer .leg{position:absolute;top:104px;left:34px;width:4px;height:35px;background:#e4c995;transform-origin:top;transform:rotate(13deg)}
-#mechanical-music-box .mb-dancer .leg.l2{transform:rotate(-20deg)}
-#mechanical-music-box .mb-turntable{position:absolute;z-index:3;left:50%;top:42px;width:100px;height:100px;border-radius:50%;transform:translateX(-50%);border:3px solid #e6c77d;background:#8e6938aa}
-#mechanical-music-box .mb-stage.running .mb-turntable{animation:mbTurn 4s linear infinite}
-#mechanical-music-box .mb-stage.running .mb-dancer{animation:mbDance 1.1s ease-in-out infinite alternate}
-#mechanical-music-box .mb-stage.running .mb-disc{animation:mbTurn 8s linear infinite}
-#mechanical-music-box .mb-stage.running .mb-lid{box-shadow:inset 0 0 0 5px #6d4a27,0 0 20px #f8e4ad55}
-@keyframes mbTurn{to{rotate:360deg}}@keyframes mbDance{from{rotate:-13deg}to{rotate:13deg}}
-#mechanical-music-box .mb-gears{position:absolute;left:4%;right:4%;bottom:8px;height:65px;display:flex;align-items:center;justify-content:center;gap:4px;z-index:5}
-#mechanical-music-box .mb-gear{width:49px;height:49px;border:7px dashed #e1bd72;border-radius:50%;background:radial-gradient(circle,#3b2718 0 24%,#d0a65c 26% 37%,#62401f 40%);box-shadow:0 2px 8px #000}
-#mechanical-music-box .mb-stage.running .mb-gear{animation:mbTurn 2s linear infinite}
-#mechanical-music-box .mb-stage.running .mb-gear:nth-child(even){animation-direction:reverse}
-#mechanical-music-box .mb-comb{position:absolute;right:7%;bottom:88px;width:130px;height:36px;border-top:7px solid #d5b36e;display:flex;gap:5px;z-index:3}
-#mechanical-music-box .mb-comb i{height:28px;width:5px;background:linear-gradient(90deg,#eee0b9,#87602f);border-radius:0 0 3px 3px}
-#mechanical-music-box .mb-cylinder{position:absolute;left:8%;bottom:96px;width:110px;height:32px;border-radius:18px;background:linear-gradient(#e2c27c,#674522 45%,#d5b16b);border:2px solid #edcf8b;z-index:3;transform:rotate(-8deg)}
-#mechanical-music-box .mb-cylinder:before{content:"";position:absolute;inset:5px 8px;background:radial-gradient(circle,#2c1a10 0 2px,transparent 3px) 0 0/13px 10px}
-#mechanical-music-box .mb-sew{margin-top:15px;padding:14px;border:1px solid #8d693e;border-radius:12px;background:linear-gradient(135deg,#352519,#1e150f)}
-#mechanical-music-box .mb-sew h3{text-align:center;color:#efcf8b;font:18px Georgia;margin:0 0 10px}
-#mechanical-music-box .mb-fabric{position:relative;min-height:100px;padding:13px 12px 18px;border:5px ridge #b58a4d;border-radius:5px;background:repeating-linear-gradient(0deg,#d9c69e,#d9c69e 2px,#c9b487 3px,#e3d4b4 5px);color:#322316;overflow:hidden}
-#mechanical-music-box .mb-stitches{display:flex;gap:8px;flex-wrap:wrap;direction:ltr;min-height:48px;align-items:center;font:italic 24px Georgia;color:#4a3020}
-#mechanical-music-box .mb-stitches span{display:inline-block;padding:2px 3px;border-bottom:2px dotted #755232}
-#mechanical-music-box .mb-needle{position:absolute;right:12px;top:0;width:3px;height:45px;background:#eee;border-radius:2px;opacity:.0}
-#mechanical-music-box .mb-sew.running .mb-needle{opacity:1;animation:mbNeedle .32s ease-in-out infinite alternate}
-@keyframes mbNeedle{to{transform:translateY(30px)}}
-#mechanical-music-box .mb-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:13px 0}
-#mechanical-music-box button{border:1px solid #c39b5a;border-radius:8px;padding:9px 13px;background:linear-gradient(#79512e,#342116);color:#f5e2b8;font:12px Tahoma;cursor:pointer}
-#mechanical-music-box button.primary{background:linear-gradient(#f2d38e,#a97737);color:#26180e;font-weight:bold}
-#mechanical-music-box .mb-status{text-align:center;color:#f0d39a;font:12px/1.9 Tahoma;min-height:25px}
-#mechanical-music-box .mb-note{color:#c7b28e;font:11px/2 Tahoma;text-align:center}
-#mechanical-music-box .mb-parts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
-#mechanical-music-box .mb-parts span{padding:8px 4px;text-align:center;border:1px solid #684b2d;border-radius:7px;color:#d9c39b;font:10px/1.7 Tahoma}
-@media(max-width:650px){#mechanical-music-box{padding:10px;margin:18px 6px}#mechanical-music-box .mb-stage{min-height:330px}#mechanical-music-box .mb-box{height:220px}#mechanical-music-box .mb-disc{width:250px;height:250px;top:25px}#mechanical-music-box .mb-parts{grid-template-columns:repeat(2,1fr)}#mechanical-music-box .mb-lid{height:100px}}
-</style>
-<section id="mechanical-music-box">
-<h2 class="mb-title">✦ جعبه موسیقی مکانیکی و بالرین ✦</h2>
-<p class="mb-sub">مرحله سوم زنجیره: نت‌هایی که با ماشین تایپ نوشته و روی پارچه دوخته شدند، به الگوی اجرایی جعبه موسیقی تبدیل می‌شوند؛ محور، چرخ‌دنده‌ها و صفحه گردان، عروسک را روبه‌روی آینه به حرکت درمی‌آورند.</p>
-<div class="mb-flow"><span>۱ · ماشین تایپ<br>ثبت نت‌ها</span><span>۲ · چرخ خیاطی<br>دوخت نماد نت روی پارچه</span><span>۳ · جعبه موسیقی<br>اجرای مکانیکی و رقص</span></div>
-<div class="mb-sew"><h3>♧ پارچه نت‌دوزی‌شده · خروجی چرخ خیاطی</h3><div class="mb-fabric"><div class="mb-needle"></div><div class="mb-stitches" id="mbStitches"><span>♩</span><span>♪</span><span>♫</span></div></div><div class="mb-note" id="mbFabricInfo">نت‌های ماشین تایپ پس از ثبت، در این نوار پارچه‌ای به شکل دوخت نمایش داده می‌شوند.</div></div>
-<div class="mb-controls"><button class="primary" id="mbPlay">▶ اجرای زنجیره از نت‌های تایپ‌شده</button><button id="mbStop">■ توقف</button><button id="mbReset">↶ بازنشانی رقص</button></div>
-<div class="mb-stage" id="mbStage">
-<svg class="heart-box-svg" viewBox="0 0 900 570" role="img" aria-label="جعبه موسیقی قلبی سفید با حاشیه طلایی، آینه درِ باز، بالرین روی صفحه گردان و مکانیزم داخلی">
-<defs>
-<linearGradient id="hbIvory" x2="0" y2="1"><stop stop-color="#fffef4"/><stop offset=".55" stop-color="#e8e2d1"/><stop offset="1" stop-color="#c9c0aa"/></linearGradient><linearGradient id="hbGold" x2="1" y2="1"><stop stop-color="#fff0a8"/><stop offset=".35" stop-color="#c99b42"/><stop offset=".7" stop-color="#8a6126"/><stop offset="1" stop-color="#f5d77e"/></linearGradient><linearGradient id="hbMirror" x2="1" y2="1"><stop stop-color="#f8f7ed"/><stop offset=".42" stop-color="#c8d0cc"/><stop offset=".72" stop-color="#f2eee1"/><stop offset="1" stop-color="#9da6a0"/></linearGradient><linearGradient id="hbGlass" x2="0" y2="1"><stop stop-color="#55422c"/><stop offset=".55" stop-color="#251d16"/><stop offset="1" stop-color="#100d0a"/></linearGradient><linearGradient id="hbDress" x2="1" y2="1"><stop stop-color="#fff8db"/><stop offset=".48" stop-color="#d9c18d"/><stop offset="1" stop-color="#927044"/></linearGradient><radialGradient id="hbSkin"><stop stop-color="#fff0d0"/><stop offset="1" stop-color="#a87843"/></radialGradient><filter id="hbShadow"><feGaussianBlur stdDeviation="10"/></filter>
-</defs>
-<ellipse cx="450" cy="520" rx="340" ry="25" fill="#000" opacity=".35" filter="url(#hbShadow)"/>
-<path d="M450 244 C390 190 178 103 228 45 C277 -13 382 25 450 101 C518 25 623 -13 672 45 C722 103 510 190 450 244Z" fill="url(#hbIvory)" stroke="url(#hbGold)" stroke-width="15"/>
-<path d="M450 222 C393 175 207 100 249 57 C287 19 386 54 450 126 C514 54 613 19 651 57 C693 100 507 175 450 222Z" fill="url(#hbMirror)" stroke="#8e8b7c" stroke-width="5"/>
-<path d="M450 208 C399 164 229 99 265 65 C301 31 389 71 450 139 C511 71 599 31 635 65 C671 99 501 164 450 208Z" fill="none" stroke="#fdf9e9" stroke-width="3" opacity=".85"/>
-<g fill="#756d5c" opacity=".75"><circle cx="282" cy="79" r="6"/><circle cx="618" cy="79" r="6"/><circle cx="450" cy="39" r="6"/><circle cx="450" cy="218" r="5"/></g><text x="450" y="94" text-anchor="middle" fill="#827a68" font-family="Georgia" font-size="17" font-style="italic" letter-spacing="3">MUSIQUE</text><path d="M394 111 Q450 80 506 111" fill="none" stroke="#8b806c" stroke-width="2"/><text x="450" y="133" text-anchor="middle" fill="#8a806c" font-family="Georgia" font-size="12">✦ SOUVENIR ✦</text>
-<path d="M330 235v25m240-25v25" stroke="url(#hbGold)" stroke-width="14" stroke-linecap="round"/>
-<path d="M450 515 C354 470 101 357 161 285 C221 213 354 267 450 330 C546 267 679 213 739 285 C799 357 546 470 450 515Z" fill="url(#hbIvory)" stroke="url(#hbGold)" stroke-width="15"/>
-<path d="M450 485 C355 442 137 350 187 298 C234 249 360 294 450 353 C540 294 666 249 713 298 C763 350 545 442 450 485Z" fill="url(#hbGlass)" stroke="#d7b45f" stroke-width="8"/>
-<path d="M201 307 Q325 262 450 363 Q575 262 699 307" fill="none" stroke="#f8e5b0" stroke-width="3" opacity=".45"/>
-<path d="M450 356 C378 313 278 283 220 307 C257 360 355 411 450 453 C545 411 643 360 680 307 C622 283 522 313 450 356Z" fill="#6c5030" stroke="#d8b86e" stroke-width="5"/>
-<g stroke="#c8a65b" stroke-width="5" fill="none" opacity=".9"><path d="M450 363L450 466"/><path d="M450 363L290 418"/><path d="M450 363L610 418"/><path d="M450 363L248 342"/><path d="M450 363L652 342"/></g>
-<path d="M450 430 C407 400 351 365 378 340 C402 317 435 342 450 361 C465 342 498 317 522 340 C549 365 493 400 450 430Z" fill="#3d2b1b" stroke="url(#hbGold)" stroke-width="9"/>
-<g class="hb-reflection" transform="translate(450 207) scale(.72 .72)" opacity=".24"><g class="hb-dancer-figure"><circle cx="0" cy="-62" r="12" fill="url(#hbSkin)"/><path d="M-2 -49 Q-7 -27 0 -8" fill="none" stroke="#eee1c4" stroke-width="8" stroke-linecap="round"/><path d="M-2 -42 Q-35 -65 -47 -88 M2 -42 Q28 -73 48 -86" fill="none" stroke="#eee1c4" stroke-width="6" stroke-linecap="round"/><path d="M-4 -10 Q-30 2 -46 34 Q0 48 46 34 Q30 2 4 -10Z" fill="url(#hbDress)" stroke="#f7e8c4" stroke-width="3"/><path d="M-7 34L-22 82 M7 34L27 78" stroke="#ead9b6" stroke-width="6" stroke-linecap="round"/></g></g>
-<g class="hb-dancer" id="hbDancer" transform="translate(450 367)"><ellipse cx="0" cy="4" rx="22" ry="7" fill="#0d0906" opacity=".45"/><g class="hb-dancer-figure"><circle cx="0" cy="-64" r="12" fill="url(#hbSkin)" stroke="#75502d" stroke-width="2"/><path d="M-9 -71 Q-7 -88 8 -78 Q17 -72 10 -59" fill="#4a2c1d"/><path d="M-2 -51 Q-8 -29 0 -10" fill="none" stroke="url(#hbDress)" stroke-width="10" stroke-linecap="round"/><path d="M-3 -45 Q-33 -66 -49 -91 M3 -45 Q27 -75 48 -91" fill="none" stroke="#e9d8b3" stroke-width="7" stroke-linecap="round"/><circle cx="-49" cy="-91" r="4" fill="#f4e4c4"/><circle cx="48" cy="-91" r="4" fill="#f4e4c4"/><path d="M-5 -12 Q-34 2 -52 39 Q0 52 52 39 Q34 2 5 -12Z" fill="url(#hbDress)" stroke="#fff0cf" stroke-width="3"/><path d="M-10 39L-25 88 M10 39L31 83" stroke="#e9d8b3" stroke-width="6" stroke-linecap="round"/><path d="M-25 88l-8 3m39-8 9 3" stroke="#b68c54" stroke-width="5" stroke-linecap="round"/></g></g>
-<path d="M285 433 Q450 510 615 433 L615 478 Q450 550 285 478Z" fill="#25180f" stroke="url(#hbGold)" stroke-width="5"/>
-<g class="mb-gears"><g class="mb-gear"><circle r="23" cx="365" cy="463" fill="#b58b48" stroke="#f1d58d" stroke-width="5" stroke-dasharray="5 4"/><circle r="8" cx="365" cy="463" fill="#382315"/></g><g class="mb-gear"><circle r="18" cx="410" cy="474" fill="#94703c" stroke="#e8c777" stroke-width="5" stroke-dasharray="5 4"/><circle r="6" cx="410" cy="474" fill="#382315"/></g><g class="mb-gear"><circle r="25" cx="490" cy="466" fill="#b58b48" stroke="#f1d58d" stroke-width="5" stroke-dasharray="5 4"/><circle r="8" cx="490" cy="466" fill="#382315"/></g><g class="mb-gear"><circle r="17" cx="535" cy="477" fill="#94703c" stroke="#e8c777" stroke-width="5" stroke-dasharray="5 4"/><circle r="6" cx="535" cy="477" fill="#382315"/></g></g>
-<g class="mb-cylinder"><rect x="305" y="493" width="115" height="23" rx="11" fill="#b58b48" stroke="#f0d18a" stroke-width="4"/><path d="M315 500h95" stroke="#49301a" stroke-width="4" stroke-dasharray="4 8"/></g><g class="mb-comb" stroke="#e8d5a4" stroke-width="4"><path d="M575 485v27m10-27v27m10-27v27m10-27v27m10-27v27m10-27v27m10-27v27"/></g>
-<text x="450" y="555" fill="#f2d89d" font-size="13" text-anchor="middle" font-family="Georgia" letter-spacing="2">HEART-SHAPED MUSICAL JEWEL BOX</text>
-</svg></div>
-<div class="mb-box">
-<div class="mb-disc"></div><div class="mb-turntable"></div>
-<div class="mb-dancer"><i class="head"></i><i class="body"></i><i class="arm"></i><i class="arm a2"></i><i class="skirt"></i><i class="leg"></i><i class="leg l2"></i></div>
-<div class="mb-cylinder"></div><div class="mb-comb"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="mb-gears"><i class="mb-gear"></i><i class="mb-gear"></i><i class="mb-gear"></i><i class="mb-gear"></i></div>
-</div></div>
-<div class="mb-parts"><span>⚙ محور فنر و چرخ‌دنده کاهنده</span><span>◉ سیلندر پین‌دار / بادامک برنامه‌ریز</span><span>♫ شانه فلزی و زبانه‌های مرتعش</span><span>✧ صفحه گردان و محور عروسک</span></div>
-<div class="mb-status" id="mbStatus">منتظر نت‌های ماشین تایپ هستم؛ ابتدا چند کلید موسیقی را در بالای صفحه بزن.</div>
-<p class="mb-note">منطق فیزیکی مدل: فنر انرژی را ذخیره می‌کند؛ چرخ‌دنده‌ها سرعت را کم و گشتاور را بیشتر می‌کنند؛ پین‌های سیلندر زبانه‌های شانه را آزاد می‌کنند تا نت تولید شود؛ محور خروجی از طریق چرخ‌دنده و صفحه گردان، بالرین را می‌چرخاند. این نمایش، شبیه‌سازی تعاملی است و اجزای داخلی واقعی یا نیروی فیزیکی ندارد.</p>
-</section>
-<script>
-(()=>{const $=id=>document.getElementById(id);const stage=$('mbStage'),sew=$('mechanical-music-box'),stitches=$('mbStitches'),status=$('mbStatus');if(!stage||stage.dataset.ready)return;stage.dataset.ready='1';let events=[],timer=null,index=0,playing=false;
-const notes=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];const glyph=['𝅘𝅥','𝅘𝅥𝅮','♩','♪','♫','♬','♭','♮'];
-function setEvents(list){events=(list||[]).map(e=>({...e}));const ns=events.filter(e=>e.t==='n');stitches.innerHTML='';ns.slice(0,36).forEach(e=>{const s=document.createElement('span');s.textContent=glyph[Math.abs(e.m||0)%glyph.length];s.title=notes[(e.m||0)%12];stitches.appendChild(s)});$('mbFabricInfo').textContent=ns.length+' نت از ماشین تایپ دریافت شد · '+events.filter(e=>e.t==='rest').length+' مکث · '+events.filter(e=>e.t==='bar').length+' میزان';status.textContent=ns.length?'الگوی نت دریافت شد؛ آماده انتقال به جعبه موسیقی.':'هنوز نتی تایپ نشده است.'}
-function stop(){if(timer){clearTimeout(timer);timer=null}playing=false;stage.classList.remove('running');$('mbPlay').textContent='▶ اجرای زنجیره از نت‌های تایپ‌شده';$('musical-sewing-machine')?.classList.remove('sew-run')}
-function tick(){if(!playing)return;if(index>=events.length){stop();status.textContent='اجرای الگوی نت پایان یافت؛ بالرین متوقف شد.';return}const e=events[index++];const active=e.t==='n';status.textContent=active?'سیلندر پین‌دار: '+notes[e.m%12]+' · شانه مرتعش · صفحه گردان در حال چرخش':'مکث / جداکننده میزان · مکانیزم زمان‌بندی در حرکت';const fabric=$('mbStitches');if(active&&fabric.children.length){const s=fabric.children[Math.min(index-1,fabric.children.length-1)];if(s){s.style.background='#b38a4c';s.style.color='#fff4d4'}}const sewing=$('musical-sewing-machine');if(sewing){sewing.classList.add('sew-run');setTimeout(()=>sewing.classList.remove('sew-run'),260)}timer=setTimeout(tick,e.t==='rest'?520:e.t==='bar'?180:Math.max(180,60000/(+$('tempo')?.value||110)))}
-function play(){if(!events.length){status.textContent='اول در ماشین تایپ چند نت وارد کن؛ این جعبه از همان نت‌ها استفاده می‌کند.';return}stop();index=0;playing=true;stage.classList.add('running');$('mbPlay').textContent='Ⅱ در حال اجرای نت‌ها';status.textContent='فنر محرک → چرخ‌دنده کاهنده → سیلندر پین‌دار → شانه نت‌ساز → محور صفحه گردان';tick()}
-document.addEventListener('stitchedscorechange',e=>{stop();setEvents(e.detail?.events||[])});window.__playMusicBox=play;setEvents(window.__lanbarsheyStitchedScore||[]);
-$('mbPlay').addEventListener('click',play);$('mbStop').addEventListener('click',()=>{stop();status.textContent='مکانیزم متوقف شد.'});$('mbReset').addEventListener('click',()=>{stop();index=0;[...stitches.children].forEach(s=>{s.style.background='';s.style.color='' });status.textContent='صفحه گردان و بالرین به حالت آغازین برگشتند.'});
-setEvents(window.__lanbarsheyStitchedScore||[]);
-})();
-</script>
-<style>
-/* Vintage motion-picture camera + cinema, appended without changing earlier machines */
-#vintage-film-camera,#classic-cinema{max-width:1120px;margin:28px auto;padding:18px;border:1px solid #9b7948;border-radius:18px;background:linear-gradient(145deg,#352419,#17110d);color:#ead8b5;box-shadow:0 12px 34px #0007;font-family:Tahoma,serif}
-#vintage-film-camera .vf-title,#classic-cinema .vf-title{text-align:center;color:#f0d49a;font:26px Georgia;margin:4px 0 7px}
-#vintage-film-camera .vf-sub,#classic-cinema .vf-sub{text-align:center;color:#cbb895;font:12px/2 Tahoma;max-width:820px;margin:0 auto 16px}
-#vintage-film-camera .vf-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
-#vintage-film-camera .vf-flow span{border:1px solid #82613b;background:#21170f;border-radius:8px;text-align:center;padding:9px 4px;color:#e6c98f;font:11px/1.8 Tahoma}
-#vintage-film-camera .vf-machine{position:relative;min-height:420px;border:1px solid #a27d49;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 52% 48%,#70502f,#291c13 60%,#120d09)}
-#vintage-film-camera .vf-body{position:absolute;left:24%;top:112px;width:53%;height:235px;border:5px ridge #8c673d;border-radius:12px;background:linear-gradient(100deg,#24160f,#59371f 28%,#1d140f 70%,#090807);box-shadow:inset 0 0 25px #000,0 8px 16px #0009}
-#vintage-film-camera .vf-badge{position:absolute;left:8%;top:34%;width:26%;height:42px;border:2px solid #d0a856;border-radius:4px;background:linear-gradient(#8e6a31,#352313);color:#f3d99e;text-align:center;padding-top:10px;font:italic 13px Georgia;letter-spacing:2px}
-#vintage-film-camera .vf-lens{position:absolute;right:-24%;top:29%;width:28%;height:80px;border:8px ridge #b6a17a;border-radius:8px 24px 24px 8px;background:linear-gradient(90deg,#17120e,#5c5546,#12100d);box-shadow:0 0 18px #d7c08a55}
-#vintage-film-camera .vf-lens:after{content:"";position:absolute;right:7px;top:8px;width:52px;height:48px;border-radius:50%;border:4px solid #c7b68d;background:radial-gradient(circle at 40% 40%,#c8d3c8,#273c3d 38%,#080d10 72%)}
-#vintage-film-camera .vf-reel{position:absolute;width:128px;height:128px;border:8px ridge #c8c5b7;border-radius:50%;background:radial-gradient(circle,#9b927e 0 12%,#33302a 13% 22%,transparent 23%),repeating-conic-gradient(#b9b5a8 0 9deg,#4a4741 10deg 20deg);box-shadow:0 4px 12px #0009;z-index:3}
-#vintage-film-camera .vf-reel:before{content:"";position:absolute;inset:15px;border-radius:50%;border:5px solid #d1c9b7;background:radial-gradient(circle,#4d4332 0 17%,#c3b99f 18% 22%,transparent 23%)}
-#vintage-film-camera .vf-reel:after{content:"";position:absolute;inset:27px;border-radius:50%;background:repeating-conic-gradient(transparent 0 48deg,#d7d0be 49deg 58deg,transparent 59deg 60deg)}
-#vintage-film-camera .vf-reel.top{left:31%;top:12px}
-#vintage-film-camera .vf-reel.bottom{right:10%;bottom:12px;width:112px;height:112px}
-#vintage-film-camera .vf-machine.running .vf-reel{animation:vfSpin 2.8s linear infinite}
-#vintage-film-camera .vf-machine.running .vf-reel.bottom{animation-direction:reverse}
-@keyframes vfSpin{to{transform:rotate(360deg)}}
-#vintage-film-camera .vf-gate{position:absolute;left:39%;top:38%;width:25%;height:80px;border:6px double #c9b27d;background:linear-gradient(90deg,#090909,#4b4235,#090909);box-shadow:0 0 20px #edcf8b55;z-index:4}
-#vintage-film-camera .vf-gate:after{content:"FRAME GATE";position:absolute;inset:0;display:grid;place-items:center;color:#e8d6ad;font:10px Georgia;letter-spacing:2px}
-#vintage-film-camera .vf-shutter{position:absolute;left:47%;top:39%;width:62px;height:62px;border:5px solid #c8ae73;border-radius:50%;background:conic-gradient(#c8ae73 0 125deg,#2b2015 126deg 235deg,#c8ae73 236deg 360deg);z-index:5}
-#vintage-film-camera .vf-machine.running .vf-shutter{animation:vfSpin .35s linear infinite}
-#vintage-film-camera .vf-path{position:absolute;left:34%;top:45%;width:40%;height:5px;background:repeating-linear-gradient(90deg,#d8bd7e 0 8px,#302114 8px 13px);transform:rotate(12deg);z-index:2;box-shadow:0 0 6px #000}
-#vintage-film-camera .vf-crank{position:absolute;left:7%;bottom:25px;width:74px;height:74px;border:8px ridge #b9a77e;border-radius:50%;background:repeating-conic-gradient(#b9a77e 0 10deg,#282019 11deg 45deg);z-index:5}
-#vintage-film-camera .vf-crank:after{content:"";position:absolute;left:30px;top:-18px;width:8px;height:38px;background:#cbb17a;transform:rotate(35deg);transform-origin:bottom}
-#vintage-film-camera .vf-canvas-wrap{position:absolute;left:50%;bottom:17px;transform:translateX(-50%);width:190px;height:110px;border:5px ridge #b99a5c;background:#0c0906;z-index:6;box-shadow:0 0 14px #000}
-#vintage-film-camera canvas{display:block;width:100%;height:100%;object-fit:cover}
-#vintage-film-camera .vf-controls,#classic-cinema .vf-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:13px 0}
-#vintage-film-camera button,#classic-cinema button{border:1px solid #c39b5a;border-radius:8px;padding:9px 13px;background:linear-gradient(#79512e,#342116);color:#f5e2b8;font:12px Tahoma;cursor:pointer}
-#vintage-film-camera button.primary,#classic-cinema button.primary{background:linear-gradient(#f2d38e,#a97737);color:#26180e;font-weight:bold}
-#vintage-film-camera .vf-status,#classic-cinema .vf-status{text-align:center;color:#f0d39a;font:12px/2 Tahoma;min-height:24px}
-#vintage-film-camera .vf-filmstrip{display:flex;gap:5px;overflow-x:auto;padding:9px;background:#090807;border:1px solid #6c4e2e;border-radius:8px;min-height:78px}
-#vintage-film-camera .vf-frame{flex:0 0 74px;height:52px;border:3px solid #d4c08c;background:#2b1e13;position:relative}
-#vintage-film-camera .vf-frame:before,#vintage-film-camera .vf-frame:after{content:"";position:absolute;left:0;right:0;height:5px;background:repeating-linear-gradient(90deg,#e9d9ae 0 5px,transparent 5px 11px)}
-#vintage-film-camera .vf-frame:before{top:-7px}#vintage-film-camera .vf-frame:after{bottom:-7px}
-#vintage-film-camera .vf-frame img{width:100%;height:100%;object-fit:cover;filter:sepia(.45)}
-#vintage-film-camera .vf-parts{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
-#vintage-film-camera .vf-parts span{padding:8px 4px;text-align:center;border:1px solid #684b2d;border-radius:7px;color:#d9c39b;font:10px/1.7 Tahoma}
-#classic-cinema .vf-theatre{position:relative;padding:24px 18px 30px;border:8px ridge #8e6235;border-radius:16px;background:radial-gradient(ellipse at center,#57391f,#17100b 72%);box-shadow:inset 0 0 30px #000}
-#classic-cinema .vf-curtain{position:absolute;top:0;bottom:0;width:13%;background:repeating-linear-gradient(90deg,#5b1715,#8d2920 12px,#3c100f 22px);z-index:3;box-shadow:0 0 15px #000}
-#classic-cinema .vf-curtain.left{left:0;border-radius:8px 0 0 8px}#classic-cinema .vf-curtain.right{right:0;border-radius:0 8px 8px 0}
-#classic-cinema .vf-screen{position:relative;margin:10px auto;width:74%;aspect-ratio:16/9;border:10px ridge #d0ad6a;background:#090806;box-shadow:0 0 25px #f1d59a55;overflow:hidden}
-#classic-cinema canvas{width:100%;height:100%;display:block;filter:sepia(.42) contrast(1.12)}
-#classic-cinema .vf-screen:after{content:"";pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,#fff0 0 3px,#fff1 4px 5px);mix-blend-mode:screen}
-#classic-cinema .vf-beam{position:absolute;right:0;top:44%;width:26%;height:30%;background:linear-gradient(90deg,#f4e5bd44,transparent);clip-path:polygon(0 35%,100% 0,100% 100%,0 65%);filter:blur(5px)}
-#classic-cinema .vf-projector{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px auto 0;color:#d6bd8b;font:11px Tahoma}
-#classic-cinema .vf-projector .reel-small{width:43px;height:43px;border:5px ridge #c8b78f;border-radius:50%;background:repeating-conic-gradient(#b9b5a8 0 12deg,#302a23 13deg 30deg)}
-#classic-cinema .vf-projector.running .reel-small{animation:vfSpin 1.4s linear infinite}
-#classic-cinema .vf-meta{text-align:center;color:#cdb991;font:11px/2 Tahoma;margin-top:10px}
-#classic-cinema .vf-empty{display:grid;place-items:center;height:100%;color:#bda77f;font:italic 18px Georgia;text-align:center;padding:12px}
-@media(max-width:650px){#vintage-film-camera,#classic-cinema{padding:10px;margin:18px 6px}#vintage-film-camera .vf-machine{min-height:380px}#vintage-film-camera .vf-reel{width:92px;height:92px}#vintage-film-camera .vf-reel.bottom{width:84px;height:84px}#vintage-film-camera .vf-body{left:20%;width:60%}#vintage-film-camera .vf-gate{left:35%;width:31%}#vintage-film-camera .vf-parts{grid-template-columns:repeat(2,1fr)}#classic-cinema .vf-screen{width:80%;border-width:6px}#classic-cinema .vf-theatre{padding:15px 6px}}
-</style>
-<section id="vintage-film-camera">
-<h2 class="vf-title">✦ دوربین سینمایی کلاسیک · ثبت رقص بالرین ✦</h2>
-<p class="vf-sub">بخش چهارم زنجیره مکانیکی: دوربین از رقص بالرین و تصویر آینه‌ای او یک نوار تصویری فریم‌به‌فریم می‌سازد. فیلم در هر نوردهی ثابت می‌ماند؛ چنگک فقط هنگام بسته بودن شاتر آن را یک فریم جلو می‌برد.</p>
-<div class="vf-flow"><span>۱ · بالرین روی صفحه گردان<br>حرکت و انعکاس در آینه</span><span>۲ · دوربین فیلم‌برداری<br>لنز، شاتر و چنگک فریم</span><span>۳ · حلقه فیلم ثبت‌شده<br>آماده نمایش در سینما</span></div>
-<div class="vf-machine" id="vfCameraMachine">
-<div class="vf-reel top"></div><div class="vf-reel bottom"></div>
-<div class="vf-body"><div class="vf-badge">CINÉ · 1920</div><div class="vf-lens"></div></div>
-<div class="vf-path"></div><div class="vf-gate"></div><div class="vf-shutter"></div><div class="vf-crank"></div>
-<div class="vf-canvas-wrap"><canvas id="vfView" width="380" height="220"></canvas></div>
-</div>
-<div class="vf-controls"><button class="primary" id="vfRecord">● ضبط رقص بالرین روی فیلم</button><button id="vfStop">■ توقف دوربین</button><button id="vfClear">↶ پاک‌کردن حلقه فیلم</button></div>
-<div class="vf-status" id="vfStatus">دوربین آماده است؛ ضبط، یک حلقه کوتاه از رقص و انعکاس آینه‌ای می‌سازد.</div>
-<div class="vf-filmstrip" id="vfFilmstrip"><span style="color:#bda77f;font:11px Tahoma">حلقه فیلم هنوز خالی است.</span></div>
-<div class="vf-parts"><span>◉ قرقره تغذیه فیلم خام</span><span>⚙ چرخ‌دنده و چنگک حرکت فریم</span><span>◐ شاتر گردان هماهنگ</span><span>✧ لنز، قاب نوردهی و قرقره جمع‌کننده</span></div>
-<p class="vf-sub">این نسخه ضبط تصویری را درون مرورگر شبیه‌سازی می‌کند: فریم‌های گرافیکی از بالرین و انعکاس آینه‌ای ساخته می‌شوند و به نوار فیلم مجازی تبدیل می‌شوند؛ دوربین فیزیکی یا وب‌کم فعال نمی‌شود.</p>
-</section>
-<section id="classic-cinema">
-<h2 class="vf-title">✦ سالن سینمای قدیمی · نمایش فیلم بالرین ✦</h2>
-<p class="vf-sub">بخش پنجم: حلقه ثبت‌شده از دوربین به پروژکتور منتقل می‌شود. قرقره‌ها می‌چرخند، شاتر نور را چشمک‌زن قطع‌و‌وصل می‌کند و فریم‌ها روی پرده کلاسیک ظاهر می‌شوند.</p>
-<div class="vf-theatre">
-<div class="vf-curtain left"></div><div class="vf-curtain right"></div>
-<div class="vf-screen" id="vfCinemaScreen"><div class="vf-empty" id="vfCinemaEmpty">برای نمایش، ابتدا در بخش دوربین از رقص بالرین فیلم بگیر.</div><canvas id="vfProjection" width="960" height="540" hidden></canvas></div>
-<div class="vf-beam"></div>
-<div class="vf-projector" id="vfProjector"><span class="reel-small"></span><span>پروژکتور 16mm · عدسی نمایش</span><span class="reel-small"></span></div>
-</div>
-<div class="vf-controls"><button class="primary" id="vfPlayFilm">▶ پخش فیلم روی پرده</button><button id="vfPauseFilm">Ⅱ مکث</button><button id="vfRewindFilm">↶ برگشت به ابتدا</button></div>
-<div class="vf-status" id="vfCinemaStatus">منتظر حلقه فیلم دوربین هستم.</div>
-<div class="vf-meta">THE GRAND BALLERINA · A MECHANICAL DREAM · 1920</div>
-</section>
-<script>
-(()=>{const $=id=>document.getElementById(id);const camera=$('vfCameraMachine'),view=$('vfView'),vctx=view.getContext('2d'),projection=$('vfProjection'),pctx=projection.getContext('2d'),strip=$('vfFilmstrip');if(!camera||camera.dataset.ready)return;camera.dataset.ready='1';
-let frames=[],recordTimer=null,playTimer=null,frameIndex=0,recording=false,playing=false;
-function dancer(ctx,x,y,s,angle,mirror=false){ctx.save();ctx.translate(x,y);ctx.scale(mirror?-s:s,s);ctx.rotate(angle);ctx.strokeStyle='#e7d5ad';ctx.fillStyle='#e4d2a5';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,-42,7,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.moveTo(0,-34);ctx.lineTo(0,3);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-25);ctx.lineTo(-19,-42);ctx.moveTo(0,-25);ctx.lineTo(19,-45);ctx.stroke();ctx.fillStyle='#b58b50';ctx.beginPath();ctx.moveTo(-5,-3);ctx.lineTo(-23,28);ctx.lineTo(23,28);ctx.lineTo(5,-3);ctx.closePath();ctx.fill();ctx.strokeStyle='#e8d8b5';ctx.beginPath();ctx.moveTo(-2,25);ctx.lineTo(-14,54);ctx.moveTo(3,25);ctx.lineTo(18,48);ctx.stroke();ctx.restore()}
-function drawFrame(ctx,w,h,n){ctx.clearRect(0,0,w,h);const t=n/16,turn=Math.sin(t*Math.PI*2)*.28;ctx.fillStyle='#17110c';ctx.fillRect(0,0,w,h);const bg=ctx.createRadialGradient(w*.5,h*.45,8,w*.5,h*.5,w*.72);bg.addColorStop(0,'#b6a57e');bg.addColorStop(.55,'#665037');bg.addColorStop(1,'#140e09');ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
-function heart(x,y,s){ctx.beginPath();ctx.moveTo(x,y+s*.42);ctx.bezierCurveTo(x-s*.95,y-s*.1,x-s*.72,y-s*.82,x,y-s*.25);ctx.bezierCurveTo(x+s*.72,y-s*.82,x+s*.95,y-s*.1,x,y+s*.42);ctx.closePath()}
-function figure(x,y,s,a,alpha){ctx.save();ctx.translate(x,y);ctx.rotate(a);ctx.globalAlpha=alpha;ctx.fillStyle='#e8d9b6';ctx.strokeStyle='#f2e4c5';ctx.lineWidth=4*s;ctx.beginPath();ctx.arc(0,-43*s,6*s,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.moveTo(0,-36*s);ctx.lineTo(0,-4*s);ctx.moveTo(0,-29*s);ctx.lineTo(-20*s,-52*s);ctx.moveTo(0,-29*s);ctx.lineTo(19*s,-55*s);ctx.stroke();ctx.fillStyle='#c6a56d';ctx.beginPath();ctx.moveTo(-4*s,-7*s);ctx.lineTo(-26*s,25*s);ctx.lineTo(26*s,25*s);ctx.lineTo(4*s,-7*s);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(-5*s,24*s);ctx.lineTo(-16*s,53*s);ctx.moveTo(5*s,24*s);ctx.lineTo(18*s,49*s);ctx.stroke();ctx.restore()}
-ctx.fillStyle='#f3eddd';heart(w*.5,h*.28,w*.3);ctx.fill();ctx.strokeStyle='#d6b66e';ctx.lineWidth=8;ctx.stroke();ctx.fillStyle='#c3c7bd';heart(w*.5,h*.28,w*.265);ctx.fill();ctx.strokeStyle='#f7f1df';ctx.lineWidth=3;ctx.stroke();figure(w*.5,h*.34,.62,-turn,.27);
-ctx.fillStyle='#eee5d0';heart(w*.5,h*.78,w*.42);ctx.fill();ctx.strokeStyle='#cda95e';ctx.lineWidth=9;ctx.stroke();ctx.fillStyle='#302316';heart(w*.5,h*.75,w*.37);ctx.fill();ctx.strokeStyle='#d8b76e';ctx.lineWidth=5;ctx.stroke();ctx.beginPath();ctx.ellipse(w*.5,h*.76,w*.17,h*.07,0,0,Math.PI*2);ctx.stroke();figure(w*.5,h*.73,.9,turn,1);
-ctx.strokeStyle='#e6c77d';ctx.lineWidth=2;for(let i=0;i<5;i++){ctx.beginPath();ctx.moveTo(w*.5,h*.76);ctx.lineTo(w*(.2+i*.15),h*.88);ctx.stroke()}
-ctx.fillStyle='#e8d5ad';ctx.font='italic '+Math.max(10,w*.026)+'px Georgia';ctx.textAlign='center';ctx.fillText('HEART MUSIC BOX · BALLERINA',w*.5,h*.965);ctx.fillStyle='rgba(10,6,3,.18)';ctx.fillRect(0,0,w,h);ctx.strokeStyle='rgba(244,221,173,.35)';ctx.lineWidth=2;ctx.strokeRect(5,5,w-10,h-10)}
-function preview(n){drawFrame(vctx,view.width,view.height,n)}
-function renderStrip(){strip.innerHTML='';if(!frames.length){strip.innerHTML='<span style="color:#bda77f;font:11px Tahoma">حلقه فیلم هنوز خالی است.</span>';return}frames.forEach((src,i)=>{const box=document.createElement('div');box.className='vf-frame';const img=document.createElement('img');img.src=src;img.alt='فریم '+(i+1);box.appendChild(img);strip.appendChild(box)})}
-let autoCinemaAfterRecord=false;function makeFilm(){frames=[];for(let i=0;i<16;i++){const c=document.createElement('canvas');c.width=480;c.height=270;drawFrame(c.getContext('2d'),c.width,c.height,i);frames.push(c.toDataURL('image/jpeg',.78))}renderStrip();$('vfStatus').textContent='۱۶ فریم ثبت شد؛ بالرین و انعکاس او روی حلقه فیلم مجازی قرار گرفتند. اکنون فیلم را در سالن سینما پخش کن.';$('vfCinemaStatus').textContent='حلقه آماده نمایش است · ۱۶ فریم · تصویر کلاسیک تک‌رنگِ گرم.';$('vfCinemaEmpty').hidden=true;projection.hidden=false;showProjection(0);if(autoCinemaAfterRecord){autoCinemaAfterRecord=false;setTimeout(play,450)}}
-function showProjection(i){if(!frames.length)return;const img=new Image();img.onload=()=>{pctx.clearRect(0,0,projection.width,projection.height);pctx.drawImage(img,0,0,projection.width,projection.height)};img.src=frames[i%frames.length];frameIndex=i%frames.length}
-function stopRecord(){recording=false;if(recordTimer){clearInterval(recordTimer);recordTimer=null}camera.classList.remove('running');$('vfRecord').textContent='● ضبط رقص بالرین روی فیلم'}
-function record(){stopRecord();stopPlay();recording=true;camera.classList.add('running');$('vfRecord').textContent='● در حال نوردهی فریم‌ها';$('vfStatus').textContent='شاتر باز و بسته می‌شود؛ چنگک فیلم را فریم‌به‌فریم جلو می‌برد...';let n=0;preview(0);recordTimer=setInterval(()=>{preview(n++);if(n>=16){stopRecord();makeFilm()}},180)}
-function stopPlay(){playing=false;if(playTimer){clearInterval(playTimer);playTimer=null} $('vfProjector').classList.remove('running')}
-function play(){if(!frames.length){$('vfCinemaStatus').textContent='ابتدا در دوربین فیلم بگیر؛ حلقه خالی است.';return}stopPlay();playing=true;$('vfProjector').classList.add('running');$('vfCinemaStatus').textContent='پروژکتور روشن است · شاتر و چنگک هماهنگ · فریم '+(frameIndex+1)+' از '+frames.length;showProjection(frameIndex);playTimer=setInterval(()=>{frameIndex=(frameIndex+1)%frames.length;showProjection(frameIndex);$('vfCinemaStatus').textContent='در حال نمایش · فریم '+(frameIndex+1)+' از '+frames.length+' · قرقره‌ها در حرکت';},115)}
-$('runWholeFactory').addEventListener('click',()=>{const score=window.__lanbarsheyScore||[];if(!score.some(e=>e.t==='n')){$('vfCinemaStatus').textContent='ابتدا در ماشین تایپ چند نت وارد کن؛ زنجیره بدون نت اجرا نمی‌شود.';document.getElementById('keys')?.scrollIntoView({behavior:'smooth'});return}window.__runSewing?.();window.__playMusicBox?.();autoCinemaAfterRecord=true;$('vfStatus').textContent='زنجیره کامل آغاز شد: دوخت نوار → اجرای جعبه قلبی → ثبت فریم بالرین و آینه → نمایش سینمایی.';setTimeout(()=>record(),2200)});$('vfRecord').addEventListener('click',record);$('vfStop').addEventListener('click',()=>{stopRecord();$('vfStatus').textContent='دوربین متوقف شد.'});$('vfClear').addEventListener('click',()=>{stopRecord();stopPlay();frames=[];renderStrip();$('vfCinemaEmpty').hidden=false;projection.hidden=true;$('vfStatus').textContent='حلقه فیلم پاک شد.';$('vfCinemaStatus').textContent='منتظر حلقه فیلم دوربین هستم.';preview(0)});
-$('vfPlayFilm').addEventListener('click',play);$('vfPauseFilm').addEventListener('click',()=>{stopPlay();$('vfCinemaStatus').textContent='نمایش مکث شد · فریم فعلی حفظ شد.'});$('vfRewindFilm').addEventListener('click',()=>{stopPlay();frameIndex=0;if(frames.length)showProjection(0);$('vfCinemaStatus').textContent=frames.length?'فیلم به فریم نخست برگشت.':'حلقه فیلمی برای برگشت وجود ندارد.'});
-preview(0);
-})();
-</script><style>
-#mechanical-music-box .mb-stage{min-height:0;padding:0;background:radial-gradient(ellipse at 50% 40%,#e7dfc9 0,#b9aa8d 36%,#493523 72%,#1a120c 100%);border:7px ridge #c8a65e;box-shadow:inset 0 0 40px #100b07}
-#mechanical-music-box .heart-box-svg{width:100%;height:auto;max-height:650px;display:block}
-#mechanical-music-box .mb-stage.running .hb-dancer{animation:heartBallerina 1.15s ease-in-out infinite alternate}
-#mechanical-music-box .mb-stage.running .hb-reflection{animation:heartReflection 1.15s ease-in-out infinite alternate}
-#mechanical-music-box .mb-stage.running .mb-gear{animation:heartGear 1.6s linear infinite}
-#mechanical-music-box .mb-stage.running .mb-gear:nth-child(even){animation-direction:reverse}
-#mechanical-music-box .mb-stage.running .mb-cylinder{animation:heartCylinder 1.1s linear infinite}
-#mechanical-music-box .mb-stage.running .mb-comb{animation:heartComb .25s ease-in-out infinite alternate}
-@keyframes heartBallerina{from{transform:translate(450px,367px) rotate(-14deg)}to{transform:translate(450px,367px) rotate(14deg)}}
-@keyframes heartReflection{from{transform:translate(450px,207px) scale(.72,-.72) rotate(14deg)}to{transform:translate(450px,207px) scale(.72,-.72) rotate(-14deg)}}
-@keyframes heartGear{to{transform:rotate(360deg)}}@keyframes heartCylinder{to{transform:translateX(12px)}}@keyframes heartComb{to{opacity:.55;transform:translateY(3px)}}
-#mechanical-music-box .mb-stage.running{box-shadow:inset 0 0 45px #f7dfa455,0 0 20px #d7b56c55}
-.mechanical-transfer{margin:15px 0;padding:14px;border:1px solid #9d7948;border-radius:12px;background:linear-gradient(145deg,#302116,#17100b);color:#ead8b4}
-.mechanical-transfer h3{text-align:center;color:#efcf8b;font:18px Georgia;margin:0 0 8px}
-.mechanical-transfer p,.transfer-readout{font:11px/1.9 Tahoma;color:#c9b895;text-align:center}
-.transfer-reel{overflow-x:auto;padding:12px;background:#090806;border:4px ridge #b38d50;border-radius:7px;min-height:94px}
-.transfer-track{display:flex;gap:6px;min-width:max-content;align-items:center;direction:ltr}
-.transfer-column{width:24px;height:66px;background:linear-gradient(90deg,#d6c59e,#f4e9c9,#b8a77f);border:1px solid #7d643e;border-radius:3px;display:grid;grid-template-rows:repeat(12,1fr);padding:3px;gap:1px;position:relative}
-.transfer-column:before,.transfer-column:after{content:"";position:absolute;left:8px;width:6px;height:4px;background:#2b1c10;border-radius:50%}
-.transfer-column:before{top:2px}.transfer-column:after{bottom:2px}
-.transfer-column i{width:5px;height:4px;border-radius:50%;background:#40301d;opacity:.12;justify-self:center}
-.transfer-column i.hole{opacity:1;background:#100b07;box-shadow:inset 0 1px 2px #000}
-@media(max-width:650px){#mechanical-music-box .heart-box-svg{min-height:300px}.mechanical-transfer{padding:9px}}
-</style><style>
-#mechanical-music-box .hb-dancer,#mechanical-music-box .hb-reflection{transform-box:fill-box;transform-origin:center}
-#mechanical-music-box .mb-gear{transform-box:fill-box;transform-origin:center}
-#mechanical-music-box .mb-stage.running .hb-dancer{animation:heartBallerina 1.15s ease-in-out infinite alternate}
-#mechanical-music-box .mb-stage.running .hb-reflection{animation:heartReflection 1.15s ease-in-out infinite alternate}
-@keyframes heartBallerina{from{rotate:-14deg}to{rotate:14deg}}
-@keyframes heartReflection{from{rotate:14deg}to{rotate:-14deg}}
-</style></body></html>
+'use strict';
+const T=THREE,$=i=>document.getElementById(i),LET='CDEFGAB',SC=[0,2,4,5,7,9,11],PI=Math.PI;
+const R1=[0,0,4,4,5,5,4,3,3,2,2,1,1,0],R2=[2,2,3,4,4,3,2,1,0,0,1,2,2,1,1];
+const S={notes:[],tape:[],rev:0,dirty:1,sel:null,yaw:0,
+tw:{spring:.5,pitch:.5,ink:.8,paper:0,auto:0,ai:0},
+sew:{on:0,pos:0,len:.5,tens:.5,spd:1,fab:0},
+mb:{comb:.5,spd:1,on:0,pos:0,wind:1,roll:0,hit:[0,0,0,0,0,0,0]},
+cam:{shutter:180,gate:.4,stock:0,on:0,spin:0,fr:[],fi:0,cnt:0,ft:0,n:0,live:null},
+pj:{lamp:1,lens:.35,loop:.6,sync:.2,tilt:.4,on:0,t:0,spin:0}};
+S.cam.live=Object.assign(document.createElement('canvas'),{width:320,height:180});
+const INST={tw:[],sew:[],mb:[],cam:[],pj:[]};
+const mbNotes=()=>S.mb.roll==1?R1:S.mb.roll==2?R2:S.tape.filter(t=>t.ok).map(t=>t.p);
+/* ---------- audio ---------- */
+let AC;const au=()=>{try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();AC.resume&&AC.resume()}catch(e){}return AC};
+function ping(p,g=1,c=0){const a=au();if(!a)return;const o=a.createOscillator(),v=a.createGain(),t=a.currentTime;o.type='triangle';o.frequency.value=523.25*Math.pow(2,SC[p]/12);o.detune.value=c;v.gain.setValueAtTime(.0001,t);v.gain.exponentialRampToValueAtTime(.2*g,t+.01);v.gain.exponentialRampToValueAtTime(.0001,t+.9);o.connect(v);v.connect(a.destination);o.start(t);o.stop(t+1)}
+function click(f=140){const a=au();if(!a)return;const o=a.createOscillator(),v=a.createGain(),t=a.currentTime;o.type='square';o.frequency.value=f;v.gain.setValueAtTime(.07,t);v.gain.exponentialRampToValueAtTime(.0001,t+.05);o.connect(v);v.connect(a.destination);o.start(t);o.stop(t+.06)}
+/* ---------- helpers ---------- */
+const MT=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:c,roughness:.55,metalness:.25},o));
+function bx(p,w,h,d,c,x,y,z,part){const m=new T.Mesh(new T.BoxGeometry(w,h,d),MT(c));m.position.set(x,y,z);m.userData.part=part;m.castShadow=true;p.add(m);return m}
+function cy(p,r,h,c,x,y,z,ax,part,seg=28,o){const g=new T.Group();g.position.set(x,y,z);const m=new T.Mesh(new T.CylinderGeometry(r,r,h,seg),MT(c,o));m.userData.part=part;m.castShadow=true;if(ax=='x')m.rotation.z=PI/2;else if(ax=='z')m.rotation.x=PI/2;g.add(m);p.add(g);return g}
+function wedge(p,r,x,y,z,part){const g=new T.Group();g.position.set(x,y,z);const m=new T.Mesh(new T.CylinderGeometry(r,r,.03,32),MT(0xd9d9d9));m.userData.part=part;m.rotation.z=PI/2;g.add(m);p.add(g);const ring=new T.Mesh(new T.CylinderGeometry(r,r,.012,32),MT(0x222));ring.rotation.z=PI/2;ring.position.x=-.012;g.add(ring);
+ return{g,set(d){m.geometry.dispose();m.geometry=new T.CylinderGeometry(r,r,.03,32,1,false,0,d*PI/180)}}}
+/* ---------- 1. typewriter ---------- */
+const PAP=['#f3ead2','#d9c597','#cfe0ee'];
+function mkTW(){const g=new T.Group(),o={g,rev:-1,p:[0,0,0,0,0,0,0],bars:[],keys:[],cx:0};
+bx(g,.95,.14,.6,0x23232a,0,.07,0,'body');bx(g,.85,.3,.2,0x2d2d35,0,.28,-.22,'body');bx(g,.04,.5,.5,0x2d2d35,-.46,.3,-.05,'body');bx(g,.04,.5,.5,0x2d2d35,.46,.3,-.05,'body');
+bx(g,.5,.03,.07,0xe8e0cc,0,.16,.3,'keys');
+for(let i=0;i<7;i++){const x=(i-3)*.1;o.keys.push(cy(g,.04,.05,0xe8e0cc,x,.19,.2,'y','keys'));const r=bx(g,.008,.008,.24,0xaaa,x,.27,.1,'keys');r.rotation.x=.5;
+ const b=new T.Group();b.position.set(x,.34,0);bx(b,.018,.3,.012,0xb9b9c0,0,.15,0,'bars');bx(b,.03,.03,.012,0x111,0,.3,0,'bars');g.add(b);o.bars.push(b)}
+o.car=new T.Group();g.add(o.car);cy(o.car,.05,.8,0x111114,0,.62,-.06,'x','platen');[-.43,.43].forEach(x=>cy(o.car,.035,.06,0xc9a24a,x,.62,-.06,'x','platen'));
+bx(o.car,.9,.02,.04,0x777,0,.55,-.1,'platen');for(let i=0;i<14;i++)bx(o.car,.012,.02,.02,0xccc,(i-6.5)*.06,.53,-.1,'platen');bx(o.car,.02,.02,.2,0x888,-.5,.62,.04,'platen');
+cy(g,.06,.04,0x555,-.34,.52,-.17,'y','ribbon');cy(g,.06,.04,0x555,.34,.52,-.17,'y','ribbon');bx(g,.6,.02,.012,0x151515,0,.52,-.12,'ribbon');
+o.pc=document.createElement('canvas');o.pc.width=256;o.pc.height=200;o.pt=new T.CanvasTexture(o.pc);
+const pp=new T.Mesh(new T.PlaneGeometry(.5,.39),new T.MeshBasicMaterial({map:o.pt,side:T.DoubleSide}));pp.position.set(0,.8,-.1);pp.rotation.x=-.3;pp.userData.part='platen';o.car.add(pp);
+o.strike=i=>{if(!o.p[i])o.p[i]=.001};
+o.upd=dt=>{if(o.rev!==S.rev){o.rev=S.rev;const x=o.pc.getContext('2d');x.fillStyle=PAP[S.tw.paper];x.fillRect(0,0,256,200);x.fillStyle='#2b2118';x.globalAlpha=.25+S.tw.ink*.75;x.font='bold 22px monospace';S.notes.slice(-32).forEach((n,i)=>x.fillText(LET[n],14+(i%8)*29,34+Math.floor(i/8)*34));x.globalAlpha=1;o.pt.needsUpdate=true}
+ for(let i=0;i<7;i++){let p=o.p[i];if(p>0){p+=dt*(5+S.tw.spring*9);if(p>=1)p=0;o.p[i]=p}const s=Math.sin(Math.min(p,1)*PI);o.bars[i].rotation.x=1.1*(1-s);o.keys[i].position.y=.19-.025*s}
+ const tx=-((S.notes.length%12)-6)*.03*(.5+S.tw.pitch);o.cx+=(tx-o.cx)*Math.min(1,dt*8);o.car.position.x=o.cx};return o}
+/* ---------- 2. sewing machine ---------- */
+const FAB=['#b89b74','#7a2740','#2e5f7a'];
+function mkSEW(){const g=new T.Group(),o={g,rev:-1},NX=-.4;
+bx(g,1.15,.1,.52,0x2f3a3d,0,.05,0,'body');bx(g,.2,.62,.24,0x2f3a3d,.45,.4,0,'body');bx(g,1.05,.16,.24,0x394548,.02,.7,0,'body');bx(g,.24,.34,.26,0x394548,NX,.62,0,'body');
+o.nb=new T.Group();o.nb.position.set(NX,.5,.06);g.add(o.nb);cy(o.nb,.014,.3,0xbfc3c8,0,0,0,'y','needle');cy(o.nb,.006,.14,0xe8e8e8,0,-.2,0,'y','needle');
+cy(g,.016,.3,0xa9adb3,NX+.07,.27,.06,'y','foot');bx(g,.1,.02,.07,0x9aa0a6,NX+.07,.12,.06,'foot');
+o.tu=new T.Group();o.tu.position.set(NX+.12,.74,.14);g.add(o.tu);bx(o.tu,.02,.16,.02,0xddd,0,-.05,0,'needle');
+cy(g,.05,.12,0xf2f2f2,.1,.84,0,'y','thread');cy(g,.05,.12,0xf2f2f2,.2,.84,0,'y','thread');
+[.0,.02].forEach(z=>cy(g,.035,.012,0xd4a017,-.05,.7,.13+z,'z','tension'));cy(g,.02,.03,0x888,-.05,.7,.17,'z','tension');
+o.wh=cy(g,.16,.04,0x1c1c1f,.58,.5,0,'x','wheel');bx(o.wh,.04,.3,.03,0x555,0,0,0,'wheel');bx(o.wh,.04,.03,.3,0x555,0,0,0,'wheel');
+cy(g,.07,.02,0x222,NX,.115,.2,'y','bobbin');o.bb=cy(g,.05,.015,0xd6a84c,NX,.128,.2,'y','bobbin');
+bx(g,.22,.012,.16,0xc0c4c8,NX,.106,.06,'feed');o.fd=new T.Group();o.fd.position.set(NX,.116,.06);g.add(o.fd);for(let i=-1;i<2;i++)bx(o.fd,.03,.012,.12,0x666,i*.05,0,0,'feed');
+o.fc=document.createElement('canvas');o.fc.width=640;o.fc.height=128;o.ft=new T.CanvasTexture(o.fc);
+const fm=new T.Mesh(new T.PlaneGeometry(1,.28),new T.MeshBasicMaterial({map:o.ft}));fm.rotation.x=-PI/2;fm.position.set(NX+.1875,.122,.06);fm.userData.part='fabric';g.add(fm);
+const lg=new T.BufferGeometry();lg.setAttribute('position',new T.BufferAttribute(new Float32Array(15),3));o.th=new T.Line(lg,new T.LineBasicMaterial({color:0xf5f5f5}));g.add(o.th);
+function fab(){const x=o.fc.getContext('2d'),w=S.sew,d=30+w.len*40;x.fillStyle=FAB[w.fab];x.fillRect(0,0,640,128);x.strokeStyle='rgba(0,0,0,.15)';for(let i=0;i<7;i++){x.beginPath();x.moveTo(0,12+i*17);x.lineTo(640,12+i*17);x.stroke()}
+ S.tape.forEach((t,k)=>{const px=200-(w.pos-k-1)*d,y=12+t.p*17;if(px<-20||px>640)return;if(t.ok){x.fillStyle='#f4efe0';x.fillRect(px-9,y-2,18,4)}else{x.strokeStyle='#999';x.beginPath();x.arc(px,y,5,0,5);x.stroke()}});o.ft.needsUpdate=true}
+o.upd=()=>{const w=S.sew,ph=w.pos*2*PI;if(o.rev!==S.rev||w.on){o.rev=S.rev;fab()}
+ o.nb.position.y=.46+.085*Math.cos(ph);const cur=S.notes[Math.min(Math.floor(w.pos),S.notes.length-1)];o.nb.position.z+=(.06+((cur==null?3:cur)-3.06)*.037-o.nb.position.z)*.3;
+ o.tu.rotation.z=Math.sin(ph)*.5;o.wh.rotation.x=ph;o.bb.rotation.y=ph*2;o.fd.position.x=NX-Math.max(0,Math.sin(ph))*.02;
+ const a=o.th.geometry.attributes.position,P=[.1,.9,0,-.05,.7,.17,NX+.12,.72,.15,NX+.02,.78,.1,NX,o.nb.position.y-.2,o.nb.position.z];a.array.set(P);a.needsUpdate=true};return o}
+/* ---------- 3. music box ---------- */
+function mkMB(){const g=new T.Group(),o={g,rev:-1,teeth:[]};
+bx(g,1,.2,.56,0x7a4326,0,.1,0,'body');bx(g,1.02,.03,.58,0xb98a4e,0,.215,0,'body');
+o.cyl=cy(g,.12,.62,0xc8a24a,0,.34,0,'x','cylinder',32,{metalness:.7});o.pins=new T.Group();o.cyl.add(o.pins);
+bx(g,.04,.2,.1,0x5a3320,-.34,.3,0,'body');bx(g,.04,.2,.1,0x5a3320,.34,.3,0,'body');
+o.comb=new T.Group();o.comb.position.set(0,.34,.15);g.add(o.comb);bx(o.comb,.72,.07,.06,0x8c8f94,0,0,0,'comb');o.tm=MT(0xd7d9dc,{metalness:.8});
+for(let j=0;j<7;j++){const p=new T.Group();p.position.set((j-3)*.08,0,.03);const m=new T.Mesh(new T.BoxGeometry(.014,.008,.3),o.tm);m.position.z=.15;m.userData.part='comb';p.add(m);o.comb.add(p);o.teeth.push(p)}
+o.gb=cy(g,.1,.03,0xcaa447,.42,.34,0,'x','cylinder',12);o.gp=cy(g,.05,.03,0xcaa447,.42,.19,0,'x','cylinder',8);
+o.br=cy(g,.09,.07,0x9b8a52,-.42,.34,-.12,'x','spring',24);o.key=new T.Group();o.key.position.set(-.5,.34,-.12);g.add(o.key);bx(o.key,.015,.16,.02,0xb98a4e,0,0,0,'spring');
+o.g3=cy(g,.06,.03,0xcaa447,.46,.26,.15,'x','governor',10);o.fan=new T.Group();o.fan.position.set(.52,.26,.15);g.add(o.fan);bx(o.fan,.012,.16,.03,0xddd,0,0,0,'governor');bx(o.fan,.012,.03,.16,0xddd,0,0,0,'governor');
+o.cr=new T.Group();o.cr.position.set(.5,.12,-.15);g.add(o.cr);bx(o.cr,.015,.12,.015,0xaaa,0,.06,0,'cylinder');cy(o.cr,.022,.05,0xcc3333,0,.12,0,'x','cylinder');
+function reb(){while(o.pins.children.length)o.pins.remove(o.pins.children[0]);const L=mbNotes(),N=L.length;L.forEach((p,k)=>{const a=k/N*2*PI,m=bx(o.pins,.012,.012,.035,0xffe08a,(p-3)*.08,.13*Math.sin(a),.13*Math.cos(a),'pins');m.rotation.x=-a})}
+o.upd=(dt,t)=>{if(o.rev!==S.rev){o.rev=S.rev;reb()}const N=Math.max(mbNotes().length,1),th=S.mb.pos/N*2*PI;o.cyl.rotation.x=th;o.gb.rotation.x=th;o.gp.rotation.x=-th*2;o.cr.rotation.x=-th*2;o.g3.rotation.x=th*3;o.fan.rotation.x=S.mb.on?t*25:o.fan.rotation.x;o.br.rotation.x=-(1-S.mb.wind)*4;o.key.rotation.x=-(1-S.mb.wind)*4;
+ o.comb.position.x=S.mb.comb*.08;o.tm.color.setHex(Math.abs(S.mb.comb)<.35?0x9fe3b0:0xd7d9dc);o.teeth.forEach((p,j)=>p.rotation.x=-S.mb.hit[j]*.12*Math.sin(t*70))};return o}
+/* ---------- 4. camera ---------- */
+function mkCAM(){const g=new T.Group(),o={g,sv:-1};
+bx(g,.6,.5,.4,0x2d3a30,0,.3,0,'body');bx(g,.62,.04,.42,0x1a1a1a,0,.56,0,'body');
+const lg=new T.Group();lg.position.set(0,.3,-.2);g.add(lg);cy(lg,.1,.26,0x111111,0,0,-.1,'z','lens');cy(lg,.12,.04,0x6aa7c8,0,0,-.24,'z','lens',28,{metalness:.9,roughness:.1});cy(lg,.11,.05,0x333,0,0,-.05,'z','lens',12);
+cy(g,.03,.2,0x111,.2,.7,-.1,'z','body');
+o.r1=cy(g,.17,.06,0x888c92,-.14,.8,0,'z','reels');o.r2=cy(g,.14,.06,0x888c92,.17,.77,0,'z','reels');[o.r1,o.r2].forEach(r=>bx(r,.28,.03,.07,0x333,0,0,.04,'reels'));
+o.cr=new T.Group();o.cr.position.set(.31,.3,.08);g.add(o.cr);bx(o.cr,.02,.14,.02,0xaaa,0,.07,0,'body');cy(o.cr,.025,.06,0xcccc33,0,.14,0,'x','body');
+o.sh=wedge(g,.13,-.33,.3,-.05,'shutter');
+bx(g,.13,.12,.012,0xbbbbbb,.2,.3,-.205,'gate');o.st=bx(g,.07,.5,.01,0x15151a,.2,.3,-.215,'gate');for(let i=-2;i<3;i++)bx(o.st,.05,.07,.012,0xeadfc0,0,i*.1,-.002,'gate');
+o.upd=()=>{if(o.sv!==S.cam.shutter){o.sv=S.cam.shutter;o.sh.set(S.cam.shutter)}const s=S.cam.spin,pr=Math.min(S.cam.cnt/24,1);o.r1.rotation.z=-s;o.r2.rotation.z=s;o.cr.rotation.x=s;o.sh.g.rotation.x=s*2;
+ o.r1.scale.set(1-.35*pr,1-.35*pr,1);o.r2.scale.set(.7+.35*pr,.7+.35*pr,1);o.st.position.y=.3+S.cam.gate*.05};return o}
+/* ---------- 5. projector ---------- */
+function mkPJ(main){const g=new T.Group(),o={g,lv:-1,sv:-1},rig=new T.Group();rig.position.y=.12;g.add(rig);
+bx(g,.5,.12,.6,0x2a2a2e,0,.06,0,'body');bx(rig,.5,.3,.7,0x3d3d44,0,.3,0,'body');
+o.r1=cy(rig,.14,.05,0x9a9ea5,-.12,.62,.1,'z','reels');o.r2=cy(rig,.14,.05,0x9a9ea5,.12,.62,.1,'z','reels');[o.r1,o.r2].forEach(r=>bx(r,.25,.025,.06,0x333,0,0,.03,'reels'));
+bx(rig,.36,.3,.22,0x24242a,0,.3,.44,'lamp');cy(rig,.04,.14,0x333,0,.5,.44,'y','lamp');o.bulb=new T.Mesh(new T.SphereGeometry(.06,16,12),MT(0x555,{emissive:0}));o.bulb.position.set(0,.3,.58);o.bulb.userData.part='lamp';rig.add(o.bulb);
+o.lg=new T.Group();o.lg.position.set(0,.3,-.4);rig.add(o.lg);cy(o.lg,.1,.3,0x111,0,0,0,'z','lens');cy(o.lg,.12,.05,0x9ec9e0,0,0,-.17,'z','lens',28,{metalness:.9,roughness:.1});
+o.sh=wedge(rig,.11,.28,.3,-.15,'shutter');o.claw=bx(rig,.04,.05,.03,0xd0d0d0,.28,.3,.05,'claw');o.sp=cy(rig,.04,.03,0xbbb,.28,.42,-.05,'x','claw',12);
+cy(rig,.03,.03,0x999,.27,.56,-.15,'x','loop');cy(rig,.03,.03,0x999,.27,.56,.25,'x','loop');o.lm=new T.Mesh(new T.BufferGeometry(),MT(0x6a4a22));o.lm.userData.part='loop';rig.add(o.lm);
+const L=main?5.6:1.5,bg=new T.Group();bg.position.z=-.2;bg.rotation.y=PI;o.lg.add(bg);
+const bgeo=new T.CylinderGeometry(main?2.8:.75,.05,L,32,1,true);bgeo.translate(0,L/2,0);bgeo.rotateX(PI/2);
+o.beam=new T.Mesh(bgeo,new T.MeshBasicMaterial({color:0xfff2cc,transparent:true,opacity:.1,blending:T.AdditiveBlending,depthWrite:false,side:T.DoubleSide}));bg.add(o.beam);
+o.upd=()=>{const p=S.pj;rig.rotation.x=p.tilt*.4;o.lg.position.z=-.4-(p.lens-.5)*.16;
+ if(o.lv!==p.loop){o.lv=p.loop;const sg=(1-p.loop)*.18,y=.56,c=new T.CatmullRomCurve3([[-.15,y],[-.05,y-sg*.5],[.05,y-sg],[.15,y-sg*.5],[.25,y]].map(a=>new T.Vector3(.27,a[1],a[0])));o.lm.geometry.dispose();o.lm.geometry=new T.TubeGeometry(c,16,.008,6)}
+ o.bulb.material.emissive.setHex(p.lamp?0xffc060:0);o.beam.visible=!!p.lamp;o.beam.material.opacity=p.lamp?.09+(p.on||S.cam.on?.02*Math.random():0):0;
+ const s=p.spin;o.r1.rotation.z=-s;o.r2.rotation.z=s;o.sp.rotation.x=s*2;if(o.sv!==1){o.sv=1;o.sh.set(200)}o.sh.g.rotation.x=s*2+p.sync*3.14;o.claw.position.y=.3+Math.max(0,Math.sin(s*2))*.03};return o}
+const MK={tw:mkTW,sew:mkSEW,mb:mkMB,cam:mkCAM,pj:mkPJ};
+function make(id,main){const o=MK[id](main);INST[id].push(o);return o}
+/* ---------- filmed scene ---------- */
+function frame(c,n,ex,gate,stock){const w=c.width,h=c.height,x=c.getContext('2d');
+ let g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'#3a3a40');g.addColorStop(1,'#0e0e10');x.fillStyle=g;x.fillRect(0,0,w,h);
+ for(let i=0;i<9;i++){const bw=w/9,bh=h*(.4+((i*37)%5)/12);x.fillStyle=i%2?'#1a1a1e':'#26262b';x.fillRect(i*bw,h*.85-bh,bw-3,bh)}
+ for(let i=0;i<3;i++){const lx=w*(.15+i*.35),r=x.createRadialGradient(lx,h*.35,2,lx,h*.35,45);r.addColorStop(0,'rgba(255,213,138,.95)');r.addColorStop(1,'rgba(255,213,138,0)');x.fillStyle=r;x.fillRect(lx-45,h*.35-45,90,90)}
+ x.fillStyle='#17171a';x.fillRect(0,h*.85,w,h*.15);const px=w*(.12+.76*n/60),py=h*.85,sw=Math.sin(n*.8)*7;
+ x.fillStyle='#050505';x.fillRect(px-7,py-52,14,34);x.fillRect(px-9+sw,py-20,6,20);x.fillRect(px+3-sw,py-20,6,20);
+ x.fillStyle='#d9c3a0';x.beginPath();x.arc(px,py-60,7,0,7);x.fill();x.fillStyle='#000';x.fillRect(px-11,py-65,22,4);x.fillRect(px-7,py-76,14,11);x.fillStyle='#a22';x.fillRect(px-5,py-54,10,4);
+ x.strokeStyle='rgba(200,215,235,.45)';x.lineWidth=1;x.beginPath();for(let k=0;k<60;k++){const rx=(k*53+n*9)%w,ry=(k*91+n*40)%h;x.moveTo(rx,ry);x.lineTo(rx-2,ry+9)}x.stroke();
+ if(stock){x.globalCompositeOperation='saturation';x.fillStyle='#808080';x.fillRect(0,0,w,h);if(stock==2){x.globalCompositeOperation='multiply';x.fillStyle='#d8b27a';x.fillRect(0,0,w,h)}x.globalCompositeOperation='source-over'}
+ if(ex<1){x.fillStyle='rgba(0,0,0,'+(1-ex)*.85+')';x.fillRect(0,0,w,h)}else if(ex>1){x.fillStyle='rgba(255,255,255,'+Math.min(.85,(ex-1)*.8)+')';x.fillRect(0,0,w,h)}
+ if(Math.abs(gate)>.3){const t=document.createElement('canvas');t.width=w;t.height=h;t.getContext('2d').drawImage(c,0,0);x.fillStyle='#000';x.fillRect(0,0,w,h);x.drawImage(t,0,Math.round(gate*h*.45))}}
+/* ---------- world ---------- */
+const R=new T.WebGLRenderer({canvas:$('main'),antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,1.75));R.shadowMap.enabled=true;
+const sc=new T.Scene();sc.background=new T.Color(0x07080b);sc.fog=new T.Fog(0x07080b,10,20);
+const cam=new T.PerspectiveCamera(55,1,.1,40);
+sc.add(new T.HemisphereLight(0x8899bb,0x221810,.5));
+const sp=new T.SpotLight(0xffe2b8,1.6,14,.9,.5);sp.position.set(0,4.2,2.2);sp.target.position.set(0,.9,0);sp.castShadow=true;sp.shadow.mapSize.set(1024,1024);sc.add(sp,sp.target);
+const sl=new T.PointLight(0xdfe8ff,0,9);sl.position.set(0,2.6,-4.5);sc.add(sl);
+const fl=new T.Mesh(new T.PlaneGeometry(10,14),MT(0x2a2018,{roughness:.9}));fl.rotation.x=-PI/2;fl.position.z=-1;fl.receiveShadow=true;sc.add(fl);
+const wm=MT(0x2a1517,{roughness:.9});[-5,5].forEach(x=>{const w=new T.Mesh(new T.PlaneGeometry(14,4.6),wm);w.rotation.y=x<0?PI/2:-PI/2;w.position.set(x,2.3,-1);sc.add(w)});
+const ce=new T.Mesh(new T.PlaneGeometry(10,14),wm);ce.rotation.x=PI/2;ce.position.set(0,4.6,-1);sc.add(ce);
+const WC=document.createElement('canvas');WC.width=1024;WC.height=576;const wx=WC.getContext('2d'),wtex=new T.CanvasTexture(WC),tmp=document.createElement('canvas'),tx=tmp.getContext('2d');
+const wall=new T.Mesh(new T.PlaneGeometry(8,4.5),new T.MeshBasicMaterial({map:wtex}));wall.position.set(0,2.25,-6);sc.add(wall);
+[-4.6,4.6].forEach(x=>{const c=new T.Mesh(new T.BoxGeometry(.8,4.5,.3),MT(0x6a1218,{roughness:.9}));c.position.set(x,2.25,-5.8);sc.add(c)});
+const tb=new T.Group();sc.add(tb);const top=bx(tb,4.6,.1,1.2,0x6b3b22,0,.9,0);top.receiveShadow=true;[[-2.1,-.45],[2.1,-.45],[-2.1,.45],[2.1,.45]].forEach(a=>bx(tb,.12,.9,.12,0x4a2814,a[0],.45,a[1]));
+const XS={tw:-1.7,sew:-.85,mb:0,cam:.85,pj:1.7},NAME={tw:'✍️ ماشین تحریر',sew:'🧵 چرخ خیاطی',mb:'🎼 جعبه موسیقی',cam:'🎥 دوربین',pj:'📽️ آپارات'},mains=[];
+for(const id in MK){const o=make(id,1);o.g.position.set(XS[id],.95,0);o.g.scale.setScalar(.6);o.g.userData.id=id;sc.add(o.g);mains.push(o.g);
+ const b=document.createElement('button');b.id='lb_'+id;b.textContent=NAME[id];b.onclick=()=>open(id);$('lbs').appendChild(b)}
+function chart(x,w,h){x.fillStyle='#ece8dc';x.fillRect(0,0,w,h);x.strokeStyle='#222';x.lineWidth=Math.max(1,h/90);for(let i=0;i<=8;i++){x.beginPath();x.moveTo(i*w/8,0);x.lineTo(i*w/8,h);x.stroke()}for(let i=0;i<=4;i++){x.beginPath();x.moveTo(0,i*h/4);x.lineTo(w,i*h/4);x.stroke()}x.beginPath();x.arc(w/2,h/2,h*.36,0,7);x.stroke();x.fillStyle='#b22';x.font='bold '+h*.2+'px sans-serif';x.textAlign='center';x.fillText('FOCUS',w/2,h*.58)}
+function drawWall(){const p=S.pj;wx.fillStyle='#14161b';wx.fillRect(0,0,1024,576);wx.fillStyle=p.lamp?'#cfcabc':'#55534e';wx.fillRect(153,41,717,403);wx.strokeStyle='#050505';wx.lineWidth=10;wx.strokeRect(148,36,727,413);if(!p.lamp)return;
+ const k=1+Math.abs(p.lens-.5)*24,w=640,h=360,cy=(4.5-(1.37+5.45*Math.tan(p.tilt*.4)))*128;tmp.width=Math.max(6,w/k|0);tmp.height=Math.max(6,h/k|0);
+ const c=S.cam,fr=c.on?c.live:(p.on&&c.cnt?c.fr[Math.floor(p.t*12)%c.cnt]:null);if(fr)tx.drawImage(fr,0,0,tmp.width,tmp.height);else chart(tx,tmp.width,tmp.height);
+ const lb=(p.loop<.3||p.loop>.75)&&(p.on||c.on);let jy=0,al=.96;if(lb){jy=(Math.random()-.5)*50;al=.5+Math.random()*.5}
+ wx.save();wx.globalAlpha=al;wx.drawImage(tmp,512-w/2,cy-h/2+jy,w,h);if(Math.abs(p.sync)>.3){wx.globalAlpha=.5;wx.drawImage(tmp,512-w/2,cy-h/2+jy+p.sync*70,w,h)}wx.restore()}
+/* ---------- simulation ---------- */
+function typeNote(i){if(S.notes.length>=32)return;S.notes.push(i);S.rev++;INST.tw.forEach(o=>o.strike(i));click();ping(i,.4);touch()}
+function pluck(k,L){const p=L[k],al=Math.max(0,1-Math.abs(S.mb.comb)/.6);if(al>.05){ping(p,al,S.mb.comb*50);S.mb.hit[p]=al}}
+let wt=0;function sim(dt){
+ const tw=S.tw;if(tw.auto){tw.ai+=dt;if(tw.ai>.4){tw.ai=0;if(S.notes.length>=R1.length){tw.auto=0;touch()}else typeNote(R1[S.notes.length])}}
+ const w=S.sew;if(w.on){const L=S.notes.length,pv=w.pos;w.pos=Math.min(L,w.pos+dt*3*w.spd);const ok=Math.abs(w.tens-.5)<(w.fab==1?.12:.22)&&w.len>.2&&w.len<.85;
+  for(let k=Math.floor(pv);k<Math.floor(w.pos);k++){S.tape[k]={p:S.notes[k],ok};S.rev++;click(300+S.notes[k]*40)}if(w.pos>=L){w.on=0;touch()}}
+ const m=S.mb,L=mbNotes();if(m.on&&L.length){const N=L.length,pv=m.pos;m.pos+=dt*110/60*m.spd*Math.min(1,m.wind*4);m.wind-=dt*.012;if(Math.floor(m.pos)!==Math.floor(pv))pluck(Math.floor(m.pos)%N,L);if(m.pos>=N)m.pos%=N;if(m.wind<=0){m.wind=0;m.on=0;touch()}}
+ m.hit=m.hit.map(h=>h*Math.pow(.03,dt));
+ const c=S.cam;if(c.on){c.spin+=dt*8;c.ft+=dt;if(c.ft>1/12){c.ft=0;c.n=(c.n+1)%60;frame(c.live,c.n,c.shutter/180,c.gate,c.stock);const r=c.fr[c.fi%24]||(c.fr[c.fi%24]=Object.assign(document.createElement('canvas'),{width:320,height:180}));r.getContext('2d').drawImage(c.live,0,0);c.fi++;c.cnt=Math.min(c.fi,24)}}
+ if(S.pj.on){S.pj.t+=dt;S.pj.spin+=dt*6}
+ wt+=dt;if(S.dirty||((S.pj.on||c.on)&&wt>.07)){wt=0;S.dirty=0;drawWall();wtex.needsUpdate=true;sl.intensity=S.pj.lamp&&(S.pj.on||c.on)?.8:S.pj.lamp?.3:0}}
+/* ---------- controls ---------- */
+const PN={keys:'⌨️ کلیدها',bars:'🔩 میله‌های حروف',platen:'📄 غلتک و کاغذ',ribbon:'🎀 نوار جوهر',needle:'🪡 سوزن',foot:'🦶 پایهٔ پارچه',feed:'⚙️ دندانهٔ پیشران',tension:'🧶 کشش نخ',thread:'🧵 قرقرهٔ نخ',wheel:'🛞 فلایویل',bobbin:'⭕ ماسوره',fabric:'🟫 پارچه',
+ comb:'🎼 شانهٔ فلزی',cylinder:'⚙️ سیلندر',pins:'📍 پین‌ها',spring:'🌀 فنر و کوک',governor:'💨 گاورنر',shutter:'🌀 شاتر',gate:'🎞️ گیت',lens:'🔍 لنز',reels:'⭕ قرقره‌ها',lamp:'💡 لامپ',loop:'➰ حلقهٔ فیلم',body:'🧱 بدنه',claw:'🦾 چنگک'};
+const TT={tw:'ماشین تحریر',sew:'چرخ خیاطی (دوخت نوار نت)',mb:'جعبه موسیقی',cam:'دوربین فیلمبرداری',pj:'آپارات (پروژکتور)'},MY={tw:.5,sew:.4,mb:.5,cam:2.4,pj:.9},MH={tw:.35,sew:.4,mb:.25,cam:.5,pj:.5},MR={tw:2.1,sew:2.5,mb:2.1,cam:2.1,pj:2.1};
+const rg=(p,l,min,max,o,k,fmt,h)=>({p,t:'range',l,min,max,step:.01,g:()=>o[k],s:v=>{o[k]=v},fmt,h});
+const sw=(p,l,opts,g,s,h)=>({p,t:'sw',l,opts,g,s,h});
+const PL={tw:['تایپ خودکار',()=>S.tw.auto,()=>{if(S.tw.auto)S.tw.auto=0;else{S.notes=[];S.rev++;S.tw.auto=1;S.tw.ai=.4}}],
+ sew:['دوخت',()=>S.sew.on,()=>{const w=S.sew;if(w.on)w.on=0;else if(!S.notes.length)say('اول با ماشین تحریر نت تایپ کن');else{S.tape=[];w.pos=0;w.on=1;S.rev++}}],
+ mb:['پخش',()=>S.mb.on,()=>{if(S.mb.on)S.mb.on=0;else if(!mbNotes().length)say('سیلندر خالی است؛ نوار را بدوز یا رول آماده بگذار');else{if(S.mb.wind<.1)S.mb.wind=.1;S.mb.on=1}}],
+ cam:['فیلمبرداری',()=>S.cam.on,()=>{S.cam.on=S.cam.on?0:1}],pj:['نمایش فیلم',()=>S.pj.on,()=>{S.pj.on=S.pj.on?0:1}]};
+const CT={
+tw:[{p:'keys',t:'keys'},{p:'keys',t:'btn',l:'⌫ پاک‌کردن کاغذ',f(){S.notes=[];S.rev++}},
+ rg('bars','فنر میله‌ها',0,1,S.tw,'spring',v=>(5+v*9).toFixed(0)+' Hz','فنر سفت‌تر یعنی میله سریع‌تر به غلتک می‌خورد و برمی‌گردد.'),
+ rg('platen','گام کالسکه',0,1,S.tw,'pitch',v=>(1.5+v*3).toFixed(1)+' mm','چرخ‌دندهٔ رک، با هر ضربه کالسکه را به اندازهٔ این گام جلو می‌برد.'),
+ sw('platen','نوع کاغذ',['سفید','کهنه','آبی'],()=>S.tw.paper,v=>{S.tw.paper=v;S.rev++},'کاغذ را عوض کن؛ همان لحظه روی غلتک اتاق عوض می‌شود.'),
+ rg('ribbon','جوهر نوار',0,1,S.tw,'ink',v=>(v*100|0)+'%','نوار کم‌جوهر حروف را کم‌رنگ چاپ می‌کند.')],
+sew:[rg('feed','طول دوخت (حرکت دندانه)',0,1,S.sew,'len',v=>(1.5+v*3.5).toFixed(1)+' mm','خیلی کوتاه یا خیلی بلند → دوخت می‌پرد و نت از نوار حذف می‌شود.'),
+ rg('tension','کشش نخ',0,1,S.sew,'tens',v=>(v*10).toFixed(1),'نزدیک ۵ بهترین است؛ ابریشم حساس‌تر است.'),
+ rg('wheel','سرعت فلایویل',.4,2,S.sew,'spd',v=>v.toFixed(2)+'×','فلایویل → میل‌لنگ → سوزن و دندانه با هم حرکت می‌کنند.'),
+ sw('fabric','پارچهٔ نوار',['کتان','ابریشم','ژاکارد'],()=>S.sew.fab,v=>{S.sew.fab=v;S.rev++},'پارچه را عوض کن؛ ابریشم کشش دقیق‌تری می‌خواهد.'),
+ {p:'needle',t:'info',l:()=>'سوزن با هر نت به ردیف همان نت می‌رود و آن را روی پارچه می‌دوزد.'},{p:'bobbin',t:'info',l:()=>'ماسورهٔ زیر صفحه نخ زیرین را می‌دهد؛ دوخت با گرهٔ نخ بالا و پایین کامل می‌شود.'},
+ {p:'thread',t:'info',l:()=>'نخ از قرقره به صفحهٔ کشش، اهرم نخ‌کش و سوزن می‌رسد.'},{p:'foot',t:'info',l:()=>'پایه پارچه را روی صفحه نگه می‌دارد تا دندانه‌ها آن را جلو ببرند.'}],
+mb:[rg('comb','جابه‌جایی شانه',-1,1,S.mb,'comb',v=>(v*1.2).toFixed(2)+' mm','شانه باید دقیقاً زیر پین‌ها باشد؛ هم‌تراز که شد دندانه‌ها سبز می‌شوند.'),
+ sw('cylinder','رول موسیقی',['نوار دوخته‌شده','رول ۱','رول ۲'],()=>S.mb.roll,v=>{S.mb.roll=v;S.mb.pos=0;S.rev++},'رول را عوض کن؛ پین‌های سیلندر همان لحظه از نو چیده می‌شوند.'),
+ rg('governor','سرعت گاورنر',.4,2,S.mb,'spd',v=>v.toFixed(2)+'×','پروانهٔ گاورنر سرعت چرخش سیلندر را تنظیم می‌کند.'),
+ {p:'spring',t:'btn',l:'🔑 کوک کردن فنر',f(){S.mb.wind=1}},{p:'spring',t:'info',l:()=>'فنر: '+(S.mb.wind*100|0)+'٪ — با پخش کم می‌شود.'},
+ {p:'pins',t:'info',l:()=>'پین‌ها: '+mbNotes().length+' عدد (از منبع «'+['نوار دوخته','رول ۱','رول ۲'][S.mb.roll]+'»)'}],
+cam:[rg('shutter','زاویهٔ شاتر',60,270,S.cam,'shutter',v=>v.toFixed(0)+'°','کم = تاریک، زیاد = سوخته. حدود ۱۸۰° ایده‌آل است.'),
+ rg('gate','ثبت فریم در گیت',-1,1,S.cam,'gate',v=>(v*2).toFixed(1)+' mm','فریم باید وسط پنجرهٔ گیت باشد، وگرنه نوار سیاه می‌افتد.'),
+ sw('reels','نوع فیلم',['رنگی','سیاه‌وسفید','سپیا'],()=>S.cam.stock,v=>{S.cam.stock=v},'قرقرهٔ فیلم را عوض کن؛ تصویر زنده روی دیوار تغییر می‌کند.'),
+ {p:'lens',t:'info',l:()=>'لنز صحنه را روی گیت می‌اندازد؛ تصویر حاصل با آپارات روی دیوار می‌رود.'}],
+pj:[{p:'lamp',t:'btn',l:()=>S.pj.lamp?'💡 خاموش‌کردن لامپ':'💡 روشن‌کردن لامپ',f(){S.pj.lamp=S.pj.lamp?0:1}},
+ rg('lens','فاصلهٔ لنز (فوکوس)',0,1,S.pj,'lens',v=>(35+v*30).toFixed(1)+' mm','لنز را عقب و جلو ببر تا تصویر روی دیوار تیز شود.'),
+ rg('loop','کشش حلقهٔ فیلم',0,1,S.pj,'loop',v=>(v*100|0)+'%','حلقهٔ شل فریم می‌پراند، سفت فیلم را می‌کشد.'),
+ rg('shutter','فاز شاتر',-1,1,S.pj,'sync',v=>(v*60|0)+'°','شاتر باید هنگام حرکت چنگک تصویر را ببندد، وگرنه تصویر دوبل می‌شود.'),
+ rg('body','ارتفاع پایه',0,1,S.pj,'tilt',v=>(v*.4*57.3).toFixed(1)+'°','جلوی دستگاه را بالا ببر تا تصویر وسط پرده بیفتد.'),
+ {p:'reels',t:'info',l:()=>'قرقره‌ها فیلمِ ضبط‌شدهٔ دوربین ('+S.cam.cnt+' فریم) را می‌گردانند.'},{p:'claw',t:'info',l:()=>'چنگک فیلم را فریم‌به‌فریم جلو می‌کشد.'}]};
+function diag(id){const p=S.pj,c=S.cam;switch(id){
+ case'tw':return S.notes.length?S.notes.length+' نت روی کاغذ؛ آمادهٔ دوخت.':'کاغذ خالی است؛ کلید بزن یا ▶.';
+ case'sew':return!S.notes.length?'اول با ماشین تحریر نت تایپ کن.':S.tape.some(t=>!t.ok)?'بعضی دوخت‌ها پریده‌اند؛ کشش یا طول دوخت را اصلاح کن.':S.tape.length?S.tape.length+' دوخت سالم روی نوار.':'آمادهٔ دوخت '+S.notes.length+' نت.';
+ case'mb':return!mbNotes().length?'سیلندر خالی است؛ نوار بدوز یا رول آماده بگذار.':Math.abs(S.mb.comb)>.35?'شانه جابه‌جا شده؛ زیر پین‌ها ببرش.':S.mb.wind<.1?'فنر تمام شده؛ کوک کن.':'آماده.';
+ case'cam':return Math.abs(c.gate)>.3?'فریم در گیت جابه‌جاست؛ نوار سیاه می‌افتد.':c.shutter<110?'شاتر کم‌باز: تصویر تاریک.':c.shutter>250?'شاتر زیاد باز: تصویر سوخته.':'تنظیمات خوب است.';
+ case'pj':return!p.lamp?'لامپ خاموش است.':Math.abs(p.lens-.5)>.1?'تصویر تار است؛ لنز را جابه‌جا کن.':(p.loop<.3||p.loop>.75)?'حلقهٔ فیلم شل/سفت است.':Math.abs(p.sync)>.3?'شاتر با چنگک هماهنگ نیست.':Math.abs(p.tilt-.55)>.1?'تصویر وسط پرده نیست؛ ارتفاع پایه را تنظیم کن.':'تصویر روی پرده عالی است.'}}
+function say(t){$('st').textContent=t;clearTimeout(say.t);say.t=setTimeout(()=>{if(S.sel)$('st').textContent=diag(S.sel)},2500)}
+function touch(){S.dirty=1;for(const id in PL)$('lb_'+id).classList.toggle('run',!!PL[id][1]());if(S.sel){const r=PL[S.sel],on=r[1]();$('pp').textContent=(on?'⏹ توقف ':'▶ ')+(on?'':r[0]);$('pp').className=on?'on':'';if(!say.t||true)$('st').textContent=diag(S.sel)}}
+let cur=null;
+function part(p){cur=p;const L=CT[S.sel],ps=[...new Set(L.map(c=>c.p))],el=$('ctl');
+ el.innerHTML='<div class="pc">'+ps.map(q=>'<button data-p="'+q+'" class="'+(q==p?'on':'')+'">'+PN[q]+'</button>').join('')+'</div>';
+ L.filter(c=>c.p==p).forEach(c=>{const d=document.createElement('div');d.className='c';
+  if(c.t=='keys'){d.className='kb';d.innerHTML=['دو','ر','می','فا','سل','لا','سی'].map((n,i)=>'<button data-k="'+i+'">'+n+'</button>').join('')}
+  else if(c.t=='range'){d.innerHTML='<label>'+c.l+'<output>'+c.fmt(c.g())+'</output></label><input type="range" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'" value="'+c.g()+'"><small>'+c.h+'</small>';
+   d.querySelector('input').oninput=e=>{c.s(+e.target.value);d.querySelector('output').textContent=c.fmt(c.g());S.rev+=(S.sel=='sew'?1:0);touch()}}
+  else if(c.t=='sw'){d.innerHTML='<label>'+c.l+'</label><div class="ab">'+c.opts.map((o,i)=>'<button data-s="'+i+'" class="'+(c.g()==i?'on':'')+'">'+o+'</button>').join('')+'</div><small>'+c.h+'</small>';
+   d.querySelectorAll('button').forEach(b=>b.onclick=()=>{c.s(+b.dataset.s);touch();part(cur)})}
+  else if(c.t=='btn'){d.className='ab';const b=document.createElement('button');b.textContent=typeof c.l=='function'?c.l():c.l;b.onclick=()=>{au();c.f();touch();part(cur)};d.appendChild(b)}
+  else if(c.t=='info')d.innerHTML='<small>'+c.l()+'</small>';
+  el.appendChild(d)});
+ if(mo)mo.g.traverse(m=>{if(m.isMesh&&m.userData.part&&m.material.emissive)m.material.emissive.setHex(m.userData.part==p?0x1a6b45:0)})}
+$('ctl').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.p)part(b.dataset.p);else if(b.dataset.k!==undefined){au();typeNote(+b.dataset.k)}};
+$('pp').onclick=()=>{au();PL[S.sel][2]();touch();part(cur)};
+/* ---------- mini 3D workshop ---------- */
+const mr=new T.WebGLRenderer({canvas:$('mini'),antialias:true}),ms=new T.Scene(),mc=new T.PerspectiveCamera(38,1,.1,30);let mo=null,my=0,mp=.45;
+ms.add(new T.HemisphereLight(0xfff0dd,0x222233,.9));const dl=new T.DirectionalLight(0xffffff,.9);dl.position.set(2,4,3);ms.add(dl);
+const fm=new T.Mesh(new T.CylinderGeometry(1.5,1.5,.02,48),MT(0x3a2a20));fm.position.y=-.01;ms.add(fm);
+function sz(){const c=$('mini');mr.setPixelRatio(Math.min(devicePixelRatio,1.75));mr.setSize(c.clientWidth,c.clientHeight,false);mc.aspect=c.clientWidth/c.clientHeight;mc.updateProjectionMatrix()}
+let dr=null;const mn=$('mini');
+mn.onpointerdown=e=>{dr={x:e.clientX,y:e.clientY,m:0};mn.setPointerCapture(e.pointerId)};
+mn.onpointermove=e=>{if(!dr)return;const dx=e.clientX-dr.x,dy=e.clientY-dr.y;if(Math.abs(dx)+Math.abs(dy)>3)dr.m=1;my-=dx*.012;mp=Math.max(.05,Math.min(1.3,mp+dy*.008));dr.x=e.clientX;dr.y=e.clientY};
+mn.onpointerup=e=>{if(dr&&!dr.m&&mo){const r=mn.getBoundingClientRect(),v=new T.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),rc=new T.Raycaster();rc.setFromCamera(v,mc);const h=rc.intersectObject(mo.g,true).find(i=>i.object.userData.part&&CT[S.sel].some(c=>c.p==i.object.userData.part));if(h)part(h.object.userData.part)}dr=null};
+function open(id){close(1);S.sel=id;mo=make(id,0);ms.add(mo.g);my=MY[id];mp=.45;$('ttl').textContent=TT[id];$('sheet').classList.add('on');$('lbs').style.display='none';$('hint').style.display='none';part(CT[id][0].p);touch();sz();vid=id}
+function close(k){if(mo){ms.remove(mo.g);INST[S.sel].splice(INST[S.sel].indexOf(mo),1);mo=null}if(!k){S.sel=null;$('sheet').classList.remove('on');$('lbs').style.display='';$('hint').style.display='';vid=null}}
+$('x').onclick=()=>close();
+/* ---------- room camera / input ---------- */
+const tp=new T.Vector3(),tl=new T.Vector3(),lk=new T.Vector3(0,1.5,-2);let vid=null;cam.position.set(0,2.4,5.4);
+let d0=null;const mcv=$('main');
+mcv.onpointerdown=e=>{d0={x:e.clientX,m:0}};mcv.onpointermove=e=>{if(!d0)return;const dx=e.clientX-d0.x;if(Math.abs(dx)>4){d0.m=1;if(!vid)S.yaw=Math.max(-.6,Math.min(.6,S.yaw-dx*.003));d0.x=e.clientX}};
+mcv.onpointerup=e=>{if(d0&&!d0.m){const v=new T.Vector2(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1),rc=new T.Raycaster();rc.setFromCamera(v,cam);const h=rc.intersectObjects(mains,true)[0];if(h){let o=h.object;while(o&&!o.userData.id)o=o.parent;if(o)open(o.userData.id)}}d0=null};
+let por=false;function rs(){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;por=innerWidth<innerHeight;cam.fov=por?80:55;cam.updateProjectionMatrix();if(S.sel)sz()}addEventListener('resize',rs);rs();
+const pv=new T.Vector3();let last=performance.now();
+(function L(n){requestAnimationFrame(L);const dt=Math.min((n-last)/1000,.05);last=n;sim(dt);const t=n/1000;for(const k in INST)INST[k].forEach(o=>o.upd(dt,t));
+ if(vid){const x=XS[vid];tp.set(x*.9,1.7,1.5);tl.set(x,.75,0)}else{tp.set(S.yaw*4,por?2.5:2.2,por?5.4:4.6);tl.set(S.yaw*1.5,1.6,-2)}
+ cam.position.lerp(tp,.07);lk.lerp(tl,.07);cam.lookAt(lk);R.render(sc,cam);
+ if(!vid)for(const id in XS){pv.set(XS[id],1.75,0).project(cam);const b=$('lb_'+id);b.style.left=(pv.x+1)/2*innerWidth+'px';b.style.top=(1-pv.y)/2*innerHeight+'px'}
+ if(S.sel&&mo){const r=MR[S.sel];mc.position.set(Math.sin(my)*Math.cos(mp)*r,MH[S.sel]+Math.sin(mp)*r,Math.cos(my)*Math.cos(mp)*r);mc.lookAt(0,MH[S.sel],0);mr.render(ms,mc)}})(last);
+touch();
+</script></body></html>
