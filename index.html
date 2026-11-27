@@ -41,6 +41,10 @@ button{background:linear-gradient(145deg,#49301d,#21150f);border:1px solid #9a71
 .c label{color:#d4b98d}.c output{color:#edc27c}.c input{accent-color:#d49b4d}.c small{color:#bba486}
 .kb button{background:linear-gradient(145deg,#f2e5c9,#bba47b);color:#26180f;border:1px solid #80633e;box-shadow:0 3px 0 #59412b}
 @media(max-width:600px){#sheet{height:68vh}.hd b{font-size:15px}#lbs button{font-size:10px;padding:6px 8px}}
+
+#qualityBar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:12px;z-index:40;display:flex;align-items:center;gap:9px;padding:8px 11px;border:1px solid #b58a52;border-radius:10px;background:linear-gradient(145deg,#382417f5,#100b08f5);color:#f5dfb7;box-shadow:0 5px 18px #000b;direction:rtl;font:13px Vazirmatn,Tahoma,sans-serif}
+#qualityBar label{font-weight:700;white-space:nowrap}#qualityBar select{max-width:155px;background:#21150f;color:#ffe8c2;border:1px solid #9a7140;border-radius:7px;padding:7px 9px;font:inherit}#qualityHint{font-size:10px;color:#d8b98a;white-space:nowrap}
+@media(max-width:430px){#qualityBar{left:10px;right:10px;justify-content:space-between;gap:5px;padding:7px 9px}#qualityBar select{max-width:145px}#qualityHint{display:none}}
 </style></head><body>
 <canvas id="main"></canvas>
 <div id="hud"><b class="t">🏭 کارگاه ماشین‌ها</b><div id="hint">یکی از ماشین‌ها را لمس کن؛ هرچه در کارگاه تنظیم کنی همین‌جا زنده اجرا می‌شود.</div></div>
@@ -309,12 +313,12 @@ touch();
   part(sc,new T.TorusGeometry(.052,.009,8,20,PI),brass,x,y,.672).rotation.x=PI/2;
  }
  // exposed slow-running gear train below the table
+ const train=new T.Group();train.position.y=.22;sc.add(train);
  function gear(x,y,r,teeth,dir){const g=new T.Group();g.position.set(x,y,.70);train.add(g);
   part(g,new T.TorusGeometry(r*.76,r*.1,8,32),brass,0,0,0);
   part(g,new T.CylinderGeometry(r*.19,r*.19,.07,16),darkBrass,0,0,0).rotation.x=PI/2;
   for(let i=0;i<teeth;i++){const a=i*2*PI/teeth,t=part(g,new T.BoxGeometry(r*.22,r*.18,.07),brass,Math.cos(a)*r*.93,Math.sin(a)*r*.93,0);t.rotation.z=a}
   g.userData.speed=dir;return g}
- const train=new T.Group();train.position.y=.22;sc.add(train);
  const gears=[gear(-.72,0,.23,16,.5),gear(-.25,0,.16,12,-.67),gear(.22,0,.2,16,.54),gear(.68,0,.13,10,-.8)];
  cy(train,.027,1.8,0x96703d,0,0,-.05,'x','shaft',18);
  // mirror and ballerina model in the music box, attached to each instance
@@ -355,5 +359,23 @@ touch();
  };
  const started=performance.now();function animateAtelier(){const t=(performance.now()-started)/1000;gears.forEach(g=>g.rotation.z=t*g.userData.speed);INST.mb.forEach(o=>{if(o.dancer)o.dancer.rotation.y=Math.sin(t*1.3)*.25});requestAnimationFrame(animateAtelier)}animateAtelier();
  const warm=new T.PointLight(0xffc27a,1.05,8);warm.position.set(0,3.5,1.8);sc.add(warm);
+
+/* Top-of-screen graphics quality control; kept inside the renderer scope. */
+(function(){
+ const bar=document.createElement('div');bar.id='qualityBar';
+ bar.innerHTML='<label for="qualitySelect">⚙ کیفیت تصویر</label><select id="qualitySelect"><option value="low">گوشی ضعیف · روان</option><option value="medium">متعادل</option><option value="high">کیفیت بالا</option><option value="auto">خودکار</option></select><span id="qualityHint">بهینه‌سازی اجرا</span>';
+ document.body.appendChild(bar);
+ const select=bar.querySelector('select'),hint=bar.querySelector('#qualityHint');
+ const presets={low:{pixel:.62,fps:24,shadow:false,mini:.6,label:'مناسب گوشی ضعیف'},medium:{pixel:.9,fps:30,shadow:true,mini:.85,label:'تعادل کیفیت و سرعت'},high:{pixel:1.35,fps:45,shadow:true,mini:1.2,label:'کیفیت بالا'}};
+ function auto(){return ((navigator.hardwareConcurrency||4)<=4||(navigator.deviceMemory||4)<=4)?'low':'medium'}
+ let mode='low',next=0;const baseRender=R.render.bind(R);
+ R.render=function(){const now=performance.now(),step=1000/presets[mode].fps;if(now<next)return;next=now+step;return baseRender.apply(null,arguments)};
+ function apply(v){mode=v==='auto'?auto():v;const p=presets[mode]||presets.low;window.__atelierQualityMode=mode;
+  R.setPixelRatio(Math.min(devicePixelRatio||1,p.pixel));R.setSize(innerWidth,innerHeight,false);R.shadowMap.enabled=p.shadow;
+  if(sp&&sp.shadow&&sp.shadow.mapSize){const n=mode==='low'?256:mode==='medium'?512:1024;sp.shadow.mapSize.set(n,n);if(sp.shadow.map){sp.shadow.map.dispose();sp.shadow.map=null}}
+  mr.setPixelRatio(Math.min(devicePixelRatio||1,p.mini));sz();next=0;hint.textContent=p.label+' · '+p.fps+'fps';try{localStorage.setItem('lanbarshey-quality',v)}catch(e){}
+ }
+ let saved='auto';try{saved=localStorage.getItem('lanbarshey-quality')||'auto'}catch(e){}if(!['low','medium','high','auto'].includes(saved))saved='auto';select.value=saved;select.addEventListener('change',()=>apply(select.value));apply(saved);window.addEventListener('resize',()=>apply(select.value),{passive:true});
+})();
 })();
 </script></body></html>
