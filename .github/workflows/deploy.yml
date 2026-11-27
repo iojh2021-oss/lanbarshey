@@ -29,6 +29,19 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Inject atelier visual upgrade
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("index.html")
+          s = p.read_text(encoding="utf-8")
+          if "atelier-enhance.css" not in s:
+              s = s.replace("</head>", '<link rel="stylesheet" href="atelier-enhance.css"></head>')
+          if "atelier-enhance.js" not in s:
+              s = s.replace("</body>", '<script src="atelier-enhance.js"></script></body>')
+          p.write_text(s, encoding="utf-8")
+          PY
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v4
         with:
